@@ -395,6 +395,85 @@ const slides = [
     )
   },
   {
+    id: 'rl_risk',
+    title: 'Measuring Performance: Risk and Empirical Risk',
+    content: (
+      <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-purple-100 p-16">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl font-bold text-indigo-800 mb-4">Measuring Performance: Risk and Empirical Risk</h1>
+            <p className="text-xl text-indigo-600">Expected cost under environment uncertainty</p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-8">
+            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30">
+              <div className="flex items-center mb-6">
+                <Globe className="w-8 h-8 text-indigo-600 mr-3" />
+                <h2 className="text-2xl font-bold text-gray-800">Population Risk</h2>
+              </div>
+              <div className="bg-indigo-50 p-6 rounded-lg mb-4 text-center">
+                <MathJax>
+                  {"\\[ L_{\\mathcal D}(\\pi) = \\mathbb E_{M\\sim\\mathcal D}\\!\\left[ V_{\\pi;M} \\right] \\]"}
+                </MathJax>
+              </div>
+              <p className="text-lg text-gray-700 pl-4 border-l-4 border-indigo-200">
+                Expected cost of policy π on a new test MDP.
+              </p>
+            </div>
+            
+            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30">
+              <div className="flex items-center mb-6">
+                <BarChart3 className="w-8 h-8 text-purple-600 mr-3" />
+                <h2 className="text-2xl font-bold text-gray-800">Empirical Risk</h2>
+              </div>
+              <div className="bg-purple-50 p-6 rounded-lg mb-4 text-center">
+                <MathJax>
+                  {"\\[ L_{\\mathcal M}(\\pi) = \\frac{1}{m} \\sum_{i=1}^{m} V_{\\pi; M_i} \\]"}
+                </MathJax>
+              </div>
+               <p className="text-lg text-gray-700 pl-4 border-l-4 border-purple-200">
+                Average cost on training environments.
+              </p>
+            </div>
+          </div>
+
+          {/* <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-8 rounded-2xl text-center shadow-xl">
+            <p className="text-xl">
+              The ERM policy <MathJax inline>{"\\(\\hat\\pi \\in \\arg\\min_{\\pi \\in \\Pi} L_{\\mathcal M}(\\pi)\\)"}</MathJax> is the one that minimizes the empirical risk.
+            </p>
+          </div> */}
+
+          <div className="mt-8 bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30">
+            <div className="flex items-center mb-6">
+              {/* <CheckCircle className="w-8 h-8 text-green-600 mr-3" /> */}
+              <h2 className="text-2xl font-bold text-gray-800">🎯 Performance Guarantee</h2>
+            </div>
+            <p className="text-lg text-gray-700 mb-4">
+              A policy <MathJax inline>{"\\(\\hat\\pi_{\\mathcal M}\\)"}</MathJax> is <strong>ε-suboptimal with confidence <MathJax inline>{"\\(1-\\delta\\)"}</MathJax></strong> if:
+            </p>
+            <div className="bg-gray-50 p-4 rounded-lg text-center border border-gray-200 mb-6">
+              <MathJax>
+                {"\\[ \\mathbb{P}\\left[ L_{\\mathcal D}(\\hat\\pi_{\\mathcal M}) - \\min_{\\pi \\in \\Pi} L_{\\mathcal D}(\\pi) \\le \\epsilon \\right] \\ge 1 - \\delta \\]"}
+              </MathJax>
+            </div>
+            <div className="bg-yellow-50 p-6 rounded-lg border-l-4 border-yellow-400">
+              <div className="flex items-center">
+                  <Lightbulb className="w-8 h-8 text-yellow-600 mr-4 flex-shrink-0" />
+                  <div>
+                      <h3 className="text-xl font-bold text-yellow-800 mb-1">Key Question</h3>
+                      <p className="text-lg text-gray-700">
+                          How large must <MathJax inline>{"\\(m\\)"}</MathJax> be to guarantee this inequality?
+                      </p>
+                  </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    )
+  },
+  {
     id: 'hardness',
     title: 'Generalization Is Intractable Without Structure',
     content: (
