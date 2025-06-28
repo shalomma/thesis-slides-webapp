@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import { ChevronLeft, ChevronRight, Menu, X, Brain, TrendingUp, Cog, Car, Home, AlertTriangle, Eye, Search, Lightbulb, Target, ArrowRight, CheckCircle, Users, MessageCircle, Layers, BarChart3, Zap, BookOpen, Globe, Activity } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Menu, X, Brain, TrendingUp, Cog, AlertTriangle, Eye, Search, Lightbulb, Target, ArrowRight, ArrowLeft, CheckCircle, Users, MessageCircle, Layers, BarChart3, Zap, BookOpen, Globe, Activity } from 'lucide-react';
 import { MathJaxContext, MathJax } from 'better-react-mathjax';
 
 // Component for mathematical expressions
@@ -178,38 +178,50 @@ const slides = [
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30">
-              <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">🔄 RL Loop: Agent ↔ Environment</h2>
+              <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">🔄 The Learning Loop</h2>
               
-              <div className="space-y-6">
-                <div className="flex items-center justify-between">
-                  <div className="bg-teal-100 p-4 rounded-lg flex-1 text-center">
-                    <Brain className="w-8 h-8 mx-auto mb-2 text-teal-600" />
-                    <p className="font-semibold">Agent</p>
-                    <p className="text-sm text-gray-600">Makes decisions</p>
+              <div className="flex flex-col items-center justify-center space-y-2">
+                {/* Agent */}
+                <div className="bg-teal-100 p-4 rounded-lg text-center w-64">
+                  <Brain className="w-8 h-8 mx-auto mb-2 text-teal-600" />
+                  <p className="font-semibold">Agent</p>
+                  <p className="text-sm text-gray-600">Makes decisions</p>
+                </div>
+
+                {/* Arrows */}
+                <div className="flex w-64 justify-between items-center px-4">
+                  <div className="flex flex-col items-center">
+                    <p className="text-sm font-semibold text-gray-700 -mb-1">Action</p>
+                    <ArrowRight className="w-8 h-8 text-gray-500 transform rotate-90" />
                   </div>
-                  <ArrowRight className="w-6 h-6 text-gray-400 mx-4" />
-                  <div className="bg-green-100 p-4 rounded-lg flex-1 text-center">
-                    <Cog className="w-8 h-8 mx-auto mb-2 text-green-600" />
-                    <p className="font-semibold">Environment</p>
-                    <p className="text-sm text-gray-600">Responds with state & reward</p>
+                  <div className="flex flex-col items-center">
+                     <ArrowLeft className="w-8 h-8 text-gray-500 transform rotate-90" />
+                     <p className="text-sm font-semibold text-gray-700 -mt-1">State & Reward</p>
                   </div>
                 </div>
-                
-                <div className="bg-teal-50 p-6 rounded-lg border border-teal-200">
-                  <h3 className="font-bold mb-3 text-teal-800">📚 Key Terms:</h3>
-                  <ul className="space-y-2">
-                    <li><strong>Policy π:</strong> Agent's decision strategy</li>
-                    <li><strong>Reward/Cost:</strong> Feedback signal</li>
-                    <li><strong>Return:</strong> Total accumulated reward</li>
-                  </ul>
+
+                {/* Environment */}
+                <div className="bg-green-100 p-4 rounded-lg text-center w-64">
+                  <Cog className="w-8 h-8 mx-auto mb-2 text-green-600" />
+                  <p className="font-semibold">Environment</p>
+                  <p className="text-sm text-gray-600">Responds</p>
                 </div>
+              </div>
+
+              <div className="bg-teal-50 p-6 rounded-lg border border-teal-200 mt-6">
+                <h3 className="font-bold mb-3 text-teal-800">📚 Key Terms:</h3>
+                <ul className="space-y-2">
+                  <li><strong>Policy π:</strong> Agent's decision strategy</li>
+                  <li><strong>Reward/Cost:</strong> Feedback signal</li>
+                  <li><strong>Return:</strong> Total accumulated reward</li>
+                </ul>
               </div>
             </div>
             
             <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30">
               <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">🎯 Single MDP Assumption</h2>
               
-              <div className="space-y-6">
+              <div className="space-y-10 p-8">
                 <div className="bg-blue-50 border-2 border-blue-200 p-6 rounded-lg text-center">
                   <div className="text-4xl mb-4">🎯</div>
                   <h3 className="text-xl font-bold text-blue-800 mb-2">Classical RL</h3>
@@ -222,6 +234,7 @@ const slides = [
                   <p className="text-gray-700">Environments change, we need adaptive agents</p>
                 </div>
               </div>
+
             </div>
           </div>
         </div>
