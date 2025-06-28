@@ -406,6 +406,126 @@ const slides = [
     )
   },
   {
+    id: 'env_family',
+    title: 'Environment Family Construction',
+    content: (
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-16">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl font-bold text-blue-800 mb-4">Environment Family Construction</h1>
+            <p className="text-xl text-blue-600">Same dynamics, exponentially many hidden cost masks</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30 space-y-6">
+              <div>
+                <h3 className="font-semibold text-lg mb-2 text-blue-700">State Space (Layered, Deterministic)</h3>
+                <div className="flex items-center justify-center bg-blue-50 p-4 rounded-lg">
+                  <p className="font-mono text-lg">s₁ → s₂ → … → sₕ</p>
+                </div>
+              </div>
+              <div>
+                <h3 className="font-semibold text-lg mb-2 text-blue-700">Action Space</h3>
+                <div className="bg-blue-50 p-4 rounded-lg">
+                  <p className="font-mono text-lg text-center"><MathJax inline>{"\\(\\mathcal{A} = \\{0,1\\}\\)"}</MathJax></p>
+                </div>
+              </div>
+              <div>
+                <h3 className="font-semibold text-lg mb-2 text-indigo-700">Transition Dynamics</h3>
+                <div className="bg-indigo-50 p-4 rounded-lg">
+                  <MathJax>{"\\[ T(s_{h+1} | s_h, a) = 1 \\]"}</MathJax>
+                  <p className="text-sm text-center text-gray-600">(for all a and h=1,...,H-1)</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30 space-y-6">
+              <div>
+                <h3 className="font-semibold text-lg mb-2 text-indigo-700">Cost Structure (Varies per environment)</h3>
+                 <div className="bg-indigo-50 p-4 rounded-lg space-y-4">
+                   <p>For each MDP, define binary mask <MathJax inline>{"\\(\\alpha \\in \\{0,1\\}^{H-1}\\)"}</MathJax></p>
+                   <div>
+                    <p>For steps <MathJax inline>{"\\(h < H\\)"}</MathJax>:</p>
+                    <div className="text-center"><MathJax inline>{"\\(c(s_h, a) = \\alpha_h\\)"}</MathJax></div>
+                   </div>
+                   <div>
+                    <p>At step <MathJax inline>{"\\(H\\)"}</MathJax>:</p>
+                    <div className="text-center"><MathJax inline>{"\\(c(s_H, a) = \\mathbf{1}[a \\ne f(\\alpha)]\\)"}</MathJax></div>
+                    <p className="text-xs text-center text-gray-600 mt-1">for some unknown function <MathJax inline>{"\\(f: \\{0,1\\}^{H-1} \\to \\{0,1\\}\\)"}</MathJax></p>
+                   </div>
+                </div>
+              </div>
+               <div className="text-center bg-gray-100 p-4 rounded-2xl border">
+                  <h3 className="text-xl font-bold text-gray-800">Shared Across All Environments</h3>
+                  <p className="text-lg mt-2 text-gray-600">Transitions, actions, initial state</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="mt-8 bg-gradient-to-r from-blue-500 to-indigo-500 text-white p-6 rounded-2xl text-center shadow-lg">
+              <h3 className="text-2xl font-bold">Number of Environments</h3>
+              <p className="text-4xl font-mono mt-2"><MathJax>{"\\(2^{H-1}\\)"}</MathJax></p>
+          </div>
+        </div>
+      </div>
+    )
+  },
+  {
+    id: 'proof_outline',
+    title: 'Proof Outline: Why Generalization Fails',
+    content: (
+      <div className="min-h-screen bg-gradient-to-br from-purple-50 to-violet-100 p-16">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl font-bold text-purple-800 mb-4">Proof Outline: Why Generalization Fails</h1>
+            <p className="text-xl text-purple-600">Even with shared dynamics, cost uncertainty breaks ERM</p>
+          </div>
+          
+          <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30">
+            <table className="w-full border-collapse">
+              <thead>
+                <tr className="border-b-2 border-purple-200">
+                  <th className="p-4 text-left text-lg font-semibold text-purple-800 w-1/4">Step</th>
+                  <th className="p-4 text-left text-lg font-semibold text-purple-800 w-1/2">Argument</th>
+                  <th className="p-4 text-left text-lg font-semibold text-purple-800 w-1/4">Insight</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-b border-purple-100">
+                  <td className="p-4 align-top font-bold text-gray-700">(1) Unseen masks</td>
+                  <td className="p-4 align-top text-gray-700">If <MathJax inline>{"\\(m < 2^{H-2}\\)"}</MathJax>, at least half of <MathJax inline>{"\\(\\alpha \\in \\{0,1\\}^{H-1}\\)"}</MathJax> remain unseen.</td>
+                  <td className="p-4 align-top text-gray-600">High epistemic uncertainty</td>
+                </tr>
+                <tr className="border-b border-purple-100">
+                  <td className="p-4 align-top font-bold text-gray-700">(2) Learner's guess</td>
+                  <td className="p-4 align-top text-gray-700">For unseen <MathJax inline>{"\\(\\alpha\\)"}</MathJax>, learner cannot infer <MathJax inline>{"\\(f(\\alpha)\\)"}</MathJax> ⇒ guesses wrong at step <MathJax inline>{"\\(H\\)"}</MathJax> with prob. 1/2.</td>
+                  <td className="p-4 align-top text-gray-600">Expected cost ≥ 0.5</td>
+                </tr>
+                <tr className="border-b border-purple-100">
+                  <td className="p-4 align-top font-bold text-gray-700">(3) Gap in risk</td>
+                  <td className="p-4 align-top text-gray-700">Optimal policy (knows <MathJax inline>{"\\(f\\)"}</MathJax>) gets 0 cost; learner gets ≥ 0.5 ⇒ expected generalization gap ≥ 0.25.</td>
+                  <td className="p-4 align-top text-gray-600"></td>
+                </tr>
+                <tr>
+                  <td className="p-4 align-top font-bold text-gray-700">(4) From expectation to probability</td>
+                  <td className="p-4 align-top text-gray-700">Total cost ≤ <MathJax inline>{"\\(H\\)"}</MathJax> ⇒ Markov's inequality yields <MathJax inline>{"\\(\\mathbb{P}[\\text{gap} \\ge 1/(4H)] \\ge 1/(4H)\\)"}</MathJax>.</td>
+                  <td className="p-4 align-top text-gray-600">Weak bound still shows exponential hardness</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <div className="mt-12 bg-gradient-to-r from-purple-600 to-violet-600 text-white p-8 rounded-2xl text-center shadow-xl">
+            <h3 className="text-3xl font-bold mb-4">Key Takeaway</h3>
+            <p className="text-xl">
+              Shared transitions do not ensure generalization—<strong>cost structure matters deeply</strong>.
+            </p>
+          </div>
+        </div>
+      </div>
+    )
+  },
+  {
     id: 'roadmap',
     title: 'Two Structural Lenses for Tractability',
     content: (
