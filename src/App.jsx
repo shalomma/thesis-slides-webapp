@@ -870,6 +870,104 @@ const slides = [
     )
   },
   {
+    id: 'proof_similarity',
+    title: 'Why ERM Works under Similarity',
+    content: (
+      <div className="min-h-screen bg-gradient-to-br from-sky-50 to-blue-100 p-16">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl font-bold text-sky-800 mb-4">Why ERM Works under Similarity</h1>
+            <p className="text-xl text-sky-600">Proof Sketch – Uniform Similarity</p>
+          </div>
+          
+          <div className="bg-white/80 backdrop-blur-sm p-10 rounded-2xl shadow-xl border border-white/30 mb-8">
+            <h2 className="text-2xl font-bold text-gray-800 mb-8 text-center">🧮 Proof Strategy</h2>
+            
+            <div className="space-y-6">
+              <div className="bg-sky-50 p-6 rounded-lg border border-sky-200">
+                <div className="flex items-center mb-4">
+                  <span className="text-2xl mr-3">1️⃣</span>
+                  <h3 className="text-xl font-bold text-sky-800">Shared Costs from Similar Trajectories</h3>
+                </div>
+                <div className="ml-8 space-y-4 text-gray-700">
+                  <p>
+                    If two MDPs are <strong>uniformly similar</strong> (bounded likelihood ratio), then they <strong>must</strong> have the <strong>same cost function</strong>.
+                  </p>
+                  
+                  <div className="bg-white p-3 rounded-lg border border-sky-200">
+                    <p className="font-bold text-sky-900 mb-1">Key Claim:</p>
+                    <div className="text-center">
+                      <MathJax>
+                        {"\\[ c_M(s, a) = c_{M'}(s, a) \\quad \\forall (s, a, h) \\]"}
+                      </MathJax>
+                    </div>
+                  </div>
+
+                  <div className="bg-sky-100 border-l-4 border-sky-500 p-3 rounded-r-lg mt-3">
+                    <p className="mt-1">Similar trajectory distributions ⇒ indistinguishable costs ⇒ <strong>shared cost function</strong>.</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="bg-blue-50 p-6 rounded-lg border border-blue-200">
+                <div className="flex items-center mb-4">
+                  <span className="text-2xl mr-3">2️⃣</span>
+                  <h3 className="text-xl font-bold text-blue-800">Bounding Complexity ⇒ Generalization</h3>
+                </div>
+                <div className="ml-8 space-y-4 text-gray-700">
+                  <p>ERM generalizes because cost-invariant policies are simple.</p>
+                  
+                  <div>
+                    <p className="font-bold text-blue-900 mb-1">Goal: Bound Rademacher Complexity</p>
+                    <div className="bg-white p-2 rounded-lg border border-blue-200 text-center">
+                      <MathJax>
+                        {"\\[ R_m(\\mathcal{F}) = \\mathbb{E}\\left[ \\sup_{\\pi \\in \\Pi^{\\text{inv}}} \\frac{1}{m} \\sum_{i=1}^m \\sigma_i V_{\\pi; M_i} \\right] \\]"}
+                      </MathJax>
+                    </div>
+                  </div>
+
+                  <div>
+                      <p className="font-bold text-blue-900 mb-2 mt-2">Key Ideas:</p>
+                      <ul className="space-y-1 list-disc list-inside">
+                          <li>Use cost-invariance + shared costs</li>
+                          <li>Apply variance bounds from likelihood ratio κ</li>
+                          <li>Apply sub-Gaussian + maximal inequality over trajectory class</li>
+                      </ul>
+                  </div>
+                  
+                  <div>
+                      <p className="font-bold text-blue-900 mb-1 mt-2">Result:</p>
+                      <div className="bg-white p-2 rounded-lg border border-blue-200 text-center">
+                          <MathJax>
+                              {"\\[ R_m(\\mathcal{F}) \\le H^{3/2} \\sqrt{ \\frac{ \\kappa^2 \\log(|S||A|) }{m} } \\]"}
+                          </MathJax>
+                      </div>
+                  </div>
+
+                  <div className="bg-blue-100 border-l-4 border-blue-500 p-3 rounded-r-lg mt-4">
+                      <p className="font-bold text-blue-900">Generalization Theorem:</p>
+                      <div className="text-center text-sm">
+                          <MathJax>
+                              {"\\[ L_{\\mathcal D}(\\hat\\pi) - \\min_{\\pi \\in \\Pi^{\\mathrm{inv}}} L_{\\mathcal D}(\\pi) \\;\\le\\; \\widetilde{\\mathcal{O}}\\left( \\frac{\\kappa H^{3/2}}{\\sqrt{m}} \\right) \\]"}
+                          </MathJax>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-gradient-to-r from-sky-600 to-blue-600 text-white p-8 rounded-2xl text-center shadow-xl">
+            <h3 className="text-2xl font-bold mb-4">🔑 Key Insight</h3>
+            <p className="text-xl">
+              Bounded variance ⇒ Small Rademacher complexity ⇒ Fast convergence
+            </p>
+          </div>
+        </div>
+      </div>
+    )
+  },
+  {
     id: 'decodability',
     title: 'Decodability Assumption',
     content: (
@@ -1019,57 +1117,6 @@ const slides = [
             <h3 className="text-2xl font-bold mb-4">🔑 Main Insight</h3>
             <p className="text-xl">
               Truncated policies ⇒ smaller hypothesis class ⇒ better covering number
-            </p>
-          </div>
-        </div>
-      </div>
-    )
-  },
-  {
-    id: 'proof_similarity',
-    title: 'Why ERM Works under Similarity',
-    content: (
-      <div className="min-h-screen bg-gradient-to-br from-sky-50 to-blue-100 p-16">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-sky-800 mb-4">Why ERM Works under Similarity</h1>
-            <p className="text-xl text-sky-600">Proof Sketch – Uniform Similarity</p>
-          </div>
-          
-          <div className="bg-white/80 backdrop-blur-sm p-10 rounded-2xl shadow-xl border border-white/30 mb-8">
-            <h2 className="text-2xl font-bold text-gray-800 mb-8 text-center">🧮 Proof Strategy</h2>
-            
-            <div className="space-y-6">
-              <div className="bg-sky-50 p-6 rounded-lg border border-sky-200">
-                <div className="flex items-center mb-3">
-                  <span className="text-2xl mr-3">1️⃣</span>
-                  <h3 className="text-xl font-bold text-sky-800">Rewrite Excess Risk</h3>
-                </div>
-                <p className="text-gray-700 ml-8">Express generalization error as weighted sum over training MDPs</p>
-              </div>
-              
-              <div className="bg-blue-50 p-6 rounded-lg border border-blue-200">
-                <div className="flex items-center mb-3">
-                  <span className="text-2xl mr-3">2️⃣</span>
-                  <h3 className="text-xl font-bold text-blue-800">Bounded Likelihood Ratio</h3>
-                </div>
-                <p className="text-gray-700 ml-8">Use uniform similarity to control trajectory distribution differences</p>
-              </div>
-              
-              <div className="bg-indigo-50 p-6 rounded-lg border border-indigo-200">
-                <div className="flex items-center mb-3">
-                  <span className="text-2xl mr-3">3️⃣</span>
-                  <h3 className="text-xl font-bold text-indigo-800">Uniform Convergence</h3>
-                </div>
-                <p className="text-gray-700 ml-8">Apply Rademacher complexity analysis to show fast convergence</p>
-              </div>
-            </div>
-          </div>
-          
-          <div className="bg-gradient-to-r from-sky-600 to-blue-600 text-white p-8 rounded-2xl text-center shadow-xl">
-            <h3 className="text-2xl font-bold mb-4">🔑 Key Insight</h3>
-            <p className="text-xl">
-              Bounded variance ⇒ Small Rademacher complexity ⇒ Fast convergence
             </p>
           </div>
         </div>
