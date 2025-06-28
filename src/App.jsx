@@ -54,6 +54,67 @@ const slides = [
     )
   },
   {
+    id: 'agenda',
+    title: 'Agenda',
+    content: (
+      <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 p-16">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <h1 className="text-5xl font-bold text-gray-800 mb-4">Agenda</h1>
+            <p className="text-xl text-gray-600">Our journey through RL generalization</p>
+          </div>
+          
+          <div className="bg-white/80 backdrop-blur-sm p-12 rounded-2xl shadow-xl border border-white/30">
+            <ul className="space-y-6">
+              <li className="flex items-start">
+                <CheckCircle className="w-8 h-8 text-green-500 mr-4 mt-1 flex-shrink-0" />
+                <div>
+                  <h3 className="text-2xl font-semibold text-gray-800">Introduction & Motivation</h3>
+                  <p className="text-gray-600">Why is generalization in RL a critical problem?</p>
+                </div>
+              </li>
+              <li className="flex items-start">
+                <CheckCircle className="w-8 h-8 text-green-500 mr-4 mt-1 flex-shrink-0" />
+                <div>
+                  <h3 className="text-2xl font-semibold text-gray-800">The Generalization Problem</h3>
+                  <p className="text-gray-600">Formalizing the challenge: A distribution over MDPs.</p>
+                </div>
+              </li>
+              <li className="flex items-start">
+                <CheckCircle className="w-8 h-8 text-green-500 mr-4 mt-1 flex-shrink-0" />
+                <div>
+                  <h3 className="text-2xl font-semibold text-gray-800">Intractability Without Structure</h3>
+                  <p className="text-gray-600">Why the general problem is exponentially hard.</p>
+                </div>
+              </li>
+              <li className="flex items-start">
+                <CheckCircle className="w-8 h-8 text-green-500 mr-4 mt-1 flex-shrink-0" />
+                <div>
+                  <h3 className="text-2xl font-semibold text-gray-800">Two Roads to Tractability</h3>
+                  <p className="text-gray-600">Uniform Similarity vs. Decodability.</p>
+                </div>
+              </li>
+              <li className="flex items-start">
+                <CheckCircle className="w-8 h-8 text-green-500 mr-4 mt-1 flex-shrink-0" />
+                <div>
+                  <h3 className="text-2xl font-semibold text-gray-800">Main Results & Key Insights</h3>
+                  <p className="text-gray-600">Formal guarantees and proof sketches.</p>
+                </div>
+              </li>
+              <li className="flex items-start">
+                <CheckCircle className="w-8 h-8 text-green-500 mr-4 mt-1 flex-shrink-0" />
+                <div>
+                  <h3 className="text-2xl font-semibold text-gray-800">Conclusion & Future Work</h3>
+                  <p className="text-gray-600">Summary, limitations, and what's next.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    )
+  },
+  {
     id: 'motivation',
     title: 'Real-World Motivation',
     content: (
