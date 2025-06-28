@@ -978,6 +978,19 @@ const slides = [
             <p className="text-xl text-amber-600">Identify the environment early</p>
           </div>
           
+          <div className="bg-white/80 backdrop-blur-sm p-6 rounded-lg border border-amber-200 mb-8">
+            <h3 className="font-semibold text-lg mb-3 text-amber-800">Formal Definition: Decodability</h3>
+            <p className="text-gray-700 text-lg leading-relaxed">
+              An instance space <MathJax inline>{"\\(\\mathcal{Z}\\)"}</MathJax> is <em><MathJax inline>{"\\(\\bar h\\)"}</MathJax>-decodable</em> if there exists <MathJax inline>{"\\(\\bar h \\le H\\)"}</MathJax> such that for every trajectory prefix <MathJax inline>{"\\(\\tau=(s_1,a_1,c_1,\\dots,s_{\\bar h})\\)"}</MathJax> that is feasible in at least one <MathJax inline>{"\\(M \\in \\mathcal Z\\)"}</MathJax> there is a decoding map <MathJax inline>{"\\(\\phi(\\tau) \\in \\mathcal Z\\)"}</MathJax> satisfying:
+            </p>
+            <div className="text-center text-2xl mt-4">
+              <MathJax>
+                {"\\[ P^{\\pi}_{\phi(\\tau)}(\\tau)=1 \\quad\\text{and}\\quad \\forall M \\neq \\phi(\\tau):\\; P^{\\pi}_{M}(\\tau)=0, \\]"}
+              </MathJax>
+            </div>
+
+          </div>
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-8">
             <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30">
               <h2 className="text-2xl font-bold text-gray-800 mb-6">🎵 Musical Analogy</h2>
