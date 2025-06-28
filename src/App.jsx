@@ -212,8 +212,20 @@ const slides = [
                 <h3 className="font-bold mb-3 text-teal-800">📚 Key Terms:</h3>
                 <ul className="space-y-2">
                   <li><strong>Policy π:</strong> Agent's decision strategy</li>
-                  <li><strong>Reward/Cost:</strong> Feedback signal</li>
-                  <li><strong>Return:</strong> Total accumulated reward</li>
+                  <li><strong>Cost:</strong> Feedback signal</li>
+                  <li><strong>Return:</strong> Total accumulated cost</li>
+                  <li>
+                    <strong>Value Function:</strong>
+                    <div className="text-center">
+                      <MathJax>
+                        {`\\(
+                        V_{\\pi;M}
+                        \\;=\\;
+                        \\mathbb E_{\\pi;M}\\!\\Bigl[\\sum_{h=1}^{H}c_{h}(s_{h},a_{h})\\Bigr]
+                        \\)`}
+                      </MathJax>
+                    </div>
+                  </li>
                 </ul>
               </div>
             </div>
