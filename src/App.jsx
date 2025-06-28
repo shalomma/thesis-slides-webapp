@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import { ChevronLeft, ChevronRight, Menu, X, Brain, TrendingUp, Cog, Car, Home, AlertTriangle, Eye, Search, Lightbulb, Target, ArrowRight, CheckCircle, Users, MessageCircle, Layers, BarChart3, Zap, BookOpen, Globe, Activity } from 'lucide-react';
+import { MathJaxContext, MathJax } from 'better-react-mathjax';
 
 // Component for mathematical expressions
-const MathExpr = ({ children, className = "" }) => (
-  <span className={`font-mono text-lg ${className}`} style={{ fontFamily: 'KaTeX_Math, serif' }}>
-    {children}
-  </span>
-);
+// const MathExpr = ({ children, className = "" }) => (
+//   <span className={`font-mono text-lg ${className}`} style={{ fontFamily: 'KaTeX_Math, serif' }}>
+//     {children}
+//   </span>
+// );
 
 const slides = [
   {
@@ -181,19 +182,19 @@ const slides = [
             <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-white/30 text-center">
               <div className="text-4xl mb-4">🎲</div>
               <h3 className="text-lg font-bold text-gray-800 mb-2">Step 1: Nature Draws</h3>
-              <p className="text-gray-600">Hidden MDP from unknown distribution <MathExpr>𝒟</MathExpr></p>
+              <p className="text-gray-600">Hidden MDP from unknown distribution <MathJax inline>{"\\(D\\)"}</MathJax></p>
             </div>
             
             <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-white/30 text-center">
               <div className="text-4xl mb-4">📚</div>
               <h3 className="text-lg font-bold text-gray-800 mb-2">Step 2: Training</h3>
-              <p className="text-gray-600">Learner observes sample of <MathExpr>m</MathExpr> MDPs</p>
+              <p className="text-gray-600">Learner observes sample of <MathJax inline>{"\\(m\\)"}</MathJax> MDPs</p>
             </div>
             
             <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-white/30 text-center">
               <div className="text-4xl mb-4">🧪</div>
               <h3 className="text-lg font-bold text-gray-800 mb-2">Step 3: Testing</h3>
-              <p className="text-gray-600">Learns policy to minimize expected cost over <MathExpr>𝒟</MathExpr></p>
+              <p className="text-gray-600">Learns policy to minimize expected cost over <MathJax inline>{"\\(D\\)"}</MathJax></p>
             </div>
           </div>
           
@@ -289,16 +290,16 @@ const slides = [
                   <p className="font-semibold text-orange-800 mb-2">📈 Sample Complexity:</p>
                   <div className="text-center">
                     <p className="text-3xl font-bold text-orange-800 mb-2">
-                      Exponential in <MathExpr>H</MathExpr>
+                      Exponential in <MathJax inline>{"\\(H\\)"}</MathJax>
                     </p>
-                    <p className="text-sm text-gray-600"><MathExpr>H</MathExpr> = planning horizon</p>
+                    <p className="text-sm text-gray-600"><MathJax inline>{"\\(H\\)"}</MathJax> = planning horizon</p>
                   </div>
                 </div>
                 
                 <div className="bg-orange-100 p-4 rounded-lg border border-orange-300">
                   <p className="text-sm">
                     <strong>💡 Intuition:</strong> Planning becomes POMDP-solving. 
-                    Sample complexity may grow exponentially in horizon <MathExpr>H</MathExpr>.
+                    Sample complexity may grow exponentially in horizon <MathJax inline>{"\\(H\\)"}</MathJax>.
                   </p>
                 </div>
               </div>
@@ -348,7 +349,7 @@ const slides = [
                 <div className="bg-blue-100 p-4 rounded-lg border border-blue-300 text-center">
                   <p className="font-semibold text-blue-800">Sample Complexity:</p>
                   <p className="text-2xl font-bold text-blue-600">
-                    <MathExpr>Õ(1/√m)</MathExpr>
+                    <MathJax inline>{"\\(\\tilde{O}(1/\\sqrt{m})\\)"}</MathJax>
                   </p>
                 </div>
               </div>
@@ -372,7 +373,7 @@ const slides = [
                 <div className="bg-orange-100 p-4 rounded-lg border border-orange-300 text-center">
                   <p className="font-semibold text-orange-800">Sample Complexity:</p>
                   <p className="text-2xl font-bold text-orange-600">
-                    <MathExpr>Õ(1/√m)</MathExpr>
+                    <MathJax inline>{"\\(\\tilde{O}(1/\\sqrt{m})\\)"}</MathJax>
                   </p>
                 </div>
               </div>
@@ -394,16 +395,16 @@ const slides = [
                       <th className="text-left py-3 px-4 font-semibold">Sample Complexity</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr className="border-b border-gray-100">
-                      <td className="py-3 px-4 font-medium text-blue-600">Uniform Similarity</td>
-                      <td className="py-3 px-4">All environments look similar</td>
-                      <td className="py-3 px-4 text-blue-600 font-bold"><MathExpr>Õ(1/√m)</MathExpr></td>
+                  <tbody className="divide-y divide-gray-200">
+                    <tr>
+                      <td className="py-4 px-6 text-sm font-medium text-gray-900">Uniform Similarity</td>
+                      <td className="py-4 px-6 text-sm text-gray-500">All environments look similar</td>
+                      <td className="py-4 px-6 text-sm text-gray-500"><MathJax inline>{"\\(\\tilde{O}(1/\\sqrt{m})\\)"}</MathJax></td>
                     </tr>
                     <tr>
-                      <td className="py-3 px-4 font-medium text-orange-600">Decodability</td>
-                      <td className="py-3 px-4">Short trajectory reveals environment</td>
-                      <td className="py-3 px-4 text-orange-600 font-bold"><MathExpr>Õ(1/√m)</MathExpr></td>
+                      <td className="py-4 px-6 text-sm font-medium text-gray-900">Decodability</td>
+                      <td className="py-4 px-6 text-sm text-gray-500">Short trajectory reveals environment</td>
+                      <td className="py-4 px-6 text-sm text-gray-500"><MathJax inline>{"\\(\\tilde{O}(1/\\sqrt{m})\\)"}</MathJax></td>
                     </tr>
                   </tbody>
                 </table>
@@ -464,7 +465,7 @@ const slides = [
                 <div className="bg-green-50 border-2 border-green-200 p-6 rounded-lg text-center">
                   <p className="text-lg font-semibold text-green-800 mb-2">ERM achieves:</p>
                   <p className="text-4xl font-bold text-green-600 mb-2">
-                    <MathExpr>Õ(1/√m)</MathExpr>
+                    <MathJax inline>{"\\(\\tilde{O}(1/\\sqrt{m})\\)"}</MathJax>
                   </p>
                   <p className="text-gray-600">generalization error</p>
                 </div>
@@ -534,7 +535,7 @@ const slides = [
                 <p className="text-2xl font-bold text-violet-800 mb-4">Sample Complexity:</p>
                 <div className="bg-white/80 backdrop-blur-sm p-6 rounded-lg border border-violet-200">
                   <p className="text-3xl font-mono text-violet-600">
-                    <MathExpr>m = O(H³κ² log(|S||A|)/ε²)</MathExpr>
+                    <MathJax inline>{"\\(m = O(H^3\\kappa^2 \\log(|S||A|)/\\epsilon^2)\\)"}</MathJax>
                   </p>
                 </div>
               </div>
@@ -556,7 +557,7 @@ const slides = [
               <div className="bg-indigo-50 p-6 rounded-lg border border-indigo-200 text-center">
                 <div className="text-3xl mb-3">⚡</div>
                 <h3 className="font-bold text-indigo-800 mb-2">Fast Convergence</h3>
-                <p className="text-gray-700 text-sm">Optimal <MathExpr>O(1/√m)</MathExpr> rate achieved</p>
+                <p className="text-gray-700 text-sm">Optimal <MathJax inline>{"\\(O(1/\\sqrt{m})\\)"}</MathJax> rate achieved</p>
               </div>
             </div>
           </div>
@@ -632,7 +633,7 @@ const slides = [
                 <div className="bg-green-50 border-2 border-green-200 p-6 rounded-lg text-center">
                   <p className="text-lg font-semibold text-green-800 mb-2">Result: ERM achieves</p>
                   <p className="text-4xl font-bold text-green-600 mb-2">
-                    <MathExpr>Õ(1/√m)</MathExpr>
+                    <MathJax inline>{"\\(\\tilde{O}(1/\\sqrt{m})\\)"}</MathJax>
                   </p>
                   <p className="text-gray-600">same optimal rate!</p>
                 </div>
@@ -696,7 +697,7 @@ const slides = [
                 <p className="text-2xl font-bold text-rose-800 mb-4">Sample Complexity:</p>
                 <div className="bg-white/80 backdrop-blur-sm p-6 rounded-lg border border-rose-200">
                   <p className="text-2xl font-mono text-rose-600">
-                    <MathExpr>m = O(H²(|S||A||C|)^(2h̄) log|A|/ε²)</MathExpr>
+                    <MathJax inline>{"\\(m = O(H^2(|S||A||C|)^{2\\bar{h}} \\log|A|/\\epsilon^2)\\)"}</MathJax>
                   </p>
                 </div>
               </div>
@@ -706,7 +707,7 @@ const slides = [
               <div className="bg-rose-50 p-6 rounded-lg border border-rose-200 text-center">
                 <div className="text-3xl mb-3">📏</div>
                 <h3 className="font-bold text-rose-800 mb-2">Prefix Length</h3>
-                <p className="text-gray-700 text-sm">Complexity grows with prefix length <MathExpr>h̄</MathExpr></p>
+                <p className="text-gray-700 text-sm">Complexity grows with prefix length <MathJax inline>{"\\(\\bar{h}\\)"}</MathJax></p>
               </div>
               
               <div className="bg-pink-50 p-6 rounded-lg border border-pink-200 text-center">
@@ -718,7 +719,7 @@ const slides = [
               <div className="bg-purple-50 p-6 rounded-lg border border-purple-200 text-center">
                 <div className="text-3xl mb-3">⚡</div>
                 <h3 className="font-bold text-purple-800 mb-2">Fast Convergence</h3>
-                <p className="text-gray-700 text-sm">Still achieves <MathExpr>O(1/√m)</MathExpr> rate</p>
+                <p className="text-gray-700 text-sm">Still achieves <MathJax inline>{"\\(O(1/\\sqrt{m})\\)"}</MathJax> rate</p>
               </div>
             </div>
           </div>
@@ -780,7 +781,7 @@ const slides = [
                   <p className="font-semibold text-orange-800 mb-3">Sample Complexity:</p>
                   <div className="text-center">
                     <p className="text-3xl font-bold text-orange-800 mb-2">
-                      Still Exponential in <MathExpr>H</MathExpr>
+                      Still Exponential in <MathJax inline>{"\\(H\\)"}</MathJax>
                     </p>
                     <p className="text-sm text-gray-600">No improvement without structure</p>
                   </div>
@@ -877,7 +878,7 @@ const slides = [
                   <span className="text-2xl mr-3">1️⃣</span>
                   <h3 className="text-xl font-bold text-teal-800">Truncate Policies</h3>
                 </div>
-                <p className="text-gray-700 ml-8">Restrict to policies that identify MDP after <MathExpr>h̄</MathExpr> steps</p>
+                <p className="text-gray-700 ml-8">Restrict to policies that identify MDP after <MathJax inline>{"\\(\\bar{h}\\)"}</MathJax> steps</p>
               </div>
               
               <div className="bg-cyan-50 p-6 rounded-lg border border-cyan-200">
@@ -1177,7 +1178,7 @@ const slides = [
                   <span className="text-2xl font-bold">1</span>
                 </div>
                 <h3 className="text-lg font-bold mb-2">Structure Turns Intractability</h3>
-                <p className="text-sm opacity-90">Into <MathExpr className="text-yellow-300">Õ(1/√m)</MathExpr> learnability</p>
+                <p className="text-sm opacity-90">Into <MathJax inline className="text-yellow-300">{"\\(\\tilde{O}(1/\\sqrt{m})\\)"}</MathJax> learnability</p>
               </div>
               
               <div className="text-center">
@@ -1268,70 +1269,76 @@ function App() {
     };
   }, [nextSlide, prevSlide]);
 
+  const config = {
+    loader: { load: ["input/tex", "output/chtml"] },
+  };
+
   return (
-    <div className="relative">
-      {/* Navigation */}
-      <div className="fixed top-4 left-4 z-50">
-        <button
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="bg-white bg-opacity-90 backdrop-blur-sm p-3 rounded-full shadow-lg hover:bg-opacity-100 transition-all"
-        >
-          {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
-        
-        {isMenuOpen && (
-          <div className="absolute top-16 left-0 bg-white rounded-lg shadow-xl p-4 w-80 max-h-96 overflow-y-auto">
-            <h3 className="font-bold text-lg mb-3">Presentation Outline</h3>
-            {slides.map((slide, index) => (
-              <button
-                key={slide.id}
-                onClick={() => goToSlide(index)}
-                className={`w-full text-left p-3 rounded-lg mb-2 transition-all ${
-                  currentSlide === index
-                    ? 'bg-blue-100 text-blue-800 font-semibold'
-                    : 'hover:bg-gray-100'
-                }`}
-              >
-                <span className="text-sm text-gray-500 block">Slide {index + 1}</span>
-                {slide.title}
-              </button>
-            ))}
+    <MathJaxContext config={config}>
+      <div className="relative">
+        {/* Navigation */}
+        <div className="fixed top-4 left-4 z-50">
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="bg-white bg-opacity-90 backdrop-blur-sm p-3 rounded-full shadow-lg hover:bg-opacity-100 transition-all"
+          >
+            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+          
+          {isMenuOpen && (
+            <div className="absolute top-16 left-0 bg-white rounded-lg shadow-xl p-4 w-80 max-h-96 overflow-y-auto">
+              <h3 className="font-bold text-lg mb-3">Presentation Outline</h3>
+              {slides.map((slide, index) => (
+                <button
+                  key={slide.id}
+                  onClick={() => goToSlide(index)}
+                  className={`w-full text-left p-3 rounded-lg mb-2 transition-all ${
+                    currentSlide === index
+                      ? 'bg-blue-100 text-blue-800 font-semibold'
+                      : 'hover:bg-gray-100'
+                  }`}
+                >
+                  <span className="text-sm text-gray-500 block">Slide {index + 1}</span>
+                  {slide.title}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Slide Navigation */}
+        <div className="fixed bottom-4 right-4 z-50 flex space-x-2">
+          <button
+            onClick={prevSlide}
+            disabled={currentSlide === 0}
+            className="bg-white bg-opacity-90 backdrop-blur-sm p-3 rounded-full shadow-lg hover:bg-opacity-100 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+          <button
+            onClick={nextSlide}
+            disabled={currentSlide === slides.length - 1}
+            className="bg-white bg-opacity-90 backdrop-blur-sm p-3 rounded-full shadow-lg hover:bg-opacity-100 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
+        </div>
+
+        {/* Slide Counter */}
+        <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50">
+          <div className="bg-white bg-opacity-90 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg">
+            <span className="text-sm font-medium">
+              {currentSlide + 1} / {slides.length}
+            </span>
           </div>
-        )}
-      </div>
+        </div>
 
-      {/* Slide Navigation */}
-      <div className="fixed bottom-4 right-4 z-50 flex space-x-2">
-        <button
-          onClick={prevSlide}
-          disabled={currentSlide === 0}
-          className="bg-white bg-opacity-90 backdrop-blur-sm p-3 rounded-full shadow-lg hover:bg-opacity-100 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          <ChevronLeft className="w-6 h-6" />
-        </button>
-        <button
-          onClick={nextSlide}
-          disabled={currentSlide === slides.length - 1}
-          className="bg-white bg-opacity-90 backdrop-blur-sm p-3 rounded-full shadow-lg hover:bg-opacity-100 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          <ChevronRight className="w-6 h-6" />
-        </button>
-      </div>
-
-      {/* Slide Counter */}
-      <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50">
-        <div className="bg-white bg-opacity-90 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg">
-          <span className="text-sm font-medium">
-            {currentSlide + 1} / {slides.length}
-          </span>
+        {/* Slide Content */}
+        <div className="w-full">
+          {slides[currentSlide].content}
         </div>
       </div>
-
-      {/* Slide Content */}
-      <div className="w-full">
-        {slides[currentSlide].content}
-      </div>
-    </div>
+    </MathJaxContext>
   );
 }
 
