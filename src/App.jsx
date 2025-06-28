@@ -261,68 +261,70 @@ const slides = [
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h1 className="text-4xl font-bold text-indigo-800 mb-4">The Generalization Challenge in RL</h1>
-            <p className="text-xl text-indigo-600">A distribution over MDPs</p>
+            <p className="text-xl text-indigo-600">The Learning Problem Setup</p>
           </div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
-            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-white/30 text-center">
-              <div className="text-4xl mb-4">🎲</div>
-              <h3 className="text-lg font-bold text-gray-800 mb-2">Step 1: Nature Draws</h3>
-              <p className="text-gray-600">Hidden MDP from unknown distribution <MathJax inline>{"\\(D\\)"}</MathJax></p>
-            </div>
-            
-            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-white/30 text-center">
-              <div className="text-4xl mb-4">📚</div>
-              <h3 className="text-lg font-bold text-gray-800 mb-2">Step 2: Training</h3>
-              <p className="text-gray-600">Learner observes sample of <MathJax inline>{"\\(m\\)"}</MathJax> MDPs</p>
-            </div>
-            
-            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-white/30 text-center">
-              <div className="text-4xl mb-4">🧪</div>
-              <h3 className="text-lg font-bold text-gray-800 mb-2">Step 3: Testing</h3>
-              <p className="text-gray-600">Learns policy to minimize expected cost over <MathJax inline>{"\\(D\\)"}</MathJax></p>
-            </div>
-          </div>
-          
-          <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30 mb-8">
-            <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">🎒 Visual: "Bag of MDPs"</h2>
-            
-            <div className="flex items-center justify-center space-x-8">
-              <div className="text-center">
-                <div className="bg-indigo-100 p-6 rounded-lg mb-4">
-                  <div className="text-3xl mb-2">🎒</div>
-                  <p className="font-semibold">Training Sample</p>
-                  <p className="text-sm text-gray-600">M₁, M₂, ..., Mₘ</p>
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 mb-8 items-start">
+            <div className="lg:col-span-3 bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30 space-y-6">
+              <div>
+                <h3 className="font-bold text-xl text-indigo-700 mb-2">Environment Distribution</h3>
+                <div className="bg-indigo-50 p-4 rounded-lg text-center">
+                  <MathJax>{"\\[ \\mathcal{D} \\quad \\text{(unknown distribution over MDPs)} \\]"}</MathJax>
                 </div>
               </div>
               
-              <ArrowRight className="w-8 h-8 text-gray-400" />
-              
-              <div className="text-center">
-                <div className="bg-green-100 p-6 rounded-lg mb-4">
-                  <Brain className="w-12 h-12 mx-auto mb-2 text-green-600" />
-                  <p className="font-semibold">Learn Policy π</p>
-                  <p className="text-sm text-gray-600">From training data</p>
+              <div>
+                <h3 className="font-bold text-xl text-indigo-700 mb-2">Training Phase</h3>
+                <div className="bg-indigo-50 p-4 rounded-lg mb-3">
+                  <MathJax>{"\\[ \\mathcal{M} = \\{M_1, \\dots, M_m\\} \\sim \\mathcal{D}^m \\]"}</MathJax>
                 </div>
+                <ul className="list-disc list-inside space-y-2 text-gray-700">
+                  <li>Each training MDP is <strong>fully known</strong>: transition + cost</li>
+                  <li>No exploration needed: learner gets full access</li>
+                </ul>
               </div>
-              
-              <ArrowRight className="w-8 h-8 text-gray-400" />
-              
-              <div className="text-center">
-                <div className="bg-yellow-100 p-6 rounded-lg mb-4">
-                  <div className="text-3xl mb-2">❓</div>
-                  <p className="font-semibold">Test on M*</p>
-                  <p className="text-sm text-gray-600">Hidden identity</p>
-                </div>
+
+              <div>
+                <h3 className="font-bold text-xl text-indigo-700 mb-2">Test Phase</h3>
+                 <ul className="list-disc list-inside space-y-2 text-gray-700">
+                  <li>A fresh <MathJax inline>{"\\(M \\sim \\mathcal{D}\\)"}</MathJax> is sampled</li>
+                  <li>The learner must act <strong>without knowing</strong> which <MathJax inline>{"\\(M\\)"}</MathJax> was drawn</li>
+                  <li>Only observations and rewards are visible</li>
+                </ul>
+              </div>
+
+              <div className="bg-red-50 p-4 rounded-lg border border-red-200">
+                <h3 className="font-bold text-xl text-red-700 mb-2">Challenge</h3>
+                <p className="text-gray-700">Epistemic uncertainty ⇒ must generalize to unseen MDPs</p>
               </div>
             </div>
-          </div>
-          
-          <div className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white p-8 rounded-2xl text-center shadow-xl">
-            <h3 className="text-2xl font-bold mb-4">🔍 Core Question</h3>
-            <p className="text-xl">
-              How big must <strong>m</strong> be for the learned policy to generalize?
-            </p>
+
+            <div className="lg:col-span-2 space-y-4">
+              <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30 text-center">
+                  <h3 className="text-xl font-bold text-gray-800 mb-6">Learning Protocol</h3>
+                  <div className="flex flex-col items-center space-y-1">
+                      <div className="bg-blue-100 p-6 rounded-lg w-full">
+                          <BookOpen className="w-12 h-12 mx-auto mb-3 text-blue-600"/>
+                          <h4 className="font-bold text-lg text-blue-800">Train on Known MDPs</h4>
+                          <p className="text-sm text-gray-600"><MathJax inline>{"\\(M_1, ..., M_m\\)"}</MathJax></p>
+                      </div>
+
+                      <ArrowRight className="w-12 h-12 text-gray-400 transform rotate-90"/>
+
+                      <div className="bg-purple-100 p-6 rounded-lg w-full">
+                          <Eye className="w-12 h-12 mx-auto mb-3 text-purple-600"/>
+                          <h4 className="font-bold text-lg text-purple-800">Test on Hidden MDP</h4>
+                          <p className="text-sm text-gray-600">Act in a new <MathJax inline>{"\\(M \\sim \\mathcal{D}\\)"}</MathJax></p>
+                      </div>
+                  </div>
+              </div>
+              <div className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white p-8 rounded-2xl text-center shadow-xl">
+                <h3 className="text-2xl font-bold mb-4">🔍 Core Question</h3>
+                <p className="text-xl">
+                  How big must <strong>m</strong> be for the learned policy to generalize?
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -658,7 +660,7 @@ const slides = [
           </div>
           
           <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30">
-            <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">🔍 Visual: Overlapping Trajectory Distributions</h2>
+            {/* <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">🔍 Visual: Overlapping Trajectory Distributions</h2> */}
             
             <div className="flex justify-center items-center space-x-8">
               <div className="text-center">
