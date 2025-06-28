@@ -502,11 +502,6 @@ const slides = [
                   </ul>
                 </div>
                 
-                <div className="bg-red-100 p-4 rounded-lg text-center border border-red-300">
-                  <p className="text-red-800 font-semibold">
-                    📚 This is called an "Epistemic-POMDP"
-                  </p>
-                </div>
               </div>
             </div>
             
@@ -552,12 +547,12 @@ const slides = [
   },
   {
     id: 'env_family',
-    title: 'Environment Family Construction',
+    title: 'Construction of a Hard Instance',
     content: (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-16">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-blue-800 mb-4">Environment Family Construction</h1>
+            <h1 className="text-4xl font-bold text-blue-800 mb-4">Construction of a Hard Instance</h1>
             <p className="text-xl text-blue-600">Same dynamics, exponentially many hidden cost masks</p>
           </div>
           
@@ -694,7 +689,7 @@ const slides = [
               <div className="space-y-4">
                 <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
                   <p className="font-semibold text-blue-800 mb-2">💡 Intuition:</p>
-                  <p className="text-gray-700">Environments behave similarly under any policy</p>
+                  <p className="text-gray-700 text-center">Environments behave similarly under any policy</p>
                 </div>
                 
                 <div className="bg-blue-100 p-4 rounded-lg border border-blue-300 text-center">
@@ -718,7 +713,7 @@ const slides = [
               <div className="space-y-4">
                 <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
                   <p className="font-semibold text-orange-800 mb-2">💡 Intuition:</p>
-                  <p className="text-gray-700">Identify the environment early</p>
+                  <p className="text-gray-700 text-center">Identify the environment early</p>
                 </div>
                 
                 <div className="bg-orange-100 p-4 rounded-lg border border-orange-300 text-center">
@@ -745,7 +740,19 @@ const slides = [
             <p className="text-xl text-emerald-600">Environments behave similarly under any policy</p>
           </div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-8">
+          <div className="bg-white/80 backdrop-blur-sm p-6 rounded-lg border border-emerald-200 mb-8">
+            <h3 className="font-semibold text-lg mb-3 text-emerald-800">Bounded Likelihood Ratio</h3>
+            <p className="text-gray-700 text-lg leading-relaxed">
+              The instance space <MathJax inline>{"\\(\\mathcal{Z}\\)"}</MathJax> is <em><MathJax inline>{"\\(\\kappa\\)"}</MathJax>-uniformly similar</em> if there exists <MathJax inline>{"\\(\\kappa < \\infty\\)"}</MathJax> such that, for every pair of MDPs <MathJax inline>{"\\(M, M' \\in \\mathcal{Z}\\)"}</MathJax>, every policy <MathJax inline>{"\\(\\pi\\)"}</MathJax>, every horizon <MathJax inline>{"\\(h \\in [H]\\)"}</MathJax>, and every length-<MathJax inline>{"\\(h\\)"}</MathJax> trajectory <MathJax inline>{"\\(\\tau\\)"}</MathJax> with <MathJax inline>{"\\(P^{\\pi}_{M'}(\\tau) > 0\\)"}</MathJax>:
+            </p>
+            <div className="text-center text-2xl mt-4">
+              <MathJax>
+                {"\\[ \\frac{P^{\\pi}_{M}(\\tau)}{P^{\\pi}_{M'}(\\tau)} \\;\\le\\; \\kappa. \\]"}
+              </MathJax>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12 p-2">
             <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30">
               <h2 className="text-2xl font-bold text-gray-800 mb-6">📖 Everyday Analogy</h2>
               
@@ -802,35 +809,6 @@ const slides = [
             </div>
           </div>
           
-          <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30">
-            {/* <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">🔍 Visual: Overlapping Trajectory Distributions</h2> */}
-            
-            <div className="flex justify-center items-center space-x-8">
-              <div className="text-center">
-                <div className="w-32 h-32 bg-emerald-200 rounded-full opacity-70 flex items-center justify-center mb-2">
-                  <span className="font-bold text-emerald-800">MDP 1</span>
-                </div>
-                <p className="text-sm text-gray-600">Environment 1</p>
-              </div>
-              
-              <div className="text-center relative">
-                <div className="w-32 h-32 bg-purple-200 rounded-full opacity-70 flex items-center justify-center mb-2 relative z-10">
-                  <span className="font-bold text-purple-800">Overlap</span>
-                </div>
-                <div className="w-32 h-32 bg-green-200 rounded-full opacity-70 absolute top-0 left-8 flex items-center justify-center">
-                  <span className="font-bold text-green-800">MDP 2</span>
-                </div>
-                <p className="text-sm text-gray-600 mt-8">Similar distributions</p>
-              </div>
-              
-              <div className="text-center">
-                <div className="w-32 h-32 bg-green-200 rounded-full opacity-70 flex items-center justify-center mb-2">
-                  <span className="font-bold text-green-800">MDP 2</span>
-                </div>
-                <p className="text-sm text-gray-600">Environment 2</p>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     )
@@ -1041,79 +1019,6 @@ const slides = [
             <h3 className="text-2xl font-bold mb-4">🔑 Main Insight</h3>
             <p className="text-xl">
               Truncated policies ⇒ smaller hypothesis class ⇒ better covering number
-            </p>
-          </div>
-        </div>
-      </div>
-    )
-  },
-  {
-    id: 'counterexample',
-    title: 'When Similarity Fails: A Lower Bound',
-    content: (
-      <div className="min-h-screen bg-gradient-to-br from-red-50 to-orange-100 p-16">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-red-800 mb-4">When Similarity Fails: A Lower Bound</h1>
-            <p className="text-xl text-red-600">Even identical transitions can't save us</p>
-          </div>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-8">
-            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30">
-              <div className="flex items-center mb-6">
-                <AlertTriangle className="w-8 h-8 text-red-600 mr-3" />
-                <h2 className="text-2xl font-bold text-gray-800">🏗️ Construction</h2>
-              </div>
-              
-              <div className="space-y-4">
-                <div className="bg-red-50 p-6 rounded-lg border border-red-200">
-                  <p className="font-semibold text-red-800 mb-3">Constructed MDP Family:</p>
-                  <ul className="space-y-2 text-gray-700">
-                    <li>• ✅ <strong>Shared dynamics:</strong> All MDPs have identical transitions</li>
-                    <li>• ❌ <strong>Different costs:</strong> Reward functions vary across environments</li>
-                    <li>• 🚫 <strong>No structure:</strong> Neither similarity nor decodability holds</li>
-                  </ul>
-                </div>
-                
-                <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
-                  <p className="text-orange-800 font-semibold text-center">
-                    📊 Identical transitions ≠ Generalization
-                  </p>
-                </div>
-              </div>
-            </div>
-            
-            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30">
-              <div className="flex items-center mb-6">
-                <BarChart3 className="w-8 h-8 text-orange-600 mr-3" />
-                <h2 className="text-2xl font-bold text-gray-800">📈 Lower Bound Result</h2>
-              </div>
-              
-              <div className="space-y-4">
-                <div className="bg-orange-50 p-6 rounded-lg border border-orange-200">
-                  <p className="font-semibold text-orange-800 mb-3">Sample Complexity:</p>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-orange-800 mb-2">
-                      Still Exponential in <MathJax inline>{"\\(H\\)"}</MathJax>
-                    </p>
-                    <p className="text-sm text-gray-600">No improvement without structure</p>
-                  </div>
-                </div>
-                
-                <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                  <p className="text-sm text-gray-700">
-                    <strong>💡 Insight:</strong> Shared dynamics alone are insufficient. 
-                    Structure in costs/rewards is crucial for generalization.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div className="bg-gradient-to-r from-red-600 to-orange-600 text-white p-8 rounded-2xl text-center shadow-xl">
-            <h3 className="text-3xl font-bold mb-4">⚠️ Key Lesson</h3>
-            <p className="text-xl">
-              <strong>Structure is necessary:</strong> Without either similarity or decodability, generalization remains exponentially hard
             </p>
           </div>
         </div>
