@@ -378,39 +378,7 @@ const slides = [
                 </div>
               </div>
             </div>
-          </div>
-          
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden border border-white/30">
-            <div className="bg-gradient-to-r from-blue-600 to-orange-600 text-white p-6">
-              <h3 className="text-2xl font-bold text-center">📊 Summary Table</h3>
-            </div>
-            
-            <div className="p-8">
-              <div className="overflow-x-auto">
-                <table className="w-full">
-                  <thead>
-                    <tr className="border-b-2 border-gray-200">
-                      <th className="text-left py-3 px-4 font-semibold">Regime</th>
-                      <th className="text-left py-3 px-4 font-semibold">Intuition</th>
-                      <th className="text-left py-3 px-4 font-semibold">Sample Complexity</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-gray-200">
-                    <tr>
-                      <td className="py-4 px-6 text-sm font-medium text-gray-900">Uniform Similarity</td>
-                      <td className="py-4 px-6 text-sm text-gray-500">All environments look similar</td>
-                      <td className="py-4 px-6 text-sm text-gray-500"><MathJax inline>{"\\(\\tilde{O}(1/\\sqrt{m})\\)"}</MathJax></td>
-                    </tr>
-                    <tr>
-                      <td className="py-4 px-6 text-sm font-medium text-gray-900">Decodability</td>
-                      <td className="py-4 px-6 text-sm text-gray-500">Short trajectory reveals environment</td>
-                      <td className="py-4 px-6 text-sm text-gray-500"><MathJax inline>{"\\(\\tilde{O}(1/\\sqrt{m})\\)"}</MathJax></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
+          </div> 
         </div>
       </div>
     )
@@ -619,15 +587,10 @@ const slides = [
               <h2 className="text-2xl font-bold text-gray-800 mb-6">🚀 Truncated Policies</h2>
               
               <div className="space-y-6">
-                <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
-                  <p className="text-lg font-mono text-center mb-4">
-                    π<sub>truncated</sub>(h<sub>t</sub>) = {'{'}
-                  </p>
-                  <div className="ml-4 space-y-2 text-sm font-mono">
-                    <p>🔍 explore if MDP not identified</p>
-                    <p>⚡ π*<sub>M</sub>(h<sub>t</sub>) if MDP M identified</p>
-                  </div>
-                  <p className="text-lg font-mono text-center mt-4">{'}'}</p>
+                <div className="bg-gray-50 p-6 rounded-lg border border-gray-200 text-lg text-center">
+                  <MathJax>
+                    {`$$ \\bar\\pi(h_t) = \\begin{cases} \\text{🔍 explore} & \\text{if MDP not identified} \\\\ \\text{⚡ } \\pi^*_{M}(h_t) & \\text{if MDP M identified} \\end{cases}$$`}
+                  </MathJax>
                 </div>
                 
                 <div className="bg-green-50 border-2 border-green-200 p-6 rounded-lg text-center">
@@ -642,14 +605,13 @@ const slides = [
           </div>
           
           <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30">
-            <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">🔄 Flow Chart: Explore → Decode → Act Optimally</h2>
             
             <div className="flex items-center justify-center space-x-6">
               <div className="text-center">
                 <div className="bg-yellow-100 p-6 rounded-lg mb-4 border-2 border-yellow-300">
                   <Search className="w-12 h-12 mx-auto mb-2 text-yellow-600" />
                   <p className="font-semibold">🔍 Explore</p>
-                  <p className="text-sm text-gray-600">for h̄ steps</p>
+                  <p className="text-sm text-gray-600">for <MathJax inline>{"\\(\\bar{h}\\)"}</MathJax> steps</p>
                 </div>
               </div>
               
@@ -669,7 +631,7 @@ const slides = [
                 <div className="bg-green-100 p-6 rounded-lg mb-4 border-2 border-green-300">
                   <Target className="w-12 h-12 mx-auto mb-2 text-green-600" />
                   <p className="font-semibold">⚡ Act Optimally</p>
-                  <p className="text-sm text-gray-600">use π*<sub>M</sub></p>
+                  <p className="text-sm text-gray-600">use <MathJax inline>{"\\(\\pi^*_{M}\\)"}</MathJax></p>
                 </div>
               </div>
             </div>
