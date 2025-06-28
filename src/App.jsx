@@ -331,6 +331,70 @@ const slides = [
     )
   },
   {
+    id: 'epistemic_pomdp',
+    title: "The Epistemic POMDP Perspective",
+    subtitle: "Planning under hidden environment identity",
+    content: (
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-200 p-16">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl font-bold text-gray-800 mb-4">The Epistemic POMDP Perspective</h1>
+            <p className="text-xl text-gray-600">Planning under hidden environment identity</p>
+          </div>
+
+          <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30 space-y-8">
+            <div>
+              <h2 className="text-2xl font-bold text-gray-800 mb-4">Core Idea</h2>
+              <p className="text-lg text-gray-700">
+                When an agent doesn't know which environment it's in, the problem of finding an optimal policy is equivalent to solving a Partially Observable Markov Decision Process (POMDP).
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="bg-gray-100 p-6 rounded-lg border border-gray-200">
+                <h3 className="font-semibold text-lg mb-3 text-gray-700">The State Space is Enlarged</h3>
+                <ul className="space-y-3 text-gray-600">
+                  <li><strong>Latent state:</strong> <MathJax inline>{"\\((M, s_h)\\)"}</MathJax></li>
+                  <li>Environment identity <MathJax inline>{"\\(M \\sim \\mathcal{D}\\)"}</MathJax> is fixed but <strong>unknown</strong>.</li>
+                </ul>
+              </div>
+              <div className="bg-gray-100 p-6 rounded-lg border border-gray-200">
+                <h3 className="font-semibold text-lg mb-3 text-gray-700">Agent Receives Only</h3>
+                <ul className="space-y-3 text-gray-600">
+                    <li>Observable state <MathJax inline>{"\\(s_h\\)"}</MathJax></li>
+                    <li>Cost <MathJax inline>{"\\(c(s_h, a_h)\\)"}</MathJax></li>
+                </ul>
+              </div>
+            </div>
+
+            <div>
+              <h2 className="text-2xl font-bold text-gray-800 mb-4">Implication for Generalization</h2>
+              <div className="bg-indigo-100 text-indigo-800 p-6 rounded-lg text-center text-xl font-semibold border border-indigo-200">
+                Generalization = planning in a <strong>partially observable</strong> space
+              </div>
+            </div>
+
+            <div>
+              <h2 className="text-2xl font-bold text-gray-800 mb-4">A Visual Analogy</h2>
+                <div className="text-center font-mono text-xl bg-gray-800 text-white p-6 rounded-lg">
+                    <div>
+                        <span className="text-gray-400">Hidden:</span> <span className="text-yellow-400">M</span>
+                    </div>
+                    <div className="my-2 text-gray-500">
+                        (determines costs)
+                    </div>
+                    <div>
+                        <span className="text-gray-400">Observable Rollout:</span> <span className="text-green-400">s₁ → s₂ → s₃ → ...</span>
+                    </div>
+                </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    )
+  },
+  {
     id: 'hardness',
     title: 'Generalization Is Intractable Without Structure',
     content: (
