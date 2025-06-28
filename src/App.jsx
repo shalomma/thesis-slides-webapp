@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import { ChevronLeft, ChevronRight, Menu, X, Brain, TrendingUp, Cog, Car, Home, AlertTriangle, Eye, Search, Lightbulb, Target, ArrowRight, CheckCircle, Users, MessageCircle } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Menu, X, Brain, TrendingUp, Cog, Car, Home, AlertTriangle, Eye, Search, Lightbulb, Target, ArrowRight, CheckCircle, Users, MessageCircle, Layers, BarChart3, Zap, BookOpen, Globe, Activity } from 'lucide-react';
+
+// Component for mathematical expressions
+const MathExpr = ({ children, className = "" }) => (
+  <span className={`font-mono text-lg ${className}`} style={{ fontFamily: 'KaTeX_Math, serif' }}>
+    {children}
+  </span>
+);
 
 const slides = [
   {
@@ -30,15 +37,15 @@ const slides = [
           <div className="flex justify-center items-center space-x-8">
             <div className="flex items-center">
               <Brain className="w-8 h-8 mr-3 text-yellow-300" />
-              <span className="text-lg">Machine Learning Theory</span>
+              <span className="text-lg">🧠 Machine Learning Theory</span>
             </div>
             <div className="flex items-center">
               <TrendingUp className="w-8 h-8 mr-3 text-green-300" />
-              <span className="text-lg">Reinforcement Learning</span>
+              <span className="text-lg">📈 Reinforcement Learning</span>
             </div>
             <div className="flex items-center">
               <Cog className="w-8 h-8 mr-3 text-blue-300" />
-              <span className="text-lg">Statistical Analysis</span>
+              <span className="text-lg">⚙️ Statistical Analysis</span>
             </div>
           </div>
         </div>
@@ -57,44 +64,39 @@ const slides = [
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-8">
-            <div className="bg-white p-8 rounded-2xl shadow-xl border-l-4 border-blue-500">
+            <div className="bg-white/70 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/20">
               <div className="text-center mb-6">
-                <Home className="w-16 h-16 mx-auto mb-4 text-blue-600" />
+                <div className="text-6xl mb-4">🏠</div>
                 <h2 className="text-2xl font-bold text-gray-800">Robotic Assistant</h2>
               </div>
               <div className="space-y-4 text-lg text-gray-700">
-                <p>🏠 <strong>Training:</strong> Works perfectly in one apartment</p>
-                <p>📦 <strong>Challenge:</strong> Moves to a new apartment</p>
-                <p>❓ <strong>Question:</strong> Will it navigate the new layout?</p>
+                <p><strong>Training:</strong> One apartment 🏠</p>
+                <p><strong>Deployment:</strong> New layout 📦</p>
+                <p><strong>Challenge:</strong> Navigation robustness ❓</p>
               </div>
             </div>
             
-            <div className="bg-white p-8 rounded-2xl shadow-xl border-l-4 border-green-500">
+            <div className="bg-white/70 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/20">
               <div className="text-center mb-6">
-                <Car className="w-16 h-16 mx-auto mb-4 text-green-600" />
+                <div className="text-6xl mb-4">🚗</div>
                 <h2 className="text-2xl font-bold text-gray-800">Autonomous Vehicle</h2>
               </div>
               <div className="space-y-4 text-lg text-gray-700">
-                <p>🏙️ <strong>Training:</strong> Learns in San Francisco</p>
-                <p>✈️ <strong>Challenge:</strong> Deployed in Tokyo</p>
-                <p>❓ <strong>Question:</strong> Will it handle different traffic patterns?</p>
+                <p><strong>Training:</strong> San Francisco 🏙️</p>
+                <p><strong>Deployment:</strong> Tokyo ✈️</p>
+                <p><strong>Challenge:</strong> Generalize to new traffic dynamics ❓</p>
               </div>
             </div>
           </div>
           
           <div className="bg-gradient-to-r from-red-500 to-orange-500 text-white p-8 rounded-2xl text-center shadow-xl">
-            <h3 className="text-2xl font-bold mb-4">The Core Challenge</h3>
+            <h3 className="text-2xl font-bold mb-4">🌐 The Generalization Gap</h3>
             <div className="flex items-center justify-center space-x-8 text-lg">
-              <div className="flex items-center">
-                <span className="rounded-lg border border-white/20 bg-black/20 shadow-lg backdrop-blur-lg text-white px-4 py-2 mr-4">Training</span>
-                <span className="text-2xl">→</span>
-              </div>
-              <div className="rounded-lg border border-white/20 bg-black/20 shadow-lg backdrop-blur-lg text-white px-6 py-3 font-bold">
-                GENERALIZATION GAP
-              </div>
-              <div className="flex items-center">
-                <span className="rounded-lg border border-white/20 bg-black/20 shadow-lg backdrop-blur-lg text-white px-4 py-2 ml-4">Deployment</span>
-              </div>
+              <div className="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-lg">Training</div>
+              <span className="text-2xl">→</span>
+              <div className="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-lg font-bold">GAP</div>
+              <span className="text-2xl">→</span>
+              <div className="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-lg">Deployment</div>
             </div>
           </div>
         </div>
@@ -102,24 +104,24 @@ const slides = [
     )
   },
   {
-    id: 'rl-primer',
-    title: 'What Is Reinforcement Learning? 90-second Primer',
+    id: 'rl_primer',
+    title: 'What is Reinforcement Learning?',
     content: (
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-100 p-16">
+      <div className="min-h-screen bg-gradient-to-br from-green-50 to-teal-100 p-16">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-gray-800 mb-4">What Is Reinforcement Learning?</h1>
-            <p className="text-xl text-gray-600">90-second Primer</p>
+            <h1 className="text-4xl font-bold text-teal-800 mb-4">What is Reinforcement Learning?</h1>
+            <p className="text-xl text-teal-600">Learning through interaction with an environment</p>
           </div>
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <div className="bg-white p-8 rounded-2xl shadow-xl">
-              <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Agent ↔ Environment Loop</h2>
+            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30">
+              <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">🔄 RL Loop: Agent ↔ Environment</h2>
               
               <div className="space-y-6">
                 <div className="flex items-center justify-between">
-                  <div className="bg-blue-100 p-4 rounded-lg flex-1 text-center">
-                    <Brain className="w-8 h-8 mx-auto mb-2 text-blue-600" />
+                  <div className="bg-teal-100 p-4 rounded-lg flex-1 text-center">
+                    <Brain className="w-8 h-8 mx-auto mb-2 text-teal-600" />
                     <p className="font-semibold">Agent</p>
                     <p className="text-sm text-gray-600">Makes decisions</p>
                   </div>
@@ -131,32 +133,31 @@ const slides = [
                   </div>
                 </div>
                 
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <h3 className="font-bold mb-3">Key Vocabulary:</h3>
-                  <ul className="space-y-2 text-sm">
-                    <li><strong>State:</strong> Current situation</li>
-                    <li><strong>Action:</strong> What the agent does</li>
-                    <li><strong>Policy:</strong> Agent's decision strategy</li>
-                    <li><strong>Return:</strong> Total reward accumulated</li>
+                <div className="bg-teal-50 p-6 rounded-lg border border-teal-200">
+                  <h3 className="font-bold mb-3 text-teal-800">📚 Key Terms:</h3>
+                  <ul className="space-y-2">
+                    <li><strong>Policy π:</strong> Agent's decision strategy</li>
+                    <li><strong>Reward/Cost:</strong> Feedback signal</li>
+                    <li><strong>Return:</strong> Total accumulated reward</li>
                   </ul>
                 </div>
               </div>
             </div>
             
-            <div className="bg-white p-8 rounded-2xl shadow-xl">
-              <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Traditional RL Assumption</h2>
+            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30">
+              <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">🎯 Single MDP Assumption</h2>
               
               <div className="space-y-6">
                 <div className="bg-blue-50 border-2 border-blue-200 p-6 rounded-lg text-center">
                   <div className="text-4xl mb-4">🎯</div>
-                  <h3 className="text-xl font-bold text-blue-800 mb-2">One Fixed MDP</h3>
+                  <h3 className="text-xl font-bold text-blue-800 mb-2">Classical RL</h3>
                   <p className="text-gray-700">Agent learns in the same environment it will be tested in</p>
                 </div>
                 
                 <div className="bg-red-50 border-2 border-red-200 p-6 rounded-lg text-center">
                   <AlertTriangle className="w-12 h-12 mx-auto mb-4 text-red-600" />
-                  <h3 className="text-xl font-bold text-red-800 mb-2">But Reality Is Different!</h3>
-                  <p className="text-gray-700">Environments change, and we need agents that can adapt</p>
+                  <h3 className="text-xl font-bold text-red-800 mb-2">❌ Reality is Different!</h3>
+                  <p className="text-gray-700">Environments change, we need adaptive agents</p>
                 </div>
               </div>
             </div>
@@ -166,42 +167,42 @@ const slides = [
     )
   },
   {
-    id: 'problem-statement',
-    title: 'Problem Statement: RL with Environment Uncertainty',
+    id: 'problem',
+    title: 'The Generalization Challenge in RL',
     content: (
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-100 p-16">
+      <div className="min-h-screen bg-gradient-to-br from-purple-50 to-indigo-100 p-16">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-gray-800 mb-4">Problem Statement</h1>
-            <p className="text-xl text-gray-600">RL with Environment Uncertainty</p>
+            <h1 className="text-4xl font-bold text-indigo-800 mb-4">The Generalization Challenge in RL</h1>
+            <p className="text-xl text-indigo-600">A distribution over MDPs</p>
           </div>
           
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
-            <div className="bg-white p-6 rounded-xl shadow-lg text-center">
+            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-white/30 text-center">
               <div className="text-4xl mb-4">🎲</div>
               <h3 className="text-lg font-bold text-gray-800 mb-2">Step 1: Nature Draws</h3>
-              <p className="text-gray-600">Unknown MDP each episode</p>
+              <p className="text-gray-600">Hidden MDP from unknown distribution <MathExpr>𝒟</MathExpr></p>
             </div>
             
-            <div className="bg-white p-6 rounded-xl shadow-lg text-center">
+            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-white/30 text-center">
               <div className="text-4xl mb-4">📚</div>
               <h3 className="text-lg font-bold text-gray-800 mb-2">Step 2: Training</h3>
-              <p className="text-gray-600">Sample of m MDPs → learn policy</p>
+              <p className="text-gray-600">Learner observes sample of <MathExpr>m</MathExpr> MDPs</p>
             </div>
             
-            <div className="bg-white p-6 rounded-xl shadow-lg text-center">
+            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-white/30 text-center">
               <div className="text-4xl mb-4">🧪</div>
               <h3 className="text-lg font-bold text-gray-800 mb-2">Step 3: Testing</h3>
-              <p className="text-gray-600">Fresh draw from distribution</p>
+              <p className="text-gray-600">Learns policy to minimize expected cost over <MathExpr>𝒟</MathExpr></p>
             </div>
           </div>
           
-          <div className="bg-white p-8 rounded-2xl shadow-xl mb-8">
-            <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Visual: "Bag of MDPs"</h2>
+          <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30 mb-8">
+            <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">🎒 Visual: "Bag of MDPs"</h2>
             
             <div className="flex items-center justify-center space-x-8">
               <div className="text-center">
-                <div className="bg-blue-100 p-6 rounded-lg mb-4">
+                <div className="bg-indigo-100 p-6 rounded-lg mb-4">
                   <div className="text-3xl mb-2">🎒</div>
                   <p className="font-semibold">Training Sample</p>
                   <p className="text-sm text-gray-600">M₁, M₂, ..., Mₘ</p>
@@ -230,8 +231,8 @@ const slides = [
             </div>
           </div>
           
-          <div className="bg-gradient-to-r from-purple-600 to-blue-600 text-white p-8 rounded-2xl text-center shadow-xl">
-            <h3 className="text-2xl font-bold mb-4">Core Question</h3>
+          <div className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white p-8 rounded-2xl text-center shadow-xl">
+            <h3 className="text-2xl font-bold mb-4">🔍 Core Question</h3>
             <p className="text-xl">
               How big must <strong>m</strong> be for the learned policy to generalize?
             </p>
@@ -241,69 +242,76 @@ const slides = [
     )
   },
   {
-    id: 'epistemic-barrier',
-    title: 'Why Is This Hard? The Epistemic-POMDP Barrier',
+    id: 'hardness',
+    title: 'Generalization Is Intractable Without Structure',
     content: (
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-red-100 p-16">
+      <div className="min-h-screen bg-gradient-to-br from-red-50 to-orange-100 p-16">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-gray-800 mb-4">Why Is This Hard?</h1>
-            <p className="text-xl text-gray-600">The Epistemic-POMDP Barrier</p>
+            <h1 className="text-4xl font-bold text-red-800 mb-4">Generalization Is Intractable Without Structure</h1>
+            <p className="text-xl text-red-600">The Epistemic-POMDP Barrier</p>
           </div>
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-8">
-            <div className="bg-white p-8 rounded-2xl shadow-xl border-l-4 border-red-500">
+            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30">
               <div className="flex items-center mb-6">
                 <Eye className="w-8 h-8 text-red-600 mr-3" />
-                <h2 className="text-2xl font-bold text-gray-800">Partial Observability</h2>
+                <h2 className="text-2xl font-bold text-gray-800">👁️ Partial Observability</h2>
               </div>
               
               <div className="space-y-4 text-gray-700">
-                <p><strong>The Problem:</strong></p>
-                <ul className="space-y-2 ml-4">
-                  <li>• Agent doesn't know which MDP it's in</li>
-                  <li>• Task identity is latent/hidden</li>
-                  <li>• Must infer environment from observations</li>
-                  <li>• Creates partial observability</li>
-                </ul>
-              </div>
-              
-              <div className="bg-red-50 p-4 rounded-lg mt-6">
-                <p className="text-red-800 font-semibold text-center">
-                  This is called an "Epistemic-POMDP"
-                </p>
+                <div className="bg-red-50 p-4 rounded-lg border border-red-200">
+                  <p className="font-semibold text-red-800 mb-2">The Problem:</p>
+                  <ul className="space-y-2 ml-4">
+                    <li>• Hidden environment identity = partial observability</li>
+                    <li>• Agent doesn't know which MDP it's in</li>
+                    <li>• Must infer environment from observations</li>
+                    <li>• Creates epistemic uncertainty</li>
+                  </ul>
+                </div>
+                
+                <div className="bg-red-100 p-4 rounded-lg text-center border border-red-300">
+                  <p className="text-red-800 font-semibold">
+                    📚 This is called an "Epistemic-POMDP"
+                  </p>
+                </div>
               </div>
             </div>
             
-            <div className="bg-white p-8 rounded-2xl shadow-xl border-l-4 border-orange-500">
+            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30">
               <div className="flex items-center mb-6">
                 <AlertTriangle className="w-8 h-8 text-orange-600 mr-3" />
-                <h2 className="text-2xl font-bold text-gray-800">Worst-Case Result</h2>
+                <h2 className="text-2xl font-bold text-gray-800">⚠️ Worst-Case Result</h2>
               </div>
               
               <div className="space-y-4 text-gray-700">
-                <p><strong>Sample Complexity:</strong></p>
-                <div className="bg-orange-50 border-2 border-orange-200 p-6 rounded-lg text-center">
-                  <p className="text-2xl font-bold text-orange-800 mb-2">
-                    Exponential in H
-                  </p>
-                  <p className="text-sm text-gray-600">H = planning horizon</p>
+                <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
+                  <p className="font-semibold text-orange-800 mb-2">📈 Sample Complexity:</p>
+                  <div className="text-center">
+                    <p className="text-3xl font-bold text-orange-800 mb-2">
+                      Exponential in <MathExpr>H</MathExpr>
+                    </p>
+                    <p className="text-sm text-gray-600"><MathExpr>H</MathExpr> = planning horizon</p>
+                  </div>
                 </div>
                 
-                <p className="text-sm">
-                  <strong>Intuition:</strong> Without structure, the agent needs exponentially many examples to distinguish between environments and learn good policies.
-                </p>
+                <div className="bg-orange-100 p-4 rounded-lg border border-orange-300">
+                  <p className="text-sm">
+                    <strong>💡 Intuition:</strong> Planning becomes POMDP-solving. 
+                    Sample complexity may grow exponentially in horizon <MathExpr>H</MathExpr>.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
           
           <div className="bg-gradient-to-r from-red-600 to-orange-600 text-white p-8 rounded-2xl text-center shadow-xl">
-            <h3 className="text-3xl font-bold mb-4">Key Takeaway</h3>
+            <h3 className="text-3xl font-bold mb-4">🚫 Key Takeaway</h3>
             <p className="text-xl">
               <strong>Without structure, generalization is intractable!</strong>
             </p>
             <p className="text-lg mt-4 opacity-90">
-              We need assumptions to make the problem learnable
+              We need structural assumptions to make the problem learnable
             </p>
           </div>
         </div>
@@ -311,65 +319,69 @@ const slides = [
     )
   },
   {
-    id: 'two-lenses',
-    title: 'Two Structural Lenses That Rescue Generalization',
+    id: 'roadmap',
+    title: 'Two Structural Lenses for Tractability',
     content: (
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-100 p-16">
+      <div className="min-h-screen bg-gradient-to-br from-cyan-50 to-blue-100 p-16">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-gray-800 mb-4">Two Structural Lenses</h1>
-            <p className="text-xl text-gray-600">That Rescue Generalization</p>
+            <h1 className="text-4xl font-bold text-blue-800 mb-4">Two Structural Lenses for Tractability</h1>
+            <p className="text-xl text-blue-600">Similarity vs. Identifiability</p>
           </div>
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-8">
-            <div className="bg-white p-8 rounded-2xl shadow-xl border-t-4 border-blue-500">
+            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30">
               <div className="text-center mb-6">
                 <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl">=</span>
+                  <Layers className="w-8 h-8 text-blue-600" />
                 </div>
-                <h2 className="text-2xl font-bold text-blue-800">Uniform Similarity</h2>
-                <p className="text-gray-600">Bounded Likelihood Ratio</p>
+                <h2 className="text-2xl font-bold text-blue-800">🔄 Uniform Similarity</h2>
+                <p className="text-gray-600">All environments look similar</p>
               </div>
               
               <div className="space-y-4">
-                <div className="bg-blue-50 p-4 rounded-lg">
-                  <p className="font-semibold text-blue-800 mb-2">Intuition:</p>
-                  <p className="text-gray-700">"Environments differ like fonts—look different up close, read the same sentence"</p>
+                <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                  <p className="font-semibold text-blue-800 mb-2">💡 Intuition:</p>
+                  <p className="text-gray-700">Environments behave similarly under any policy</p>
                 </div>
                 
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <p className="font-semibold text-gray-800 mb-2">Real-world analogy:</p>
-                  <p className="text-gray-700">Different cities, similar traffic rules</p>
+                <div className="bg-blue-100 p-4 rounded-lg border border-blue-300 text-center">
+                  <p className="font-semibold text-blue-800">Sample Complexity:</p>
+                  <p className="text-2xl font-bold text-blue-600">
+                    <MathExpr>Õ(1/√m)</MathExpr>
+                  </p>
                 </div>
               </div>
             </div>
             
-            <div className="bg-white p-8 rounded-2xl shadow-xl border-t-4 border-orange-500">
+            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30">
               <div className="text-center mb-6">
                 <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Search className="w-8 h-8 text-orange-600" />
                 </div>
-                <h2 className="text-2xl font-bold text-orange-800">Decodability</h2>
-                <p className="text-gray-600">Short Trajectory Reveals Task</p>
+                <h2 className="text-2xl font-bold text-orange-800">🔍 Decodability</h2>
+                <p className="text-gray-600">Short trajectory reveals environment</p>
               </div>
               
               <div className="space-y-4">
-                <div className="bg-orange-50 p-4 rounded-lg">
-                  <p className="font-semibold text-orange-800 mb-2">Intuition:</p>
-                  <p className="text-gray-700">"First three notes of a song reveal which song it is"</p>
+                <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
+                  <p className="font-semibold text-orange-800 mb-2">💡 Intuition:</p>
+                  <p className="text-gray-700">Identify the environment early</p>
                 </div>
                 
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <p className="font-semibold text-gray-800 mb-2">Real-world analogy:</p>
-                  <p className="text-gray-700">Apartment layout clear from entrance</p>
+                <div className="bg-orange-100 p-4 rounded-lg border border-orange-300 text-center">
+                  <p className="font-semibold text-orange-800">Sample Complexity:</p>
+                  <p className="text-2xl font-bold text-orange-600">
+                    <MathExpr>Õ(1/√m)</MathExpr>
+                  </p>
                 </div>
               </div>
             </div>
           </div>
           
-          <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden border border-white/30">
             <div className="bg-gradient-to-r from-blue-600 to-orange-600 text-white p-6">
-              <h3 className="text-2xl font-bold text-center">Summary Table</h3>
+              <h3 className="text-2xl font-bold text-center">📊 Summary Table</h3>
             </div>
             
             <div className="p-8">
@@ -377,26 +389,21 @@ const slides = [
                 <table className="w-full">
                   <thead>
                     <tr className="border-b-2 border-gray-200">
-                      <th className="text-left py-3 px-4 font-semibold">Aspect</th>
-                      <th className="text-left py-3 px-4 font-semibold text-blue-600">Uniform Similarity</th>
-                      <th className="text-left py-3 px-4 font-semibold text-orange-600">Decodability</th>
+                      <th className="text-left py-3 px-4 font-semibold">Regime</th>
+                      <th className="text-left py-3 px-4 font-semibold">Intuition</th>
+                      <th className="text-left py-3 px-4 font-semibold">Sample Complexity</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr className="border-b border-gray-100">
-                      <td className="py-3 px-4 font-medium">Key Property</td>
-                      <td className="py-3 px-4">Environments are similar</td>
-                      <td className="py-3 px-4">Environments are distinguishable</td>
-                    </tr>
-                    <tr className="border-b border-gray-100">
-                      <td className="py-3 px-4 font-medium">Generalization Rate</td>
-                      <td className="py-3 px-4 text-blue-600 font-bold">Õ(1/√m)</td>
-                      <td className="py-3 px-4 text-orange-600 font-bold">Õ(1/√m)</td>
+                      <td className="py-3 px-4 font-medium text-blue-600">Uniform Similarity</td>
+                      <td className="py-3 px-4">All environments look similar</td>
+                      <td className="py-3 px-4 text-blue-600 font-bold"><MathExpr>Õ(1/√m)</MathExpr></td>
                     </tr>
                     <tr>
-                      <td className="py-3 px-4 font-medium">Method</td>
-                      <td className="py-3 px-4">Plain ERM</td>
-                      <td className="py-3 px-4">Truncated Policies + ERM</td>
+                      <td className="py-3 px-4 font-medium text-orange-600">Decodability</td>
+                      <td className="py-3 px-4">Short trajectory reveals environment</td>
+                      <td className="py-3 px-4 text-orange-600 font-bold"><MathExpr>Õ(1/√m)</MathExpr></td>
                     </tr>
                   </tbody>
                 </table>
@@ -408,24 +415,24 @@ const slides = [
     )
   },
   {
-    id: 'uniform-similarity',
-    title: 'Uniform Similarity – Intuition & Result',
+    id: 'similarity',
+    title: 'Uniform Similarity Assumption',
     content: (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 p-16">
+      <div className="min-h-screen bg-gradient-to-br from-emerald-50 to-green-100 p-16">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-blue-800 mb-4">Uniform Similarity</h1>
-            <p className="text-xl text-blue-600">Intuition & Result</p>
+            <h1 className="text-4xl font-bold text-emerald-800 mb-4">Uniform Similarity Assumption</h1>
+            <p className="text-xl text-emerald-600">Environments behave similarly under any policy</p>
           </div>
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-8">
-            <div className="bg-white p-8 rounded-2xl shadow-xl border-l-4 border-blue-500">
-              <h2 className="text-2xl font-bold text-gray-800 mb-6">Everyday Analogy</h2>
+            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30">
+              <h2 className="text-2xl font-bold text-gray-800 mb-6">📖 Everyday Analogy</h2>
               
               <div className="space-y-6">
-                <div className="bg-blue-50 p-6 rounded-lg">
-                  <div className="text-4xl mb-4 text-center">📖</div>
-                  <p className="text-lg text-center font-semibold text-blue-800 mb-2">
+                <div className="bg-emerald-50 p-6 rounded-lg border border-emerald-200">
+                  <div className="text-4xl mb-4 text-center">📚</div>
+                  <p className="text-lg text-center font-semibold text-emerald-800 mb-2">
                     "Environments differ like fonts"
                   </p>
                   <p className="text-gray-700 text-center">
@@ -435,28 +442,30 @@ const slides = [
                 
                 <div className="space-y-3">
                   <div className="flex items-center space-x-3">
-                    <div className="w-4 h-4 bg-blue-500 rounded-full"></div>
-                    <p className="text-gray-700">Same underlying structure</p>
+                    <div className="w-4 h-4 bg-emerald-500 rounded-full"></div>
+                    <p className="text-gray-700">Likelihood ratio between trajectories bounded by κ</p>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <div className="w-4 h-4 bg-blue-500 rounded-full"></div>
-                    <p className="text-gray-700">Different surface appearances</p>
+                    <div className="w-4 h-4 bg-emerald-500 rounded-full"></div>
+                    <p className="text-gray-700">No policy sees wild differences across MDPs</p>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <div className="w-4 h-4 bg-blue-500 rounded-full"></div>
+                    <div className="w-4 h-4 bg-emerald-500 rounded-full"></div>
                     <p className="text-gray-700">Similar trajectory distributions</p>
                   </div>
                 </div>
               </div>
             </div>
             
-            <div className="bg-white p-8 rounded-2xl shadow-xl border-l-4 border-green-500">
-              <h2 className="text-2xl font-bold text-gray-800 mb-6">Main Result</h2>
+            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30">
+              <h2 className="text-2xl font-bold text-gray-800 mb-6">📊 Main Result</h2>
               
               <div className="space-y-6">
                 <div className="bg-green-50 border-2 border-green-200 p-6 rounded-lg text-center">
-                  <p className="text-lg font-semibold text-green-800 mb-2">Plain ERM achieves:</p>
-                  <p className="text-4xl font-bold text-green-600 mb-2">Õ(1/√m)</p>
+                  <p className="text-lg font-semibold text-green-800 mb-2">ERM achieves:</p>
+                  <p className="text-4xl font-bold text-green-600 mb-2">
+                    <MathExpr>Õ(1/√m)</MathExpr>
+                  </p>
                   <p className="text-gray-600">generalization error</p>
                 </div>
                 
@@ -466,20 +475,20 @@ const slides = [
                   </p>
                 </div>
                 
-                <div className="text-sm text-gray-600">
-                  <p><strong>Key insight:</strong> Bounded likelihood ratios → reduced variance → small Rademacher complexity</p>
+                <div className="text-sm text-gray-600 bg-gray-50 p-4 rounded-lg">
+                  <p><strong>💡 Key insight:</strong> Bounded likelihood ratios → reduced variance → small Rademacher complexity</p>
                 </div>
               </div>
             </div>
           </div>
           
-          <div className="bg-white p-8 rounded-2xl shadow-xl">
-            <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Visual: Overlapping Trajectory Distributions</h2>
+          <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30">
+            <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">🔍 Visual: Overlapping Trajectory Distributions</h2>
             
             <div className="flex justify-center items-center space-x-8">
               <div className="text-center">
-                <div className="w-32 h-32 bg-blue-200 rounded-full opacity-70 flex items-center justify-center mb-2">
-                  <span className="font-bold text-blue-800">MDP 1</span>
+                <div className="w-32 h-32 bg-emerald-200 rounded-full opacity-70 flex items-center justify-center mb-2">
+                  <span className="font-bold text-emerald-800">MDP 1</span>
                 </div>
                 <p className="text-sm text-gray-600">Environment 1</p>
               </div>
@@ -507,91 +516,148 @@ const slides = [
     )
   },
   {
-    id: 'decodability',
-    title: 'Decodability – Intuition & Result',
+    id: 'similarity_bound',
+    title: 'Formal Guarantee: Uniform Similarity',
     content: (
-      <div className="min-h-screen bg-gradient-to-br from-orange-50 to-orange-100 p-16">
+      <div className="min-h-screen bg-gradient-to-br from-violet-50 to-purple-100 p-16">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-orange-800 mb-4">Decodability</h1>
-            <p className="text-xl text-orange-600">Intuition & Result</p>
+            <h1 className="text-4xl font-bold text-violet-800 mb-4">Formal Guarantee: Uniform Similarity</h1>
+            <p className="text-xl text-violet-600">Generalization bound for plain ERM</p>
+          </div>
+          
+          <div className="bg-white/80 backdrop-blur-sm p-12 rounded-2xl shadow-xl border border-white/30 mb-8">
+            <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">📐 Key Result</h2>
+            
+            <div className="bg-gradient-to-r from-violet-100 to-purple-100 p-8 rounded-xl border-2 border-violet-300 mb-8">
+              <div className="text-center">
+                <p className="text-2xl font-bold text-violet-800 mb-4">Sample Complexity:</p>
+                <div className="bg-white/80 backdrop-blur-sm p-6 rounded-lg border border-violet-200">
+                  <p className="text-3xl font-mono text-violet-600">
+                    <MathExpr>m = O(H³κ² log(|S||A|)/ε²)</MathExpr>
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="bg-violet-50 p-6 rounded-lg border border-violet-200 text-center">
+                <div className="text-3xl mb-3">📈</div>
+                <h3 className="font-bold text-violet-800 mb-2">No Regularization</h3>
+                <p className="text-gray-700 text-sm">Plain ERM works without modifications</p>
+              </div>
+              
+              <div className="bg-purple-50 p-6 rounded-lg border border-purple-200 text-center">
+                <div className="text-3xl mb-3">🎯</div>
+                <h3 className="font-bold text-purple-800 mb-2">Simpler Policies</h3>
+                <p className="text-gray-700 text-sm">Low trajectory variance enables simple solutions</p>
+              </div>
+              
+              <div className="bg-indigo-50 p-6 rounded-lg border border-indigo-200 text-center">
+                <div className="text-3xl mb-3">⚡</div>
+                <h3 className="font-bold text-indigo-800 mb-2">Fast Convergence</h3>
+                <p className="text-gray-700 text-sm">Optimal <MathExpr>O(1/√m)</MathExpr> rate achieved</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-gradient-to-r from-violet-600 to-purple-600 text-white p-8 rounded-2xl text-center shadow-xl">
+            <h3 className="text-2xl font-bold mb-4">✨ Main Insight</h3>
+            <p className="text-xl">
+              Bounded likelihood ratios ⇒ reduced variance ⇒ tractable generalization
+            </p>
+          </div>
+        </div>
+      </div>
+    )
+  },
+  {
+    id: 'decodability',
+    title: 'Decodability Assumption',
+    content: (
+      <div className="min-h-screen bg-gradient-to-br from-amber-50 to-yellow-100 p-16">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl font-bold text-amber-800 mb-4">Decodability Assumption</h1>
+            <p className="text-xl text-amber-600">Identify the environment early</p>
           </div>
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-8">
-            <div className="bg-white p-8 rounded-2xl shadow-xl border-l-4 border-orange-500">
-              <h2 className="text-2xl font-bold text-gray-800 mb-6">Musical Analogy</h2>
+            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30">
+              <h2 className="text-2xl font-bold text-gray-800 mb-6">🎵 Musical Analogy</h2>
               
               <div className="space-y-6">
-                <div className="bg-orange-50 p-6 rounded-lg">
+                <div className="bg-amber-50 p-6 rounded-lg border border-amber-200">
                   <div className="text-4xl mb-4 text-center">🎵</div>
-                  <p className="text-lg text-center font-semibold text-orange-800 mb-2">
+                  <p className="text-lg text-center font-semibold text-amber-800 mb-2">
                     "First three notes reveal the song"
                   </p>
                   <p className="text-gray-700 text-center">
-                    Short prefix uniquely identifies the MDP
+                    Short trajectory prefix uniquely identifies MDP
                   </p>
                 </div>
                 
                 <div className="space-y-3">
                   <div className="flex items-center space-x-3">
-                    <div className="w-4 h-4 bg-orange-500 rounded-full"></div>
-                    <p className="text-gray-700">Environments are distinguishable</p>
+                    <div className="w-4 h-4 bg-amber-500 rounded-full"></div>
+                    <p className="text-gray-700">Short trajectory prefix uniquely identifies MDP</p>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <div className="w-4 h-4 bg-orange-500 rounded-full"></div>
-                    <p className="text-gray-700">Quick identification possible</p>
+                    <div className="w-4 h-4 bg-amber-500 rounded-full"></div>
+                    <p className="text-gray-700">Practical analogy: signature in early states</p>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <div className="w-4 h-4 bg-orange-500 rounded-full"></div>
-                    <p className="text-gray-700">Switch to optimal control</p>
+                    <div className="w-4 h-4 bg-amber-500 rounded-full"></div>
+                    <p className="text-gray-700">Policy can switch to optimal control once MDP is known</p>
                   </div>
                 </div>
               </div>
             </div>
             
-            <div className="bg-white p-8 rounded-2xl shadow-xl border-l-4 border-green-500">
-              <h2 className="text-2xl font-bold text-gray-800 mb-6">Truncated Policies</h2>
+            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30">
+              <h2 className="text-2xl font-bold text-gray-800 mb-6">🚀 Truncated Policies</h2>
               
               <div className="space-y-6">
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <p className="text-sm font-mono text-center">
+                <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                  <p className="text-lg font-mono text-center mb-4">
                     π<sub>truncated</sub>(h<sub>t</sub>) = {'{'}
-                    <br />
-                    &nbsp;&nbsp;explore if MDP not identified
-                    <br />
-                    &nbsp;&nbsp;π*<sub>M</sub>(h<sub>t</sub>) if MDP M identified
-                    <br />
-                    {'}'}
                   </p>
+                  <div className="ml-4 space-y-2 text-sm font-mono">
+                    <p>🔍 explore if MDP not identified</p>
+                    <p>⚡ π*<sub>M</sub>(h<sub>t</sub>) if MDP M identified</p>
+                  </div>
+                  <p className="text-lg font-mono text-center mt-4">{'}'}</p>
                 </div>
                 
                 <div className="bg-green-50 border-2 border-green-200 p-6 rounded-lg text-center">
-                  <p className="text-lg font-semibold text-green-800 mb-2">ERM achieves:</p>
-                  <p className="text-4xl font-bold text-green-600 mb-2">Õ(1/√m)</p>
+                  <p className="text-lg font-semibold text-green-800 mb-2">Result: ERM achieves</p>
+                  <p className="text-4xl font-bold text-green-600 mb-2">
+                    <MathExpr>Õ(1/√m)</MathExpr>
+                  </p>
                   <p className="text-gray-600">same optimal rate!</p>
                 </div>
               </div>
             </div>
           </div>
           
-          <div className="bg-white p-8 rounded-2xl shadow-xl">
-            <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Flow Chart: Explore → Decode → Act Optimally</h2>
+          <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30">
+            <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">🔄 Flow Chart: Explore → Decode → Act Optimally</h2>
             
             <div className="flex items-center justify-center space-x-6">
               <div className="text-center">
                 <div className="bg-yellow-100 p-6 rounded-lg mb-4 border-2 border-yellow-300">
                   <Search className="w-12 h-12 mx-auto mb-2 text-yellow-600" />
-                  <p className="font-semibold">Explore</p>
-                  <p className="text-sm text-gray-600">for ĥ steps</p>
+                  <p className="font-semibold">🔍 Explore</p>
+                  <p className="text-sm text-gray-600">for h̄ steps</p>
                 </div>
               </div>
               
               <ArrowRight className="w-8 h-8 text-gray-400" />
               
               <div className="text-center">
-                <div className="bg-orange-100 p-6 rounded-lg mb-4 border-2 border-orange-300">
-                  <Eye className="w-12 h-12 mx-auto mb-2 text-orange-600" />
-                  <p className="font-semibold">Decode</p>
+                <div className="bg-amber-100 p-6 rounded-lg mb-4 border-2 border-amber-300">
+                  <Eye className="w-12 h-12 mx-auto mb-2 text-amber-600" />
+                  <p className="font-semibold">🔍 Decode</p>
                   <p className="text-sm text-gray-600">identify MDP</p>
                 </div>
               </div>
@@ -601,7 +667,7 @@ const slides = [
               <div className="text-center">
                 <div className="bg-green-100 p-6 rounded-lg mb-4 border-2 border-green-300">
                   <Target className="w-12 h-12 mx-auto mb-2 text-green-600" />
-                  <p className="font-semibold">Act Optimally</p>
+                  <p className="font-semibold">⚡ Act Optimally</p>
                   <p className="text-sm text-gray-600">use π*<sub>M</sub></p>
                 </div>
               </div>
@@ -612,187 +678,55 @@ const slides = [
     )
   },
   {
-    id: 'proof-sketches',
-    title: 'Proof Sketches at a Glance',
+    id: 'decodability_bound',
+    title: 'Formal Guarantee: Decodability',
     content: (
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-purple-100 p-16">
+      <div className="min-h-screen bg-gradient-to-br from-rose-50 to-pink-100 p-16">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-gray-800 mb-4">Proof Sketches at a Glance</h1>
-            <p className="text-xl text-gray-600">How Structure Reduces Complexity</p>
+            <h1 className="text-4xl font-bold text-rose-800 mb-4">Formal Guarantee: Decodability</h1>
+            <p className="text-xl text-rose-600">Truncated policy class enables fast convergence</p>
           </div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-8">
-            <div className="bg-white p-8 rounded-2xl shadow-xl border-t-4 border-blue-500">
-              <div className="text-center mb-6">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl">=</span>
-                </div>
-                <h2 className="text-2xl font-bold text-blue-800">Uniform Similarity</h2>
-              </div>
-              
-              <div className="space-y-4">
-                <div className="bg-blue-50 p-4 rounded-lg">
-                  <p className="font-semibold text-blue-800 mb-2">Key Insight:</p>
-                  <p className="text-gray-700">Reduced variance ⇒ small Rademacher complexity</p>
-                </div>
-                
-                <div className="space-y-2 text-sm text-gray-600">
-                  <p>1. Bounded likelihood ratios</p>
-                  <p>2. Control trajectory distribution differences</p>
-                  <p>3. Uniform convergence follows</p>
-                </div>
-                
-                <div className="text-center">
-                  <div className="inline-block bg-blue-100 p-3 rounded-lg">
-                    <p className="text-lg font-bold text-blue-800">Complexity ↓</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div className="bg-white/80 backdrop-blur-sm p-12 rounded-2xl shadow-xl border border-white/30 mb-8">
+            <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">📐 Key Result</h2>
             
-            <div className="bg-white p-8 rounded-2xl shadow-xl border-t-4 border-orange-500">
-              <div className="text-center mb-6">
-                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Search className="w-8 h-8 text-orange-600" />
-                </div>
-                <h2 className="text-2xl font-bold text-orange-800">Decodability</h2>
-              </div>
-              
-              <div className="space-y-4">
-                <div className="bg-orange-50 p-4 rounded-lg">
-                  <p className="font-semibold text-orange-800 mb-2">Key Insight:</p>
-                  <p className="text-gray-700">Policy class shrinks ⇒ small covering number</p>
-                </div>
-                
-                <div className="space-y-2 text-sm text-gray-600">
-                  <p>1. Truncate policies after identification</p>
-                  <p>2. Effective hypothesis space reduces</p>
-                  <p>3. Covering number becomes manageable</p>
-                </div>
-                
-                <div className="text-center">
-                  <div className="inline-block bg-orange-100 p-3 rounded-lg">
-                    <p className="text-lg font-bold text-orange-800">Complexity ↓</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div className="bg-white p-8 rounded-2xl shadow-xl">
-            <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Comic-Style: "Complexity Shrinks"</h2>
-            
-            <div className="flex items-center justify-center space-x-8">
+            <div className="bg-gradient-to-r from-rose-100 to-pink-100 p-8 rounded-xl border-2 border-rose-300 mb-8">
               <div className="text-center">
-                <div className="bg-red-100 p-6 rounded-lg mb-4 border-2 border-red-300">
-                  <div className="text-4xl mb-2">😰</div>
-                  <p className="font-bold text-red-800">Without Structure</p>
-                  <p className="text-sm text-gray-600">Exponential complexity</p>
-                </div>
-              </div>
-              
-              <div className="text-center">
-                <Lightbulb className="w-12 h-12 text-yellow-500 mx-auto mb-4" />
-                <p className="font-semibold text-gray-800">Add Structure!</p>
-              </div>
-              
-              <div className="text-center">
-                <div className="bg-green-100 p-6 rounded-lg mb-4 border-2 border-green-300">
-                  <div className="text-4xl mb-2">😊</div>
-                  <p className="font-bold text-green-800">With Structure</p>
-                  <p className="text-sm text-gray-600">Õ(1/√m) complexity</p>
+                <p className="text-2xl font-bold text-rose-800 mb-4">Sample Complexity:</p>
+                <div className="bg-white/80 backdrop-blur-sm p-6 rounded-lg border border-rose-200">
+                  <p className="text-2xl font-mono text-rose-600">
+                    <MathExpr>m = O(H²(|S||A||C|)^(2h̄) log|A|/ε²)</MathExpr>
+                  </p>
                 </div>
               </div>
             </div>
             
-            <div className="mt-8 bg-purple-50 p-6 rounded-lg text-center">
-              <p className="text-lg font-semibold text-purple-800">
-                Structure is the key to tractable generalization!
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    )
-  },
-  {
-    id: 'practical-implications',
-    title: 'Empirical / Practical Implications',
-    content: (
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-green-100 p-16">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-gray-800 mb-4">Empirical / Practical Implications</h1>
-            <p className="text-xl text-gray-600">When Simple Methods Suffice</p>
-          </div>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
-            <div className="bg-white p-6 rounded-xl shadow-lg border-t-4 border-green-500">
-              <div className="text-center mb-4">
-                <CheckCircle className="w-12 h-12 mx-auto mb-3 text-green-600" />
-                <h3 className="text-xl font-bold text-gray-800">Simple ERM Works</h3>
-              </div>
-              <ul className="space-y-2 text-gray-700">
-                <li>• No regularization needed</li>
-                <li>• No meta-learning required</li>
-                <li>• When structure exists</li>
-                <li>• Plain empirical risk minimization</li>
-              </ul>
-            </div>
-            
-            <div className="bg-white p-6 rounded-xl shadow-lg border-t-4 border-blue-500">
-              <div className="text-center mb-4">
-                <Target className="w-12 h-12 mx-auto mb-3 text-blue-600" />
-                <h3 className="text-xl font-bold text-gray-800">Benchmark Examples</h3>
-              </div>
-              <ul className="space-y-2 text-gray-700">
-                <li>• <strong>Procgen:</strong> Visual similarity</li>
-                <li>• <strong>Meta-World:</strong> Task decodability</li>
-                <li>• Assumptions roughly hold</li>
-                <li>• Validate theoretical insights</li>
-              </ul>
-            </div>
-            
-            <div className="bg-white p-6 rounded-xl shadow-lg border-t-4 border-purple-500">
-              <div className="text-center mb-4">
-                <Lightbulb className="w-12 h-12 mx-auto mb-3 text-purple-600" />
-                <h3 className="text-xl font-bold text-gray-800">Design Advice</h3>
-              </div>
-              <ul className="space-y-2 text-gray-700">
-                <li>• Look for similarity first</li>
-                <li>• Check for easy task IDs</li>
-                <li>• Before adding complexity</li>
-                <li>• Structure beats algorithms</li>
-              </ul>
-            </div>
-          </div>
-          
-          <div className="bg-white p-8 rounded-2xl shadow-xl mb-8">
-            <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Decision Framework</h2>
-            
-            <div className="space-y-6">
-              <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-lg">
-                <h3 className="text-lg font-bold text-blue-800 mb-2">Step 1: Analyze Your Environment</h3>
-                <p className="text-gray-700">Do environments share similar structure? Can you quickly identify which environment you're in?</p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="bg-rose-50 p-6 rounded-lg border border-rose-200 text-center">
+                <div className="text-3xl mb-3">📏</div>
+                <h3 className="font-bold text-rose-800 mb-2">Prefix Length</h3>
+                <p className="text-gray-700 text-sm">Complexity grows with prefix length <MathExpr>h̄</MathExpr></p>
               </div>
               
-              <div className="bg-green-50 border-l-4 border-green-500 p-6 rounded-lg">
-                <h3 className="text-lg font-bold text-green-800 mb-2">Step 2: Choose Your Approach</h3>
-                <p className="text-gray-700">If structure exists → try simple ERM first. If not → consider more complex meta-learning approaches.</p>
+              <div className="bg-pink-50 p-6 rounded-lg border border-pink-200 text-center">
+                <div className="text-3xl mb-3">🎯</div>
+                <h3 className="font-bold text-pink-800 mb-2">Class Size</h3>
+                <p className="text-gray-700 text-sm">Identifiability reduces effective class size</p>
               </div>
               
-              <div className="bg-purple-50 border-l-4 border-purple-500 p-6 rounded-lg">
-                <h3 className="text-lg font-bold text-purple-800 mb-2">Step 3: Validate Assumptions</h3>
-                <p className="text-gray-700">Test whether your structural assumptions hold in practice. Measure similarity or decodability.</p>
+              <div className="bg-purple-50 p-6 rounded-lg border border-purple-200 text-center">
+                <div className="text-3xl mb-3">⚡</div>
+                <h3 className="font-bold text-purple-800 mb-2">Fast Convergence</h3>
+                <p className="text-gray-700 text-sm">Still achieves <MathExpr>O(1/√m)</MathExpr> rate</p>
               </div>
             </div>
           </div>
           
-          <div className="bg-gradient-to-r from-green-600 to-blue-600 text-white p-8 rounded-2xl text-center shadow-xl">
-            <h3 className="text-2xl font-bold mb-4">Key Insight</h3>
+          <div className="bg-gradient-to-r from-rose-600 to-pink-600 text-white p-8 rounded-2xl text-center shadow-xl">
+            <h3 className="text-2xl font-bold mb-4">🔑 Main Insight</h3>
             <p className="text-xl">
-              Structure in the environment is often more valuable than sophistication in the algorithm
+              Truncated policies ⇒ smaller hypothesis class ⇒ better covering number
             </p>
           </div>
         </div>
@@ -800,87 +734,246 @@ const slides = [
     )
   },
   {
-    id: 'limitations',
-    title: 'Limitations & Future Work',
+    id: 'counterexample',
+    title: 'When Similarity Fails: A Lower Bound',
     content: (
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-yellow-100 p-16">
+      <div className="min-h-screen bg-gradient-to-br from-red-50 to-orange-100 p-16">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-gray-800 mb-4">Limitations & Future Work</h1>
-            <p className="text-xl text-gray-600">Honest Assessment & Research Directions</p>
+            <h1 className="text-4xl font-bold text-red-800 mb-4">When Similarity Fails: A Lower Bound</h1>
+            <p className="text-xl text-red-600">Even identical transitions can't save us</p>
           </div>
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-8">
-            <div className="bg-white p-8 rounded-2xl shadow-xl border-l-4 border-red-500">
+            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30">
               <div className="flex items-center mb-6">
                 <AlertTriangle className="w-8 h-8 text-red-600 mr-3" />
-                <h2 className="text-2xl font-bold text-gray-800">Current Limitations</h2>
+                <h2 className="text-2xl font-bold text-gray-800">🏗️ Construction</h2>
               </div>
               
               <div className="space-y-4">
-                <div className="bg-red-50 p-4 rounded-lg">
-                  <p className="font-semibold text-red-800 mb-2">Training-Environment Exploration</p>
-                  <p className="text-gray-700 text-sm">We assume perfect knowledge of training MDPs</p>
+                <div className="bg-red-50 p-6 rounded-lg border border-red-200">
+                  <p className="font-semibold text-red-800 mb-3">Constructed MDP Family:</p>
+                  <ul className="space-y-2 text-gray-700">
+                    <li>• ✅ <strong>Shared dynamics:</strong> All MDPs have identical transitions</li>
+                    <li>• ❌ <strong>Different costs:</strong> Reward functions vary across environments</li>
+                    <li>• 🚫 <strong>No structure:</strong> Neither similarity nor decodability holds</li>
+                  </ul>
                 </div>
                 
-                <div className="bg-red-50 p-4 rounded-lg">
-                  <p className="font-semibold text-red-800 mb-2">Exact vs Approximate Structure</p>
-                  <p className="text-gray-700 text-sm">Real environments may only approximately satisfy assumptions</p>
-                </div>
-                
-                <div className="bg-red-50 p-4 rounded-lg">
-                  <p className="font-semibold text-red-800 mb-2">Finite Horizon</p>
-                  <p className="text-gray-700 text-sm">Infinite-horizon case remains open</p>
-                </div>
-                
-                <div className="bg-red-50 p-4 rounded-lg">
-                  <p className="font-semibold text-red-800 mb-2">Function Approximation</p>
-                  <p className="text-gray-700 text-sm">Neural networks and large state spaces not covered</p>
+                <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
+                  <p className="text-orange-800 font-semibold text-center">
+                    📊 Identical transitions ≠ Generalization
+                  </p>
                 </div>
               </div>
             </div>
             
-            <div className="bg-white p-8 rounded-2xl shadow-xl border-l-4 border-blue-500">
+            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30">
               <div className="flex items-center mb-6">
-                <Lightbulb className="w-8 h-8 text-blue-600 mr-3" />
-                <h2 className="text-2xl font-bold text-gray-800">Future Directions</h2>
+                <BarChart3 className="w-8 h-8 text-orange-600 mr-3" />
+                <h2 className="text-2xl font-bold text-gray-800">📈 Lower Bound Result</h2>
               </div>
               
               <div className="space-y-4">
-                <div className="bg-blue-50 p-4 rounded-lg">
-                  <p className="font-semibold text-blue-800 mb-2">Combining Assumptions</p>
-                  <p className="text-gray-700 text-sm">What if environments are both similar AND decodable?</p>
+                <div className="bg-orange-50 p-6 rounded-lg border border-orange-200">
+                  <p className="font-semibold text-orange-800 mb-3">Sample Complexity:</p>
+                  <div className="text-center">
+                    <p className="text-3xl font-bold text-orange-800 mb-2">
+                      Still Exponential in <MathExpr>H</MathExpr>
+                    </p>
+                    <p className="text-sm text-gray-600">No improvement without structure</p>
+                  </div>
                 </div>
                 
-                <div className="bg-blue-50 p-4 rounded-lg">
-                  <p className="font-semibold text-blue-800 mb-2">Automatic Detection</p>
-                  <p className="text-gray-700 text-sm">Algorithms that detect which structure exists</p>
-                </div>
-                
-                <div className="bg-blue-50 p-4 rounded-lg">
-                  <p className="font-semibold text-blue-800 mb-2">Robustness Analysis</p>
-                  <p className="text-gray-700 text-sm">How much can assumptions be violated?</p>
-                </div>
-                
-                <div className="bg-blue-50 p-4 rounded-lg">
-                  <p className="font-semibold text-blue-800 mb-2">Deep RL Extension</p>
-                  <p className="text-gray-700 text-sm">Neural networks with structural priors</p>
+                <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                  <p className="text-sm text-gray-700">
+                    <strong>💡 Insight:</strong> Shared dynamics alone are insufficient. 
+                    Structure in costs/rewards is crucial for generalization.
+                  </p>
                 </div>
               </div>
             </div>
           </div>
           
-          <div className="bg-white p-8 rounded-2xl shadow-xl">
-            <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Research Questions for Students</h2>
+          <div className="bg-gradient-to-r from-red-600 to-orange-600 text-white p-8 rounded-2xl text-center shadow-xl">
+            <h3 className="text-3xl font-bold mb-4">⚠️ Key Lesson</h3>
+            <p className="text-xl">
+              <strong>Structure is necessary:</strong> Without either similarity or decodability, generalization remains exponentially hard
+            </p>
+          </div>
+        </div>
+      </div>
+    )
+  },
+  {
+    id: 'proof_similarity',
+    title: 'Why ERM Works under Similarity',
+    content: (
+      <div className="min-h-screen bg-gradient-to-br from-sky-50 to-blue-100 p-16">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl font-bold text-sky-800 mb-4">Why ERM Works under Similarity</h1>
+            <p className="text-xl text-sky-600">Proof Sketch – Uniform Similarity</p>
+          </div>
+          
+          <div className="bg-white/80 backdrop-blur-sm p-10 rounded-2xl shadow-xl border border-white/30 mb-8">
+            <h2 className="text-2xl font-bold text-gray-800 mb-8 text-center">🧮 Proof Strategy</h2>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-gradient-to-br from-purple-100 to-purple-200 p-6 rounded-lg">
+            <div className="space-y-6">
+              <div className="bg-sky-50 p-6 rounded-lg border border-sky-200">
+                <div className="flex items-center mb-3">
+                  <span className="text-2xl mr-3">1️⃣</span>
+                  <h3 className="text-xl font-bold text-sky-800">Rewrite Excess Risk</h3>
+                </div>
+                <p className="text-gray-700 ml-8">Express generalization error as weighted sum over training MDPs</p>
+              </div>
+              
+              <div className="bg-blue-50 p-6 rounded-lg border border-blue-200">
+                <div className="flex items-center mb-3">
+                  <span className="text-2xl mr-3">2️⃣</span>
+                  <h3 className="text-xl font-bold text-blue-800">Bounded Likelihood Ratio</h3>
+                </div>
+                <p className="text-gray-700 ml-8">Use uniform similarity to control trajectory distribution differences</p>
+              </div>
+              
+              <div className="bg-indigo-50 p-6 rounded-lg border border-indigo-200">
+                <div className="flex items-center mb-3">
+                  <span className="text-2xl mr-3">3️⃣</span>
+                  <h3 className="text-xl font-bold text-indigo-800">Uniform Convergence</h3>
+                </div>
+                <p className="text-gray-700 ml-8">Apply Rademacher complexity analysis to show fast convergence</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-gradient-to-r from-sky-600 to-blue-600 text-white p-8 rounded-2xl text-center shadow-xl">
+            <h3 className="text-2xl font-bold mb-4">🔑 Key Insight</h3>
+            <p className="text-xl">
+              Bounded variance ⇒ Small Rademacher complexity ⇒ Fast convergence
+            </p>
+          </div>
+        </div>
+      </div>
+    )
+  },
+  {
+    id: 'proof_decodability',
+    title: 'Why ERM Works under Decodability',
+    content: (
+      <div className="min-h-screen bg-gradient-to-br from-teal-50 to-cyan-100 p-16">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl font-bold text-teal-800 mb-4">Why ERM Works under Decodability</h1>
+            <p className="text-xl text-teal-600">Proof Sketch – Decodability</p>
+          </div>
+          
+          <div className="bg-white/80 backdrop-blur-sm p-10 rounded-2xl shadow-xl border border-white/30 mb-8">
+            <h2 className="text-2xl font-bold text-gray-800 mb-8 text-center">🧮 Proof Strategy</h2>
+            
+            <div className="space-y-6">
+              <div className="bg-teal-50 p-6 rounded-lg border border-teal-200">
+                <div className="flex items-center mb-3">
+                  <span className="text-2xl mr-3">1️⃣</span>
+                  <h3 className="text-xl font-bold text-teal-800">Truncate Policies</h3>
+                </div>
+                <p className="text-gray-700 ml-8">Restrict to policies that identify MDP after <MathExpr>h̄</MathExpr> steps</p>
+              </div>
+              
+              <div className="bg-cyan-50 p-6 rounded-lg border border-cyan-200">
+                <div className="flex items-center mb-3">
+                  <span className="text-2xl mr-3">2️⃣</span>
+                  <h3 className="text-xl font-bold text-cyan-800">Smaller Hypothesis Class</h3>
+                </div>
+                <p className="text-gray-700 ml-8">Effective hypothesis space reduces ⇒ better covering number</p>
+              </div>
+              
+              <div className="bg-blue-50 p-6 rounded-lg border border-blue-200">
+                <div className="flex items-center mb-3">
+                  <span className="text-2xl mr-3">3️⃣</span>
+                  <h3 className="text-xl font-bold text-blue-800">Apply Massart's Lemma</h3>
+                </div>
+                <p className="text-gray-700 ml-8">Use Massart's lemma + union bound for concentration</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-gradient-to-r from-teal-600 to-cyan-600 text-white p-8 rounded-2xl text-center shadow-xl">
+            <h3 className="text-2xl font-bold mb-4">🔑 Key Insight</h3>
+            <p className="text-xl">
+              Truncated policies ⇒ Smaller hypothesis class ⇒ Better generalization
+            </p>
+          </div>
+        </div>
+      </div>
+    )
+  },
+  {
+    id: 'unification',
+    title: 'Two Regimes, One Sample Complexity',
+    content: (
+      <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-purple-100 p-16">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl font-bold text-indigo-800 mb-4">Two Regimes, One Sample Complexity</h1>
+            <p className="text-xl text-indigo-600">What makes generalization possible?</p>
+          </div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-8">
+            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30">
+              <div className="text-center mb-6">
+                <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Layers className="w-8 h-8 text-emerald-600" />
+                </div>
+                <h2 className="text-2xl font-bold text-emerald-800">🔄 Uniform Similarity</h2>
+              </div>
+              
+              <div className="space-y-4">
+                <div className="bg-emerald-50 p-4 rounded-lg border border-emerald-200">
+                  <p className="font-semibold text-emerald-800 mb-2">How it works:</p>
+                  <p className="text-gray-700">Suppresses variance across environments</p>
+                </div>
+                
+                <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+                  <p className="font-semibold text-green-800 mb-2">Effect:</p>
+                  <p className="text-gray-700">Reduces effective policy class complexity</p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30">
+              <div className="text-center mb-6">
+                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Search className="w-8 h-8 text-orange-600" />
+                </div>
+                <h2 className="text-2xl font-bold text-orange-800">🔍 Decodability</h2>
+              </div>
+              
+              <div className="space-y-4">
+                <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
+                  <p className="font-semibold text-orange-800 mb-2">How it works:</p>
+                  <p className="text-gray-700">Eliminates epistemic uncertainty</p>
+                </div>
+                
+                <div className="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
+                  <p className="font-semibold text-yellow-800 mb-2">Effect:</p>
+                  <p className="text-gray-700">Reduces effective policy class size</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30 mb-8">
+            <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">🎯 Unified Insight</h2>
+            
+            <div className="text-center space-y-6">
+              <div className="bg-gradient-to-r from-indigo-100 to-purple-100 p-6 rounded-lg border-2 border-indigo-300">
                 <div className="flex items-center mb-4">
                   <MessageCircle className="w-6 h-6 text-purple-600 mr-2" />
                   <h3 className="font-bold text-purple-800">Question 1</h3>
                 </div>
                 <p className="text-gray-700">
-                  Can we develop algorithms that automatically detect whether uniform similarity or decodability holds in a given environment?
+                  How can we automatically detect which structural regime applies in a given environment?
                 </p>
               </div>
               
@@ -890,10 +983,169 @@ const slides = [
                   <h3 className="font-bold text-green-800">Question 2</h3>
                 </div>
                 <p className="text-gray-700">
-                  How can we extend these results to continuous state spaces and neural network function approximation?
+                  Can we combine both assumptions for even better generalization guarantees?
                 </p>
               </div>
             </div>
+          </div>
+          
+          <div className="bg-gradient-to-r from-green-600 to-blue-600 text-white p-8 rounded-2xl text-center shadow-xl">
+            <h3 className="text-2xl font-bold mb-4">🚀 The Journey Continues</h3>
+            <p className="text-xl">
+              From theory to practice: Many exciting challenges await!
+            </p>
+          </div>
+        </div>
+      </div>
+    )
+  },
+  {
+    id: 'limitations',
+    title: 'Limitations & Assumptions',
+    content: (
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-yellow-100 p-16">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl font-bold text-gray-800 mb-4">Limitations & Assumptions</h1>
+            <p className="text-xl text-gray-600">Honest assessment of current approach</p>
+          </div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-8">
+            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30">
+              <div className="flex items-center mb-6">
+                <AlertTriangle className="w-8 h-8 text-red-600 mr-3" />
+                <h2 className="text-2xl font-bold text-gray-800">⚠️ Current Limitations</h2>
+              </div>
+              
+              <div className="space-y-4">
+                <div className="bg-red-50 p-4 rounded-lg border border-red-200">
+                  <p className="font-semibold text-red-800 mb-2">🔍 Idealized Setting</p>
+                  <p className="text-gray-700 text-sm">Assumes full access to training MDPs</p>
+                </div>
+                
+                <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
+                  <p className="font-semibold text-orange-800 mb-2">📏 Exact Structure</p>
+                  <p className="text-gray-700 text-sm">Real-world: approximate structure, not exact</p>
+                </div>
+                
+                <div className="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
+                  <p className="font-semibold text-yellow-800 mb-2">⏰ Finite Horizon</p>
+                  <p className="text-gray-700 text-sm">Finite horizon + tabular setting only</p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30">
+              <div className="flex items-center mb-6">
+                <Lightbulb className="w-8 h-8 text-blue-600 mr-3" />
+                <h2 className="text-2xl font-bold text-gray-800">💡 Reality Check</h2>
+              </div>
+              
+              <div className="space-y-4">
+                <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                  <p className="font-semibold text-blue-800 mb-2">🌍 Real Environments</p>
+                  <p className="text-gray-700 text-sm">May only approximately satisfy our assumptions</p>
+                </div>
+                
+                <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
+                  <p className="font-semibold text-purple-800 mb-2">🧠 Function Approximation</p>
+                  <p className="text-gray-700 text-sm">Neural networks and large state spaces not covered</p>
+                </div>
+                
+                <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+                  <p className="font-semibold text-green-800 mb-2">📚 Theoretical Foundations</p>
+                  <p className="text-gray-700 text-sm">Strong theoretical insights, practical gaps remain</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-gradient-to-r from-yellow-500 to-orange-500 text-white p-8 rounded-2xl text-center shadow-xl">
+            <h3 className="text-2xl font-bold mb-4">🎯 Take-Home Message</h3>
+            <p className="text-xl">
+              Strong theoretical foundation, but bridging to practice remains an open challenge
+            </p>
+          </div>
+        </div>
+      </div>
+    )
+  },
+  {
+    id: 'future',
+    title: 'Future Directions',
+    content: (
+      <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-100 p-16">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl font-bold text-green-800 mb-4">Future Directions</h1>
+            <p className="text-xl text-green-600">Exciting research opportunities ahead</p>
+          </div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-xl border border-white/30">
+              <div className="flex items-center mb-4">
+                <Globe className="w-6 h-6 text-green-600 mr-3" />
+                <h3 className="text-lg font-bold text-green-800">Approximate Structure</h3>
+              </div>
+              <p className="text-gray-700 text-sm">Explore approximate similarity/decodability in real environments</p>
+            </div>
+            
+            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-xl border border-white/30">
+              <div className="flex items-center mb-4">
+                <Activity className="w-6 h-6 text-blue-600 mr-3" />
+                <h3 className="text-lg font-bold text-blue-800">Automatic Detection</h3>
+              </div>
+              <p className="text-gray-700 text-sm">Detect structure automatically without prior knowledge</p>
+            </div>
+            
+            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-xl border border-white/30">
+              <div className="flex items-center mb-4">
+                <BookOpen className="w-6 h-6 text-purple-600 mr-3" />
+                <h3 className="text-lg font-bold text-purple-800">Function Approximation</h3>
+              </div>
+              <p className="text-gray-700 text-sm">Extend to function approximation & infinite horizon</p>
+            </div>
+            
+            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-xl border border-white/30">
+              <div className="flex items-center mb-4">
+                <Zap className="w-6 h-6 text-orange-600 mr-3" />
+                <h3 className="text-lg font-bold text-orange-800">Empirical Validation</h3>
+              </div>
+              <p className="text-gray-700 text-sm">Empirical tests on benchmarks (Meta-World, Procgen)</p>
+            </div>
+          </div>
+          
+          <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30 mb-8">
+            <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">🔬 Research Questions</h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-gradient-to-br from-purple-100 to-purple-200 p-6 rounded-lg">
+                <div className="flex items-center mb-4">
+                  <MessageCircle className="w-6 h-6 text-purple-600 mr-2" />
+                  <h3 className="font-bold text-purple-800">Question 1</h3>
+                </div>
+                <p className="text-gray-700">
+                  How can we automatically detect which structural regime applies in a given environment?
+                </p>
+              </div>
+              
+              <div className="bg-gradient-to-br from-green-100 to-green-200 p-6 rounded-lg">
+                <div className="flex items-center mb-4">
+                  <MessageCircle className="w-6 h-6 text-green-600 mr-2" />
+                  <h3 className="font-bold text-green-800">Question 2</h3>
+                </div>
+                <p className="text-gray-700">
+                  Can we combine both assumptions for even better generalization guarantees?
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-gradient-to-r from-green-600 to-blue-600 text-white p-8 rounded-2xl text-center shadow-xl">
+            <h3 className="text-2xl font-bold mb-4">🚀 The Journey Continues</h3>
+            <p className="text-xl">
+              From theory to practice: Many exciting challenges await!
+            </p>
           </div>
         </div>
       </div>
@@ -901,7 +1153,7 @@ const slides = [
   },
   {
     id: 'takeaways',
-    title: 'Key Take-aways & Discussion Prompts',
+    title: 'Key Take-Aways',
     content: (
       <div className="min-h-screen bg-gradient-to-br from-blue-600 to-purple-700 p-16 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
@@ -912,71 +1164,64 @@ const slides = [
         
         <div className="max-w-6xl mx-auto text-white relative z-10">
           <div className="text-center mb-12">
-            <h1 className="text-5xl font-bold mb-4">Key Take-aways</h1>
-            <p className="text-2xl opacity-90">& Discussion Prompts</p>
+            <h1 className="text-5xl font-bold mb-4">Key Take-Aways</h1>
+            <p className="text-2xl opacity-90">When can simple ERM generalize in RL?</p>
           </div>
           
-          <div className="bg-white bg-opacity-15 backdrop-blur-sm p-8 rounded-2xl border border-white border-opacity-20 mb-8">
-            <h2 className="text-3xl font-bold mb-6 text-center">Main Message</h2>
-            <p className="text-xl text-center leading-relaxed">
-              <strong>Structure turns impossibility into Õ(1/√m) learnability</strong>
-            </p>
-          </div>
-          
-          <div className="bg-white bg-opacity-15 backdrop-blur-sm p-8 rounded-2xl border border-white border-opacity-20 mb-8">
-            <h2 className="text-2xl font-bold mb-6 text-center">If You Remember Three Things...</h2>
+          <div className="bg-white/15 backdrop-blur-sm p-8 rounded-2xl border border-white/20 mb-8">
+            <h2 className="text-3xl font-bold mb-6 text-center">✨ Main Messages</h2>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
               <div className="text-center">
-                <div className="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl font-bold">1</span>
                 </div>
-                <h3 className="text-lg font-bold mb-2">Structure Matters</h3>
-                <p className="text-sm opacity-90">Environmental structure is often more valuable than algorithmic sophistication</p>
+                <h3 className="text-lg font-bold mb-2">Structure Turns Intractability</h3>
+                <p className="text-sm opacity-90">Into <MathExpr className="text-yellow-300">Õ(1/√m)</MathExpr> learnability</p>
               </div>
               
               <div className="text-center">
-                <div className="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl font-bold">2</span>
                 </div>
-                <h3 className="text-lg font-bold mb-2">Simple Can Work</h3>
-                <p className="text-sm opacity-90">Plain ERM achieves optimal rates under structural assumptions</p>
+                <h3 className="text-lg font-bold mb-2">Two Assumptions</h3>
+                <p className="text-sm opacity-90">Similarity or identifiability enable fast generalization</p>
               </div>
               
               <div className="text-center">
-                <div className="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl font-bold">3</span>
                 </div>
-                <h3 className="text-lg font-bold mb-2">Two Regimes</h3>
-                <p className="text-sm opacity-90">Both similarity and distinguishability enable generalization</p>
+                <h3 className="text-lg font-bold mb-2">Simple ERM Works</h3>
+                <p className="text-sm opacity-90">No regularization needed when structure exists</p>
               </div>
             </div>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-            <div className="bg-white bg-opacity-15 backdrop-blur-sm p-6 rounded-xl border border-white border-opacity-20">
+            <div className="bg-white/15 backdrop-blur-sm p-6 rounded-xl border border-white/20">
               <div className="flex items-center mb-4">
                 <MessageCircle className="w-6 h-6 mr-3" />
-                <h3 className="text-xl font-bold">Discussion Question 1</h3>
+                <h3 className="text-xl font-bold">💬 Discussion Prompt</h3>
               </div>
               <p className="opacity-90">
-                Which structural regime do you think a self-driving car faces when moving between cities? Why?
+                How common is structure in real tasks? Can we design environments to satisfy our assumptions?
               </p>
             </div>
             
-            <div className="bg-white bg-opacity-15 backdrop-blur-sm p-6 rounded-xl border border-white border-opacity-20">
+            <div className="bg-white/15 backdrop-blur-sm p-6 rounded-xl border border-white/20">
               <div className="flex items-center mb-4">
-                <MessageCircle className="w-6 h-6 mr-3" />
-                <h3 className="text-xl font-bold">Discussion Question 2</h3>
+                <Users className="w-6 h-6 mr-3" />
+                <h3 className="text-xl font-bold">🤝 Practical Impact</h3>
               </div>
               <p className="opacity-90">
-                How might you design environments to satisfy either uniform similarity or decodability assumptions?
+                Simple methods can be surprisingly effective when the environment has the right structure
               </p>
             </div>
           </div>
           
-          <div className="text-center bg-white bg-opacity-20 backdrop-blur-sm p-6 rounded-xl border border-white border-opacity-30">
-            <h3 className="text-2xl font-bold mb-4">Thank You!</h3>
+          <div className="text-center bg-white/20 backdrop-blur-sm p-6 rounded-xl border border-white/30">
+            <h3 className="text-2xl font-bold mb-4">🙏 Thank You!</h3>
             <p className="text-lg mb-4">Questions & Discussion</p>
             <div className="flex justify-center items-center space-x-8 text-sm opacity-90">
               <span>📧 Contact: [your-email]</span>

@@ -6,252 +6,272 @@ This document provides a comprehensive overview of all slides in the thesis pres
 
 ---
 
-## Slide 1: Title Slide
-**ID:** `title`  
+## Slide: Title Slide
+
+**ID:** `title`
 **Title:** "Generalization in Reinforcement Learning with Structural Priors"
 
 **Content Overview:**
-- Main title prominently displayed
-- Subtitle: "Master Thesis Research - Statistical Learning Theory for RL Generalization"
-- Key question highlighted: *"When an agent is deployed in a new environment, will it still work?"*
-- Three domain icons representing:
-  - 🧠 Machine Learning Theory
-  - 📈 Reinforcement Learning
-  - ⚙️ Statistical Analysis
-- Visual design: Blue-to-purple gradient background with decorative circles
+
+* Main title prominently displayed
+* Subtitle: "Master Thesis Research - Statistical Learning Theory for RL Generalization"
+* Key question highlighted: *"When an agent is deployed in a new environment, will it still work?"*
+* Three domain icons representing:
+
+  * 🧠 Machine Learning Theory
+  * 📈 Reinforcement Learning
+  * ⚙️ Statistical Analysis
+* Visual design: Blue-to-purple gradient background with decorative circles
 
 ---
 
-## Slide 2: Real-World Motivation
-**ID:** `motivation`  
-**Title:** "Real-World Motivation"  
+## Slide: Real-World Motivation
+
+**ID:** `motivation`
+**Title:** "Real-World Motivation"
 **Subtitle:** "Training on Few, Acting in Many"
 
 **Content Overview:**
-- Two practical examples:
+
+* Two practical examples:
+
   1. **Robotic Assistant**
-     - Training: Works perfectly in one apartment
-     - Challenge: Moves to a new apartment
-     - Question: Will it navigate the new layout?
-  
+
+     * Training: One apartment
+     * Deployment: New layout
+     * Challenge: Navigation robustness
+
   2. **Autonomous Vehicle**
-     - Training: Learns in San Francisco
-     - Challenge: Deployed in Tokyo
-     - Question: Will it handle different traffic patterns?
 
-- Core challenge visualization: Training → GENERALIZATION GAP → Deployment
-- Visual design: Light gradient background with white cards and colored borders
+     * Training: San Francisco
+     * Deployment: Tokyo
+     * Challenge: Generalize to new traffic dynamics
+
+* Illustration of the generalization gap
+
+* Visual: Light gradient with white cards and icons (🏠, 🚗, 🌐)
 
 ---
 
-## Slide 3: RL Primer
-**ID:** `rl-primer`  
-**Title:** "What Is Reinforcement Learning? 90-second Primer"
+## Slide: Reinforcement Learning Primer
+
+**ID:** `rl_primer`
+**Title:** "What is Reinforcement Learning?"
+**Subtitle:** "Learning through interaction with an environment"
 
 **Content Overview:**
-- **Agent ↔ Environment Loop:**
-  - Agent: Makes decisions
-  - Environment: Responds with state & reward
-  
-- **Key Vocabulary:**
-  - State: Current situation
-  - Action: What the agent does
-  - Policy: Agent's decision strategy
-  - Return: Total reward accumulated
 
-- **Traditional RL Assumption:**
-  - 🎯 One Fixed MDP: Agent learns in same environment it will be tested in
-  - ⚠️ But Reality Is Different: Environments change, agents need to adapt
+* RL loop: Agent ↔ Environment
+* Key terms:
+
+  * Policy π
+  * Reward / cost
+  * Return
+* Single MDP assumption in classical RL
+* Visual: RL diagram with state-action arrows
 
 ---
 
-## Slide 4: Problem Statement
-**ID:** `problem-statement`  
-**Title:** "Problem Statement: RL with Environment Uncertainty"
+## Slide: Problem Statement
+
+**ID:** `problem`
+**Title:** "The Generalization Challenge in RL"
+**Subtitle:** "A distribution over MDPs"
 
 **Content Overview:**
-- **Three-step process:**
-  1. 🎲 Nature Draws: Unknown MDP each episode
-  2. 📚 Training: Sample of m MDPs → learn policy
-  3. 🧪 Testing: Fresh draw from distribution
 
-- **"Bag of MDPs" Visual:**
-  - Training Sample (M₁, M₂, ..., Mₘ) → Learn Policy π → Test on M*
-
-- **Core Question:** How big must **m** be for the learned policy to generalize?
+* Setup: Nature draws hidden MDP from unknown distribution 𝒟
+* Learner observes sample of m MDPs
+* Learns a policy to minimize expected cost over 𝒟
+* Visual: Bag of MDPs → Training sample → Test MDP
 
 ---
 
-## Slide 5: The Epistemic-POMDP Barrier
-**ID:** `epistemic-barrier`  
-**Title:** "Why Is This Hard? The Epistemic-POMDP Barrier"
+## Slide: Why Is It Hard?
+
+**ID:** `hardness`
+**Title:** "Generalization Is Intractable Without Structure"
+**Subtitle:** "The Epistemic-POMDP Barrier"
 
 **Content Overview:**
-- **Partial Observability Problem:**
-  - Agent doesn't know which MDP it's in
-  - Task identity is latent/hidden
-  - Must infer environment from observations
-  - Creates partial observability (called "Epistemic-POMDP")
 
-- **Worst-Case Result:**
-  - Sample Complexity: **Exponential in H** (H = planning horizon)
-  - Intuition: Without structure, agent needs exponentially many examples
-
-- **Key Takeaway:** Without structure, generalization is intractable!
+* Hidden environment identity = partial observability
+* Planning becomes POMDP-solving
+* Sample complexity may grow exponentially in horizon H
 
 ---
 
-## Slide 6: Two Structural Lenses
-**ID:** `two-lenses`  
-**Title:** "Two Structural Lenses That Rescue Generalization"
+## Slide: Structural Assumptions (Roadmap)
+
+**ID:** `roadmap`
+**Title:** "Two Structural Lenses for Tractability"
+**Subtitle:** "Similarity vs. Identifiability"
 
 **Content Overview:**
-- **Uniform Similarity (Bounded Likelihood Ratio):**
-  - Intuition: "Environments differ like fonts—look different up close, read the same sentence"
-  - Real-world analogy: Different cities, similar traffic rules
 
-- **Decodability (Short Trajectory Reveals Task):**
-  - Intuition: "First three notes of a song reveal which song it is"
-  - Real-world analogy: Apartment layout clear from entrance
-
-- **Summary Table:**
-  - Both achieve Õ(1/√m) generalization rate
-  - Methods: Plain ERM vs. Truncated Policies + ERM
+| Regime             | Intuition                            | Sample Complexity |
+| ------------------ | ------------------------------------ | ----------------- |
+| Uniform Similarity | All environments look similar        | 𝒪̃(1/√m)         |
+| Decodability       | Short trajectory reveals environment | 𝒪̃(1/√m)         |
 
 ---
 
-## Slide 7: Uniform Similarity Details
-**ID:** `uniform-similarity`  
-**Title:** "Uniform Similarity – Intuition & Result"
+## Slide: Uniform Similarity
+
+**ID:** `similarity`
+**Title:** "Uniform Similarity Assumption"
+**Subtitle:** "Environments behave similarly under any policy"
 
 **Content Overview:**
-- **Everyday Analogy:**
-  - 📖 "Environments differ like fonts"
-  - Look different up close, but read the same sentence
-  - Same underlying structure, different surface appearances
-  - Similar trajectory distributions
 
-- **Main Result:**
-  - Plain ERM achieves: **Õ(1/√m)** generalization error
-  - 🎉 No regularization needed!
-  - Key insight: Bounded likelihood ratios → reduced variance → small Rademacher complexity
-
-- **Visual:** Overlapping trajectory distributions between MDPs
+* Likelihood ratio between trajectories bounded by κ
+* Intuition: no policy sees wild differences across MDPs
+* Result: ERM achieves 𝒪̃(1/√m) generalization
+* Visual: overlapping density plots for trajectory distributions
 
 ---
 
-## Slide 8: Decodability Details
-**ID:** `decodability`  
-**Title:** "Decodability – Intuition & Result"
+## Slide: Sample Complexity under Similarity
+
+**ID:** `similarity_bound`
+**Title:** "Formal Guarantee: Uniform Similarity"
+**Subtitle:** "Generalization bound for plain ERM"
 
 **Content Overview:**
-- **Musical Analogy:**
-  - 🎵 "First three notes reveal the song"
-  - Short prefix uniquely identifies the MDP
-  - Environments are distinguishable, quick identification possible
 
-- **Truncated Policies:**
-  - Explore if MDP not identified
-  - Use π*_M if MDP M identified
-  - ERM achieves: **Õ(1/√m)** same optimal rate!
+* Key result:
 
-- **Flow Chart:** Explore → Decode → Act Optimally
+  $$
+  m = O(H^3 \kappa^2 \log(|S||A|)/\epsilon^2)
+  $$
+* No regularization needed
+* Simpler policies suffice due to low trajectory variance
 
 ---
 
-## Slide 9: Proof Sketches
-**ID:** `proof-sketches`  
-**Title:** "Proof Sketches at a Glance"  
-**Subtitle:** "How Structure Reduces Complexity"
+## Slide: Decodability Assumption
+
+**ID:** `decodability`
+**Title:** "Decodability Assumption"
+**Subtitle:** "Identify the environment early"
 
 **Content Overview:**
-- **Uniform Similarity:**
-  - Key Insight: Reduced variance ⇒ small Rademacher complexity
-  - Steps: Bounded likelihood ratios → Control distribution differences → Uniform convergence
 
-- **Decodability:**
-  - Key Insight: Policy class shrinks ⇒ small covering number
-  - Steps: Truncate policies → Effective hypothesis space reduces → Manageable covering number
-
-- **Comic-Style Visual:** 😰 Without Structure (Exponential) → Add Structure! → 😊 With Structure (Õ(1/√m))
+* Short trajectory prefix uniquely identifies MDP
+* Practical analogy: signature in early states
+* Policy can switch to optimal control once MDP is known
+* Result: ERM achieves 𝒪̃(1/√m) generalization
 
 ---
 
-## Slide 10: Practical Implications
-**ID:** `practical-implications`  
-**Title:** "Empirical / Practical Implications"  
-**Subtitle:** "When Simple Methods Suffice"
+## Slide: Sample Complexity under Decodability
+
+**ID:** `decodability_bound`
+**Title:** "Formal Guarantee: Decodability"
+**Subtitle:** "Truncated policy class enables fast convergence"
 
 **Content Overview:**
-- **Simple ERM Works:**
-  - No regularization needed
-  - No meta-learning required
-  - When structure exists
 
-- **Benchmark Examples:**
-  - Procgen: Visual similarity
-  - Meta-World: Task decodability
+* Key result:
 
-- **Design Advice:**
-  - Look for similarity first
-  - Check for easy task IDs
-  - Structure beats algorithms
-
-- **Decision Framework:**
-  1. Analyze Your Environment
-  2. Choose Your Approach
-  3. Validate Assumptions
+  $$
+  m = O\left( H^2 (|S||A||C|)^{2\bar h} \log |A| / \epsilon^2 \right)
+  $$
+* Complexity grows with prefix length $\bar{h}$
+* Identifiability reduces class size
 
 ---
 
-## Slide 11: Limitations & Future Work
-**ID:** `limitations`  
-**Title:** "Limitations & Future Work"  
-**Subtitle:** "Honest Assessment & Research Directions"
+## Slide: Why Shared Dynamics Are Not Enough
+
+**ID:** `counterexample`
+**Title:** "When Similarity Fails: A Lower Bound"
+**Subtitle:** "Even identical transitions can’t save us"
 
 **Content Overview:**
-- **Current Limitations:**
-  - Training-Environment Exploration: Assume perfect knowledge of training MDPs
-  - Exact vs Approximate Structure: Real environments may only approximately satisfy assumptions
-  - Finite Horizon: Infinite-horizon case remains open
-  - Function Approximation: Neural networks and large state spaces not covered
 
-- **Future Directions:**
-  - Combining Assumptions: What if environments are both similar AND decodable?
-  - Automatic Detection: Algorithms that detect which structure exists
-  - Robustness Analysis: How much can assumptions be violated?
-  - Deep RL Extension: Neural networks with structural priors
-
-- **Research Questions:**
-  1. Can we develop algorithms that automatically detect structural assumptions?
-  2. How to extend to continuous state spaces and neural networks?
+* Constructed MDP family with shared dynamics but different costs
+* No generalization without either assumption
+* Sample complexity remains exponential
 
 ---
 
-## Slide 12: Key Takeaways
-**ID:** `takeaways`  
-**Title:** "Key Take-aways & Discussion Prompts"
+## Slide: Proof Sketch – Uniform Similarity
+
+**ID:** `proof_similarity`
+**Title:** "Why ERM Works under Similarity"
 
 **Content Overview:**
-- **Main Message:** Structure turns impossibility into Õ(1/√m) learnability
 
-- **Three Key Points:**
-  1. **Structure Matters:** Environmental structure often more valuable than algorithmic sophistication
-  2. **Simple Can Work:** Plain ERM achieves optimal rates under structural assumptions
-  3. **Two Regimes:** Both similarity and distinguishability enable generalization
-
-- **Discussion Questions:**
-  1. Which structural regime do you think a self-driving car faces when moving between cities?
-  2. How might you design environments to satisfy structural assumptions?
-
-- **Contact Information:** Placeholders for email, paper link, and code repository
+* Rewrite excess risk as weighted sum
+* Bounded likelihood ratio limits variance
+* Uniform convergence via Rademacher complexity
 
 ---
 
-## Technical Notes
+## Slide: Proof Sketch – Decodability
 
-- **Total Slides:** 12
-- **Navigation:** Keyboard arrows, click navigation, slide menu
-- **Visual Design:** Each slide has distinct color themes and gradients
-- **Icons:** Extensive use of Lucide React icons for visual appeal
-- **Responsive:** Built with Tailwind CSS for responsive design
+**ID:** `proof_decodability`
+**Title:** "Why ERM Works under Decodability"
+
+**Content Overview:**
+
+* Truncate policies after $\bar{h}$
+* Smaller hypothesis class ⇒ better covering number
+* Apply Massart’s lemma + union bound
+
+---
+
+## Slide: Unified Insight
+
+**ID:** `unification`
+**Title:** "Two Regimes, One Sample Complexity"
+**Subtitle:** "What makes generalization possible?"
+
+**Content Overview:**
+
+* Uniform Similarity: suppresses variance
+* Decodability: eliminates epistemic uncertainty
+* Both reduce effective policy class size
+
+---
+
+## Slide: Limitations
+
+**ID:** `limitations`
+**Title:** "Limitations & Assumptions"
+
+**Content Overview:**
+
+* Idealized: assumes full access to training MDPs
+* Real-world: approximate structure, not exact
+* Finite horizon + tabular setting only
+
+---
+
+## Slide: Future Work
+
+**ID:** `future`
+**Title:** "Future Directions"
+
+**Content Overview:**
+
+* Explore approximate similarity/decodability
+* Detect structure automatically
+* Extend to function approximation & infinite horizon
+* Empirical tests on benchmarks (Meta-World, Procgen)
+
+---
+
+## Slide: Summary & Take-Aways
+
+**ID:** `takeaways`
+**Title:** "Key Take-Aways"
+**Subtitle:** "When can simple ERM generalize in RL?"
+
+**Content Overview:**
+
+* Structure turns intractability into 𝒪̃(1/√m) learnability
+* Two assumptions: similarity or identifiability
+* Simple ERM works without regularization
+* Invite discussion: How common is structure in real tasks?
