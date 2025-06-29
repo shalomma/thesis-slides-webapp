@@ -549,30 +549,30 @@ const slides = [
     id: 'env_family',
     title: 'Construction of a Hard Instance',
     content: (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-16">
+      <div className="min-h-screen bg-gradient-to-br from-red-50 to-orange-100 p-16">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-blue-800 mb-4">Construction of a Hard Instance</h1>
-            <p className="text-xl text-blue-600">Same dynamics, exponentially many hidden cost masks</p>
+            <h1 className="text-4xl font-bold text-red-800 mb-4">Construction of a Hard Instance</h1>
+            <p className="text-xl text-red-600">Same dynamics, exponentially many hidden cost masks</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30 space-y-6">
               <div>
-                <h3 className="font-semibold text-lg mb-2 text-blue-700">State Space (Layered, Deterministic)</h3>
-                <div className="flex items-center justify-center bg-blue-50 p-4 rounded-lg">
+                <h3 className="font-semibold text-lg mb-2 text-red-700">State Space (Layered, Deterministic)</h3>
+                <div className="flex items-center justify-center bg-red-50 p-4 rounded-lg">
                   <p className="font-mono text-lg">s₁ → s₂ → … → sₕ</p>
                 </div>
               </div>
               <div>
-                <h3 className="font-semibold text-lg mb-2 text-blue-700">Action Space</h3>
-                <div className="bg-blue-50 p-4 rounded-lg">
+                <h3 className="font-semibold text-lg mb-2 text-red-700">Action Space</h3>
+                <div className="bg-red-50 p-4 rounded-lg">
                   <p className="font-mono text-lg text-center"><MathJax inline>{"\\(\\mathcal{A} = \\{0,1\\}\\)"}</MathJax></p>
                 </div>
               </div>
               <div>
-                <h3 className="font-semibold text-lg mb-2 text-indigo-700">Transition Dynamics</h3>
-                <div className="bg-indigo-50 p-4 rounded-lg">
+                <h3 className="font-semibold text-lg mb-2 text-orange-700">Transition Dynamics</h3>
+                <div className="bg-orange-50 p-4 rounded-lg">
                   <MathJax>{"\\[ T(s_{h+1} | s_h, a) = 1 \\]"}</MathJax>
                   <p className="text-sm text-center text-gray-600">(for all a and h=1,...,H-1)</p>
                 </div>
@@ -581,8 +581,8 @@ const slides = [
 
             <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30 space-y-6">
               <div>
-                <h3 className="font-semibold text-lg mb-2 text-indigo-700">Cost Structure (Varies per environment)</h3>
-                 <div className="bg-indigo-50 p-4 rounded-lg space-y-4">
+                <h3 className="font-semibold text-lg mb-2 text-orange-700">Cost Structure (Varies per environment)</h3>
+                 <div className="bg-orange-50 p-4 rounded-lg space-y-4">
                    <p>For each MDP, define binary mask <MathJax inline>{"\\(\\alpha \\in \\{0,1\\}^{H-1}\\)"}</MathJax></p>
                    <div>
                     <p>For steps <MathJax inline>{"\\(h < H\\)"}</MathJax>:</p>
@@ -602,7 +602,7 @@ const slides = [
             </div>
           </div>
           
-          <div className="mt-8 bg-gradient-to-r from-blue-500 to-indigo-500 text-white p-6 rounded-2xl text-center shadow-lg">
+          <div className="mt-8 bg-gradient-to-r from-red-500 to-orange-500 text-white p-6 rounded-2xl text-center shadow-lg">
               <h3 className="text-2xl font-bold">Number of Environments</h3>
               <p className="text-4xl font-mono mt-2"><MathJax>{"\\(2^{H-1}\\)"}</MathJax></p>
           </div>
@@ -614,40 +614,40 @@ const slides = [
     id: 'proof_outline',
     title: 'Proof Outline: Why Generalization Fails',
     content: (
-      <div className="min-h-screen bg-gradient-to-br from-purple-50 to-violet-100 p-16">
+      <div className="min-h-screen bg-gradient-to-br from-red-50 to-orange-100 p-16">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-purple-800 mb-4">Proof Outline: Why Generalization Fails</h1>
-            <p className="text-xl text-purple-600">Even with shared dynamics, cost uncertainty breaks ERM</p>
+            <h1 className="text-4xl font-bold text-red-800 mb-4">Proof Outline: Why Generalization Fails</h1>
+            <p className="text-xl text-red-600">Even with shared dynamics, cost uncertainty breaks ERM</p>
           </div>
           
           <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30">
             <table className="w-full border-collapse">
               <thead>
-                <tr className="border-b-2 border-purple-200">
-                  <th className="p-4 text-left text-lg font-semibold text-purple-800 w-1/4">Step</th>
-                  <th className="p-4 text-left text-lg font-semibold text-purple-800 w-1/2">Argument</th>
-                  <th className="p-4 text-left text-lg font-semibold text-purple-800 w-1/4">Insight</th>
+                <tr className="border-b-2 border-red-200">
+                  <th className="p-4 text-left text-lg font-semibold text-red-800 w-1/4">Step</th>
+                  <th className="p-4 text-left text-lg font-semibold text-red-800 w-1/2">Argument</th>
+                  <th className="p-4 text-left text-lg font-semibold text-red-800 w-1/4">Insight</th>
                 </tr>
               </thead>
               <tbody>
-                <tr className="border-b border-purple-100">
-                  <td className="p-4 align-top font-bold text-gray-700">(1) Unseen masks</td>
+                <tr className="border-b border-red-100">
+                  <td className="p-4 align-top font-bold text-gray-700">1️⃣ Unseen masks</td>
                   <td className="p-4 align-top text-gray-700">If <MathJax inline>{"\\(m < 2^{H-2}\\)"}</MathJax>, at least half of <MathJax inline>{"\\(\\alpha \\in \\{0,1\\}^{H-1}\\)"}</MathJax> remain unseen.</td>
                   <td className="p-4 align-top text-gray-600">High epistemic uncertainty</td>
                 </tr>
-                <tr className="border-b border-purple-100">
-                  <td className="p-4 align-top font-bold text-gray-700">(2) Learner's guess</td>
+                <tr className="border-b border-red-100">
+                  <td className="p-4 align-top font-bold text-gray-700">2️⃣ Learner's guess</td>
                   <td className="p-4 align-top text-gray-700">For unseen <MathJax inline>{"\\(\\alpha\\)"}</MathJax>, learner cannot infer <MathJax inline>{"\\(f(\\alpha)\\)"}</MathJax> ⇒ guesses wrong at step <MathJax inline>{"\\(H\\)"}</MathJax> with prob. 1/2.</td>
                   <td className="p-4 align-top text-gray-600">Expected cost ≥ 0.5</td>
                 </tr>
-                <tr className="border-b border-purple-100">
-                  <td className="p-4 align-top font-bold text-gray-700">(3) Gap in risk</td>
+                <tr className="border-b border-red-100">
+                  <td className="p-4 align-top font-bold text-gray-700">3️⃣ Gap in risk</td>
                   <td className="p-4 align-top text-gray-700">Optimal policy (knows <MathJax inline>{"\\(f\\)"}</MathJax>) gets 0 cost; learner gets ≥ 0.5 ⇒ expected generalization gap ≥ 0.25.</td>
                   <td className="p-4 align-top text-gray-600"></td>
                 </tr>
                 <tr>
-                  <td className="p-4 align-top font-bold text-gray-700">(4) From expectation to probability</td>
+                  <td className="p-4 align-top font-bold text-gray-700">4️⃣ From expectation to probability</td>
                   <td className="p-4 align-top text-gray-700">Total cost ≤ <MathJax inline>{"\\(H\\)"}</MathJax> ⇒ Markov's inequality yields <MathJax inline>{"\\(\\mathbb{P}[\\text{gap} \\ge 1/(4H)] \\ge 1/(4H)\\)"}</MathJax>.</td>
                   <td className="p-4 align-top text-gray-600">Weak bound still shows exponential hardness</td>
                 </tr>
@@ -655,7 +655,7 @@ const slides = [
             </table>
           </div>
           
-          <div className="mt-12 bg-gradient-to-r from-purple-600 to-violet-600 text-white p-8 rounded-2xl text-center shadow-xl">
+          <div className="mt-12 bg-gradient-to-r from-red-600 to-orange-600 text-white p-8 rounded-2xl text-center shadow-xl">
             <h3 className="text-3xl font-bold mb-4">Key Takeaway</h3>
             <p className="text-xl">
               Shared transitions do not ensure generalization—<strong>cost structure matters deeply</strong>.
@@ -1315,32 +1315,7 @@ const slides = [
               </div>
             </div>
           </div>
-          
-          <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30 mb-8">
-            <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">🎯 Unified Insight</h2>
-            
-            <div className="text-center space-y-6">
-              <div className="bg-gradient-to-r from-indigo-100 to-purple-100 p-6 rounded-lg border-2 border-indigo-300">
-                <div className="flex items-center mb-4">
-                  <MessageCircle className="w-6 h-6 text-purple-600 mr-2" />
-                  <h3 className="font-bold text-purple-800">Question 1</h3>
-                </div>
-                <p className="text-gray-700">
-                  How can we automatically detect which structural regime applies in a given environment?
-                </p>
-              </div>
-              
-              <div className="bg-gradient-to-br from-green-100 to-green-200 p-6 rounded-lg">
-                <div className="flex items-center mb-4">
-                  <MessageCircle className="w-6 h-6 text-green-600 mr-2" />
-                  <h3 className="font-bold text-green-800">Question 2</h3>
-                </div>
-                <p className="text-gray-700">
-                  Can we combine both assumptions for even better generalization guarantees?
-                </p>
-              </div>
-            </div>
-          </div>
+
           
           <div className="bg-gradient-to-r from-green-600 to-blue-600 text-white p-8 rounded-2xl text-center shadow-xl">
             <h3 className="text-2xl font-bold mb-4">🚀 The Journey Continues</h3>
@@ -1576,11 +1551,6 @@ const slides = [
           <div className="text-center bg-white/20 backdrop-blur-sm p-6 rounded-xl border border-white/30">
             <h3 className="text-2xl font-bold mb-4">🙏 Thank You!</h3>
             <p className="text-lg mb-4">Questions & Discussion</p>
-            <div className="flex justify-center items-center space-x-8 text-sm opacity-90">
-              <span>📧 Contact: [your-email]</span>
-              <span>🔗 Paper: [arxiv-link]</span>
-              <span>💻 Code: [github-link]</span>
-            </div>
           </div>
         </div>
       </div>
