@@ -6,10 +6,11 @@ This document provides a comprehensive overview of all slides in the thesis pres
 
 ---
 
-## Slide: Title Slide
+## Slide: Generalization in Reinforcement Learning with Structural Priors
 
 **ID:** `title`
 **Title:** "Generalization in Reinforcement Learning with Structural Priors"
+**Subtitle:** "Master Thesis Research - Statistical Learning Theory for RL Generalization"
 
 **Content Overview:**
 
@@ -22,6 +23,26 @@ This document provides a comprehensive overview of all slides in the thesis pres
   * 📈 Reinforcement Learning
   * ⚙️ Statistical Analysis
 * Visual design: Blue-to-purple gradient background with decorative circles
+
+---
+
+## Slide: Agenda
+
+**ID:** `agenda`
+**Title:** "Agenda"
+**Subtitle:** "Our journey through RL generalization"
+
+**Content Overview:**
+
+* A list of six key topics for the presentation:
+  * Introduction & Motivation
+  * The Generalization Problem
+  * Intractability Without Structure
+  * Two Roads to Tractability
+  * Main Results & Key Insights
+  * Conclusion & Future Work
+* Each topic is accompanied by a short descriptive question or statement.
+* Visual: A clean, light-gray gradient background with a prominent centered card listing the agenda items with checkmark icons.
 
 ---
 
@@ -53,7 +74,7 @@ This document provides a comprehensive overview of all slides in the thesis pres
 
 ---
 
-## Slide: Reinforcement Learning Primer
+## Slide: What is Reinforcement Learning?
 
 **ID:** `rl_primer`
 **Title:** "What is Reinforcement Learning?"
@@ -72,11 +93,11 @@ This document provides a comprehensive overview of all slides in the thesis pres
 
 ---
 
-## Slide: Problem Statement
+## Slide: The Generalization Challenge in RL
 
 **ID:** `problem`
 **Title:** "The Generalization Challenge in RL"
-**Subtitle:** "A distribution over MDPs"
+**Subtitle:** "The Learning Problem Setup"
 
 **Content Overview:**
 
@@ -87,7 +108,39 @@ This document provides a comprehensive overview of all slides in the thesis pres
 
 ---
 
-## Slide: Why Is It Hard?
+## Slide: The Epistemic POMDP Perspective
+
+**ID:** `epistemic_pomdp`
+**Title:** "The Epistemic POMDP Perspective"
+**Subtitle:** "Planning under hidden environment identity"
+
+**Content Overview:**
+
+* Core Idea: The problem is framed as a Partially Observable Markov Decision Process (POMDP) because the agent doesn't know which environment it's in.
+* State Space: The latent state is enlarged to `(M, s_h)`, where `M` is the unknown environment identity.
+* Agent's View: The agent only observes the state `s_h` and the cost, not `M`.
+* Implication: Generalization is equivalent to planning in a partially observable space.
+* Visual Analogy: A diagram shows that `M` is hidden while the state rollout `s_1 -> s_2 -> ...` is observable.
+
+---
+
+## Slide: Measuring Performance: Risk and Empirical Risk
+
+**ID:** `rl_risk`
+**Title:** "Measuring Performance: Risk and Empirical Risk"
+**Subtitle:** "Expected cost under environment uncertainty"
+
+**Content Overview:**
+
+* Defines two key performance metrics:
+  1. **Population Risk (`L_D(pi)`):** The true expected cost of a policy over the entire unknown distribution of environments.
+  2. **Empirical Risk (`L_M(pi)`):** The average cost of a policy on the given sample of training environments.
+* Presents the formal definition of an **ε-suboptimal** policy guarantee.
+* Poses the central question: How large must the training set size `m` be to guarantee low population risk?
+
+---
+
+## Slide: Generalization Is Intractable Without Structure
 
 **ID:** `hardness`
 **Title:** "Generalization Is Intractable Without Structure"
@@ -101,7 +154,38 @@ This document provides a comprehensive overview of all slides in the thesis pres
 
 ---
 
-## Slide: Structural Assumptions (Roadmap)
+## Slide: Construction of a Hard Instance
+
+**ID:** `env_family`
+**Title:** "Construction of a Hard Instance"
+**Subtitle:** "Same dynamics, exponentially many hidden cost masks"
+
+**Content Overview:**
+
+* Describes the construction of a "hard" family of environments used to prove the lower bound.
+* **Shared Properties:** All environments share the same state space, action space, and transition dynamics.
+* **Varying Property:** Costs are different. Each environment is associated with a unique binary mask `alpha` that determines costs, but the final-step cost depends on an unknown function `f(alpha)`.
+* **Result:** This creates an exponentially large number of environments (`2^(H-1)`) that are difficult to distinguish.
+
+---
+
+## Slide: Proof Outline: Why Generalization Fails
+
+**ID:** `proof_outline`
+**Title:** "Proof Outline: Why Generalization Fails"
+**Subtitle:** "Even with shared dynamics, cost uncertainty breaks ERM"
+
+**Content Overview:**
+
+* A step-by-step argument for why generalization fails in the constructed hard instance:
+  1. **Unseen Masks:** With a small sample `m`, most cost masks `alpha` remain unseen.
+  2. **Learner's Guess:** For an unseen mask, the learner has to guess the final action, leading to a high probability of error.
+  3. **Risk Gap:** This creates a significant gap between the learner's expected cost and the optimal cost (which is zero).
+  4. **Probability Bound:** Markov's inequality is used to show this implies a high probability of failure, proving exponential sample complexity is required.
+
+---
+
+## Slide: Two Structural Lenses for Tractability
 
 **ID:** `roadmap`
 **Title:** "Two Structural Lenses for Tractability"
@@ -116,7 +200,7 @@ This document provides a comprehensive overview of all slides in the thesis pres
 
 ---
 
-## Slide: Uniform Similarity
+## Slide: Uniform Similarity Assumption
 
 **ID:** `similarity`
 **Title:** "Uniform Similarity Assumption"
@@ -131,7 +215,7 @@ This document provides a comprehensive overview of all slides in the thesis pres
 
 ---
 
-## Slide: Sample Complexity under Similarity
+## Slide: Formal Guarantee: Uniform Similarity
 
 **ID:** `similarity_bound`
 **Title:** "Formal Guarantee: Uniform Similarity"
@@ -146,6 +230,20 @@ This document provides a comprehensive overview of all slides in the thesis pres
   $$
 * No regularization needed
 * Simpler policies suffice due to low trajectory variance
+
+---
+
+## Slide: Why ERM Works under Similarity
+
+**ID:** `proof_similarity`
+**Title:** "Why ERM Works under Similarity"
+**Subtitle:** "Proof Sketch – Uniform Similarity"
+
+**Content Overview:**
+
+* Rewrite excess risk as weighted sum
+* Bounded likelihood ratio limits variance
+* Uniform convergence via Rademacher complexity
 
 ---
 
@@ -164,7 +262,7 @@ This document provides a comprehensive overview of all slides in the thesis pres
 
 ---
 
-## Slide: Sample Complexity under Decodability
+## Slide: Formal Guarantee: Decodability
 
 **ID:** `decodability_bound`
 **Title:** "Formal Guarantee: Decodability"
@@ -182,51 +280,25 @@ This document provides a comprehensive overview of all slides in the thesis pres
 
 ---
 
-## Slide: Why Shared Dynamics Are Not Enough
-
-**ID:** `counterexample`
-**Title:** "When Similarity Fails: A Lower Bound"
-**Subtitle:** "Even identical transitions can’t save us"
-
-**Content Overview:**
-
-* Constructed MDP family with shared dynamics but different costs
-* No generalization without either assumption
-* Sample complexity remains exponential
-
----
-
-## Slide: Proof Sketch – Uniform Similarity
-
-**ID:** `proof_similarity`
-**Title:** "Why ERM Works under Similarity"
-
-**Content Overview:**
-
-* Rewrite excess risk as weighted sum
-* Bounded likelihood ratio limits variance
-* Uniform convergence via Rademacher complexity
-
----
-
-## Slide: Proof Sketch – Decodability
+## Slide: Why ERM Works under Decodability
 
 **ID:** `proof_decodability`
 **Title:** "Why ERM Works under Decodability"
+**Subtitle:** "Proof Sketch – Decodability"
 
 **Content Overview:**
 
 * Truncate policies after $\bar{h}$
 * Smaller hypothesis class ⇒ better covering number
-* Apply Massart’s lemma + union bound
+* Apply Massart's lemma + union bound
 
 ---
 
-## Slide: Unified Insight
+## Slide: Summary: Two Paths to Tractable Generalization
 
 **ID:** `unification`
-**Title:** "Two Regimes, One Sample Complexity"
-**Subtitle:** "What makes generalization possible?"
+**Title:** "Summary: Two Paths to Tractable Generalization"
+**Subtitle:** "Both roads lead to a simpler policy search problem."
 
 **Content Overview:**
 
@@ -236,10 +308,11 @@ This document provides a comprehensive overview of all slides in the thesis pres
 
 ---
 
-## Slide: Limitations
+## Slide: Limitations & Assumptions
 
 **ID:** `limitations`
 **Title:** "Limitations & Assumptions"
+**Subtitle:** "Honest assessment of current approach"
 
 **Content Overview:**
 
@@ -249,10 +322,11 @@ This document provides a comprehensive overview of all slides in the thesis pres
 
 ---
 
-## Slide: Future Work
+## Slide: Future Directions
 
 **ID:** `future`
 **Title:** "Future Directions"
+**Subtitle:** "Exciting research opportunities ahead"
 
 **Content Overview:**
 
@@ -263,7 +337,7 @@ This document provides a comprehensive overview of all slides in the thesis pres
 
 ---
 
-## Slide: Summary & Take-Aways
+## Slide: Key Take-Aways
 
 **ID:** `takeaways`
 **Title:** "Key Take-Aways"
