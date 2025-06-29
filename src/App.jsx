@@ -38,15 +38,15 @@ const slides = [
           <div className="flex justify-center items-center space-x-8">
             <div className="flex items-center">
               <Brain className="w-8 h-8 mr-3 text-yellow-300" />
-              <span className="text-lg">🧠 Machine Learning Theory</span>
+              <span className="text-lg">Machine Learning Theory</span>
             </div>
             <div className="flex items-center">
               <TrendingUp className="w-8 h-8 mr-3 text-green-300" />
-              <span className="text-lg">📈 Reinforcement Learning</span>
+              <span className="text-lg">Reinforcement Learning</span>
             </div>
             <div className="flex items-center">
               <Cog className="w-8 h-8 mr-3 text-blue-300" />
-              <span className="text-lg">⚙️ Statistical Analysis</span>
+              <span className="text-lg">Statistical Analysis</span>
             </div>
           </div>
         </div>
@@ -1449,7 +1449,7 @@ const slides = [
                   <h3 className="font-bold text-green-800">Question 2</h3>
                 </div>
                 <p className="text-gray-700">
-                  Can we combine both assumptions for even better generalization guarantees?
+                  {/* Can we combine both assumptions for even better generalization guarantees? */}
                 </p>
               </div>
             </div>
@@ -1516,7 +1516,7 @@ const slides = [
             <div className="bg-white/15 backdrop-blur-sm p-6 rounded-xl border border-white/20">
               <div className="flex items-center mb-4">
                 <MessageCircle className="w-6 h-6 mr-3" />
-                <h3 className="text-xl font-bold">💬 Discussion Prompt</h3>
+                <h3 className="text-xl font-bold">Discussion Prompt</h3>
               </div>
               <p className="opacity-90">
                 How common is structure in real tasks? Can we design environments to satisfy our assumptions?
@@ -1526,7 +1526,7 @@ const slides = [
             <div className="bg-white/15 backdrop-blur-sm p-6 rounded-xl border border-white/20">
               <div className="flex items-center mb-4">
                 <Users className="w-6 h-6 mr-3" />
-                <h3 className="text-xl font-bold">🤝 Practical Impact</h3>
+                <h3 className="text-xl font-bold">Practical Impact</h3>
               </div>
               <p className="opacity-90">
                 Simple methods can be surprisingly effective when the environment has the right structure
