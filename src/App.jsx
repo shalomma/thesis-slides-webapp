@@ -1375,7 +1375,7 @@ const slides = [
           </div>
           
           <div className="bg-gradient-to-r from-yellow-500 to-orange-500 text-white p-8 rounded-2xl text-center shadow-xl">
-            <h3 className="text-2xl font-bold mb-4">🎯 Take-Home Message</h3>
+            <h3 className="text-2xl font-bold mb-4">Concluding Perspective</h3>
             <p className="text-xl">
               Strong theoretical foundation, but bridging to practice remains an open challenge
             </p>
