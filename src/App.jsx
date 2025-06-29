@@ -1024,24 +1024,29 @@ const slides = [
             </div>
             
             <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30">
-              <h2 className="text-2xl font-bold text-gray-800 mb-6">🚀 Truncated Policies</h2>
+              <h2 className="text-2xl font-bold text-gray-800 mb-6">📊 Main Result</h2>
               
               <div className="space-y-6">
-                <div className="bg-gray-50 p-6 rounded-lg border border-gray-200 text-lg text-center">
-                  <MathJax>
-                    {`$$ \\bar\\pi(h_t) = \\begin{cases} \\text{🔍 explore} & \\text{if MDP not identified} \\\\ \\text{⚡ } \\pi^*_{M}(h_t) & \\text{if MDP M identified} \\end{cases}$$`}
-                  </MathJax>
-                </div>
-                
                 <div className="bg-green-50 border-2 border-green-200 p-6 rounded-lg text-center">
-                  <p className="text-lg font-semibold text-green-800 mb-2">Result: ERM achieves</p>
+                  <p className="text-lg font-semibold text-green-800 mb-2">ERM achieves:</p>
                   <p className="text-4xl font-bold text-green-600 mb-2">
                     <MathJax inline>{"\\(\\tilde{O}(1/\\sqrt{m})\\)"}</MathJax>
                   </p>
                   <p className="text-gray-600">same optimal rate!</p>
                 </div>
+                
+                {/* <div className="bg-yellow-100 border-2 border-yellow-300 p-4 rounded-lg">
+                  <p className="text-center font-semibold text-yellow-800">
+                    🎉 No regularization needed!
+                  </p>
+                </div> */}
+                
+                <div className="text-sm text-gray-600 bg-gray-50 p-4 rounded-lg">
+                  <p><strong>💡 Key insight:</strong> Bounded likelihood ratios → reduced variance → small Rademacher complexity</p>
+                </div>
               </div>
             </div>
+
           </div>
           
           <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30">
@@ -1151,36 +1156,105 @@ const slides = [
             <h2 className="text-2xl font-bold text-gray-800 mb-8 text-center">🧮 Proof Strategy</h2>
             
             <div className="space-y-6">
+              {/* Step 1 */}
               <div className="bg-teal-50 p-6 rounded-lg border border-teal-200">
-                <div className="flex items-center mb-3">
+                <div className="flex items-center mb-4">
                   <span className="text-2xl mr-3">1️⃣</span>
-                  <h3 className="text-xl font-bold text-teal-800">Truncate Policies</h3>
+                  <h3 className="text-xl font-bold text-teal-800">Decodability Enables Policy Truncation</h3>
                 </div>
-                <p className="text-gray-700 ml-8">Restrict to policies that identify MDP after <MathJax inline>{"\\(\\bar{h}\\)"}</MathJax> steps</p>
+                <div className="ml-8 space-y-4 text-gray-700">
+                  <p>
+                    <strong>Key assumption:</strong> There exists <MathJax inline>{"\\(\\bar{h} \\ll H\\)"}</MathJax> such that the first <MathJax inline>{"\\(\\bar{h}\\)"}</MathJax> steps <strong>uniquely identify</strong> the MDP.
+                  </p>
+                  <div>
+                    <p><strong>Truncation insight:</strong> Any history-dependent policy <MathJax inline>{"\\(\\pi \\in \\Pi_H\\)"}</MathJax> can be converted into a truncated policy <MathJax inline>{"\\(\\bar\\pi \\in \\Pi_{\\bar h}\\)"}</MathJax>:</p>
+                    <div className="bg-white p-3 rounded-lg border border-teal-200 mt-2">
+                      <div className="text-center">
+                        <MathJax>
+                          {"\\[ \\bar\\pi_h = \\begin{cases} \\pi_h & h \\le \\bar{h} \\\\ \\text{Markov policy for } M_i & h > \\bar{h} \\end{cases} \\]"}
+                        </MathJax>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <p><strong>Why it works:</strong></p>
+                    <ul className="list-disc list-inside ml-4 space-y-1 mt-1">
+                      <li>After <MathJax inline>{"\\(\\bar{h}\\)"}</MathJax> steps, the environment is fully identified.</li>
+                      <li>From then on, <strong>standard MDP optimal control</strong> can take over.</li>
+                    </ul>
+                  </div>
+                  <div className="bg-teal-100 border-l-4 border-teal-500 p-3 rounded-r-lg mt-3">
+                    <p className="font-bold text-teal-900 mb-1">Result: No value loss from truncation</p>
+                    <div className="text-center">
+                      <MathJax>
+                        {"\\[ V_{\\bar\\pi; M_i} = V_{\\pi; M_i} \\quad \\forall i \\]"}
+                      </MathJax>
+                    </div>
+                  </div>
+                </div>
               </div>
               
+              {/* Step 2 */}
               <div className="bg-cyan-50 p-6 rounded-lg border border-cyan-200">
-                <div className="flex items-center mb-3">
+                <div className="flex items-center mb-4">
                   <span className="text-2xl mr-3">2️⃣</span>
-                  <h3 className="text-xl font-bold text-cyan-800">Smaller Hypothesis Class</h3>
+                  <h3 className="text-xl font-bold text-cyan-800">Reduced Complexity via Truncation</h3>
                 </div>
-                <p className="text-gray-700 ml-8">Effective hypothesis space reduces ⇒ better covering number</p>
+                <div className="ml-8 space-y-4 text-gray-700">
+                  <p>We only need to consider the class of truncated policies <MathJax inline>{"\\(\\Pi_{\\bar h}\\)"}</MathJax>. These policies depend on:</p>
+                  <ul className="list-disc list-inside ml-4 space-y-1">
+                      <li>Full trajectory history up to step <MathJax inline>{"\\(\\bar h\\)"}</MathJax></li>
+                      <li>Then <strong>Markovian</strong> thereafter</li>
+                  </ul>
+                  <div>
+                    <p><strong>Key idea:</strong> The space of truncated policies is <strong>finite and small</strong>:</p>
+                    <div className="bg-white p-3 rounded-lg border border-cyan-200 mt-2 text-center">
+                      <MathJax>
+                        {"\\[ |\\Pi_{\\bar h}| \\le |A|^{(|S||A||C|)^{2\\bar h}} \\]"}
+                      </MathJax>
+                    </div>
+                  </div>
+                  <div>
+                    <p>Apply <strong>Massart's Lemma</strong> to bound complexity:</p>
+                    <div className="bg-white p-3 rounded-lg border border-cyan-200 mt-2 text-center">
+                      <MathJax>
+                        {"\\[ R_m(\\mathcal{F}) \\le H \\sqrt{ \\frac{2 \\log |\\Pi_{\\bar h}| }{m} } \\]"}
+                      </MathJax>
+                      <p className="text-sm mt-1 text-gray-600">⇒ Polynomial in <MathJax inline>{"\\((|S||A||C|)^{\\bar h}\\)"}</MathJax></p>
+                    </div>
+                  </div>
+                </div>
               </div>
-              
+
+              {/* Step 3 */}
               <div className="bg-blue-50 p-6 rounded-lg border border-blue-200">
-                <div className="flex items-center mb-3">
+                <div className="flex items-center mb-4">
                   <span className="text-2xl mr-3">3️⃣</span>
-                  <h3 className="text-xl font-bold text-blue-800">Apply Massart's Lemma</h3>
+                  <h3 className="text-xl font-bold text-blue-800">Generalization under Decodability</h3>
                 </div>
-                <p className="text-gray-700 ml-8">Use Massart's lemma + union bound for concentration</p>
+                <div className="ml-8 space-y-4 text-gray-700">
+                  <p>Plug in the complexity bound into the uniform convergence framework.</p>
+                  <div>
+                    <p>With probability ≥ <MathJax inline>{"\\(1 - \\delta\\)"}</MathJax>:</p>
+                    <div className="bg-white p-3 rounded-lg border border-blue-200 mt-2 text-center">
+                      <MathJax>
+                        {"\\[ L_{\\mathcal D}(\\hat\\pi) - \\min_{\\pi \\in \\Pi_H} L_{\\mathcal D}(\\pi) \\le \\mathcal{O}\\left( H \\sqrt{\\frac{ (|S||A||C|)^{2\\bar h} \\log |A| }{m}} + H \\sqrt{\\frac{ \\log(1/\\delta) }{m}} \\right) \\]"}
+                      </MathJax>
+                    </div>
+                  </div>
+                  <div className="bg-blue-100 border-l-4 border-blue-500 p-3 rounded-r-lg mt-3">
+                    <p><strong>Conclusion:</strong> Decodability reduces the hypothesis class ⇒ ERM achieves <MathJax inline>{"\\(\\mathcal{O}(1/\\sqrt{m})\\)"}</MathJax> generalization</p>
+                  </div>
+                </div>
               </div>
+
             </div>
           </div>
           
           <div className="bg-gradient-to-r from-teal-600 to-cyan-600 text-white p-8 rounded-2xl text-center shadow-xl">
             <h3 className="text-2xl font-bold mb-4">🔑 Key Insight</h3>
             <p className="text-xl">
-              Truncated policies ⇒ Smaller hypothesis class ⇒ Better generalization
+              Decodability reduces the hypothesis class ⇒ ERM achieves <MathJax inline>{"\\(\\tilde{\\mathcal{O}}(1/\\sqrt{m})\\)"}</MathJax> generalization
             </p>
           </div>
         </div>
