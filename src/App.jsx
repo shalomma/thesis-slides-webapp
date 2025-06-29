@@ -1263,64 +1263,50 @@ const slides = [
   },
   {
     id: 'unification',
-    title: 'Two Regimes, One Sample Complexity',
+    title: 'Summary: Two Paths to Tractable Generalization',
     content: (
       <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-purple-100 p-16">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-indigo-800 mb-4">Two Regimes, One Sample Complexity</h1>
-            <p className="text-xl text-indigo-600">What makes generalization possible?</p>
+            <h1 className="text-4xl font-bold text-indigo-800 mb-4">Summary: Two Paths to Tractable Generalization</h1>
+            <p className="text-xl text-indigo-600">Both roads lead to a simpler policy search problem.</p>
           </div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-8">
-            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30">
-              <div className="text-center mb-6">
+          <div className="bg-white/80 backdrop-blur-sm p-10 rounded-2xl shadow-xl border border-white/30 mb-8">
+            <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">Unifying Insight: Reducing Policy Complexity</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
+              {/* Similarity */}
+              <div className="bg-emerald-50 p-6 rounded-lg border border-emerald-200">
                 <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Layers className="w-8 h-8 text-emerald-600" />
                 </div>
-                <h2 className="text-2xl font-bold text-emerald-800">🔄 Uniform Similarity</h2>
-              </div>
-              
-              <div className="space-y-4">
-                <div className="bg-emerald-50 p-4 rounded-lg border border-emerald-200">
-                  <p className="font-semibold text-emerald-800 mb-2">How it works:</p>
-                  <p className="text-gray-700">Suppresses variance across environments</p>
-                </div>
-                
-                <div className="bg-green-50 p-4 rounded-lg border border-green-200">
-                  <p className="font-semibold text-green-800 mb-2">Effect:</p>
-                  <p className="text-gray-700">Reduces effective policy class complexity</p>
+                <h3 className="text-2xl font-bold text-emerald-800 mb-3">🔄 Uniform Similarity</h3>
+                <p className="text-lg text-gray-700 mb-4">Forces all environments to behave alike.</p>
+                <div className="bg-white p-4 rounded-lg">
+                  <p className="font-semibold text-emerald-900">Key Mechanism:</p>
+                  <p className="text-gray-600">Suppresses variance, making simple policies (ERM) effective.</p>
                 </div>
               </div>
-            </div>
-            
-            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30">
-              <div className="text-center mb-6">
+
+              {/* Decodability */}
+              <div className="bg-orange-50 p-6 rounded-lg border border-orange-200">
                 <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Search className="w-8 h-8 text-orange-600" />
                 </div>
-                <h2 className="text-2xl font-bold text-orange-800">🔍 Decodability</h2>
-              </div>
-              
-              <div className="space-y-4">
-                <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
-                  <p className="font-semibold text-orange-800 mb-2">How it works:</p>
-                  <p className="text-gray-700">Eliminates epistemic uncertainty</p>
-                </div>
-                
-                <div className="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
-                  <p className="font-semibold text-yellow-800 mb-2">Effect:</p>
-                  <p className="text-gray-700">Reduces effective policy class size</p>
+                <h3 className="text-2xl font-bold text-orange-800 mb-3">🔍 Decodability</h3>
+                <p className="text-lg text-gray-700 mb-4">Allows quick identification of the environment.</p>
+                <div className="bg-white p-4 rounded-lg">
+                  <p className="font-semibold text-orange-900">Key Mechanism:</p>
+                  <p className="text-gray-600">Allows truncating complex policies, shrinking the search space.</p>
                 </div>
               </div>
             </div>
           </div>
 
-          
-          <div className="bg-gradient-to-r from-green-600 to-blue-600 text-white p-8 rounded-2xl text-center shadow-xl">
-            <h3 className="text-2xl font-bold mb-4">🚀 The Journey Continues</h3>
+          <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-8 rounded-2xl text-center shadow-xl">
+            <h3 className="text-2xl font-bold mb-4">The Common Thread</h3>
             <p className="text-xl">
-              From theory to practice: Many exciting challenges await!
+              Both structures, in different ways, ensure that a small, effective set of policies can be learned from a feasible number of examples, achieving <MathJax inline>{"\\(\\tilde{O}(1/\\sqrt{m})\\)"}</MathJax> sample complexity.
             </p>
           </div>
         </div>
