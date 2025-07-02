@@ -91,7 +91,7 @@ const slides = [
                 <CheckCircle className="w-8 h-8 text-green-500 mr-4 mt-1 flex-shrink-0" />
                 <div>
                   <h3 className="text-2xl font-semibold text-gray-800">Two Roads to Tractability</h3>
-                  <p className="text-gray-600">Uniform Similarity vs. Decodability.</p>
+                  <p className="text-gray-600">Bounded Likelihood Ratio vs. Decodability.</p>
                 </div>
               </li>
               <li className="flex items-start">
@@ -183,7 +183,6 @@ const slides = [
           </div>
           
           <div className="bg-gradient-to-r from-cyan-600 to-blue-600 text-white p-8 rounded-2xl text-center shadow-xl">
-            <h3 className="text-2xl font-bold mb-4">💭 Visual Flow</h3>
             <div className="flex items-center justify-center space-x-8 text-lg">
               <div className="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-lg">Labeled Dataset</div>
               <span className="text-2xl">→</span>
@@ -262,14 +261,9 @@ const slides = [
           </div>
           
           <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30 mb-8">
-            <div className="text-center mb-6">
-              <div className="text-6xl mb-4">🎓</div>
-              <h2 className="text-2xl font-bold text-gray-800">Analogy</h2>
-            </div>
-            
             <div className="bg-yellow-50 p-6 rounded-lg border border-yellow-200">
               <p className="text-xl text-center text-gray-700 italic">
-                "Cramming for an exam vs. truly understanding the material"
+              🎓  "Cramming for an exam vs. truly understanding the material"
               </p>
             </div>
           </div>
@@ -385,7 +379,6 @@ const slides = [
           </div>
           
           <div className="bg-white/80 backdrop-blur-sm p-10 rounded-2xl shadow-xl border border-white/30 mb-8">
-            <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">⏰ Timeline View</h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               <div className="text-center">
@@ -651,6 +644,25 @@ const slides = [
 
           </div>
 
+          <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30">
+            <h2 className="text-2xl font-bold text-slate-800 mb-6 text-center">💰 Value Function:</h2>
+            
+            <div className="space-y-4">
+              <p className="text-lg text-slate-700 text-center">
+                Given this setup, the cost of a policy <MathJax inline>{"\\(\\pi\\)"}</MathJax> in environment <MathJax inline>{"\\(M\\)"}</MathJax> is defined as
+              </p>
+              
+              <div className="bg-slate-50 p-6 rounded-lg border border-slate-200">
+                <MathJax>
+                  {"\\[ V_{\\pi;M} = \\mathbb{E}_{\\pi;M}\\!\\left[\\sum_{h=1}^{H} c_{M}(s_{h}, a_{h})\\right] \\]"}
+                </MathJax>
+              </div>
+              
+              <p className="text-gray-700 text-center">
+                where the expectation is taken over the trajectory distribution induced by the environment dynamics <MathJax inline>{"\\(T_M\\)"}</MathJax> and the randomness in the policy's action choices.
+              </p>
+            </div>
+          </div>
 
         </div>
       </div>
@@ -658,12 +670,12 @@ const slides = [
   },
   {
     id: 'problem',
-    title: 'The Generalization Challenge in RL',
+    title: 'Modeling Generalization in RL',
     content: (
       <div className="min-h-screen bg-gradient-to-br from-purple-50 to-indigo-100 p-16">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-indigo-800 mb-4">Modeling The Generalization Challenge in RL</h1>
+            <h1 className="text-4xl font-bold text-indigo-800 mb-4">Modeling Generalization in RL</h1>
             <p className="text-xl text-indigo-600">The Learning Problem Setup</p>
           </div>
           
@@ -1059,7 +1071,7 @@ const slides = [
           </div>
           
           <div className="mt-12 bg-gradient-to-r from-red-600 to-orange-600 text-white p-8 rounded-2xl text-center shadow-xl">
-            <h3 className="text-3xl font-bold mb-4">Key Takeaway</h3>
+            <h3 className="text-3xl font-bold mb-4">A takeaway we will use later</h3>
             <p className="text-xl">
               Shared transitions do not ensure generalization—<strong>cost structure matters deeply</strong>.
             </p>
@@ -1085,7 +1097,7 @@ const slides = [
                 <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Layers className="w-8 h-8 text-blue-600" />
                 </div>
-                <h2 className="text-2xl font-bold text-blue-800">🔄 Uniform Similarity</h2>
+                <h2 className="text-2xl font-bold text-blue-800">🔄 Bounded Likelihood Ratio</h2>
                 <p className="text-gray-600">All environments look similar</p>
               </div>
               
@@ -1134,15 +1146,29 @@ const slides = [
   },
   {
     id: 'similarity',
-    title: 'Uniform Similarity Assumption',
+    title: 'Bounded Likelihood Ratio Assumption',
     content: (
       <div className="min-h-screen bg-gradient-to-br from-emerald-50 to-green-100 p-16">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-emerald-800 mb-4">Uniform Similarity Assumption</h1>
+            <h1 className="text-4xl font-bold text-emerald-800 mb-4">Bounded Likelihood Ratio Assumption</h1>
             <p className="text-xl text-emerald-600">Environments behave similarly under any policy</p>
           </div>
           
+          <div className="bg-white/80 backdrop-blur-sm p-6 rounded-lg border border-blue-200 mb-6">
+            <h3 className="font-semibold text-lg mb-4 text-blue-800">Previous Work: Tamar et al. (2022)</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                <p className="font-semibold text-blue-800 mb-2">Their Contribution:</p>
+                <p className="text-gray-700">Introduced the bounded likelihood ratio assumption</p>
+              </div>
+              <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                <p className="font-semibold text-blue-800 mb-2">Their Result:</p>
+                <p className="text-gray-700">Regularized ERM achieves <MathJax inline>{"\\(\\tilde{O}(1/m^{1/4})\\)"}</MathJax> sample complexity</p>
+              </div>
+            </div>
+          </div>
+
           <div className="bg-white/80 backdrop-blur-sm p-6 rounded-lg border border-emerald-200 mb-8">
             <h3 className="font-semibold text-lg mb-3 text-emerald-800">Bounded Likelihood Ratio</h3>
             <p className="text-gray-700 text-lg leading-relaxed">
@@ -1181,7 +1207,7 @@ const slides = [
                   </div>
                   <div className="flex items-center space-x-3">
                     <div className="w-4 h-4 bg-emerald-500 rounded-full"></div>
-                    <p className="text-gray-700">Similar trajectory distributions</p>
+                    <p className="text-gray-700">Analysis reveals assumption enforces shared cost structure</p>
                   </div>
                 </div>
               </div>
@@ -1217,62 +1243,6 @@ const slides = [
     )
   },
   {
-    id: 'similarity_bound',
-    title: 'Formal Guarantee: Uniform Similarity',
-    content: (
-      <div className="min-h-screen bg-gradient-to-br from-violet-50 to-purple-100 p-16">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-violet-800 mb-4">Formal Guarantee: Uniform Similarity</h1>
-            <p className="text-xl text-violet-600">Generalization bound for plain ERM</p>
-          </div>
-          
-          <div className="bg-white/80 backdrop-blur-sm p-12 rounded-2xl shadow-xl border border-white/30 mb-8">
-            <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">📐 Key Result</h2>
-            
-            <div className="bg-gradient-to-r from-violet-100 to-purple-100 p-8 rounded-xl border-2 border-violet-300 mb-8">
-              <div className="text-center">
-                <p className="text-2xl font-bold text-violet-800 mb-4">Sample Complexity:</p>
-                <div className="bg-white/80 backdrop-blur-sm p-6 rounded-lg border border-violet-200">
-                  <p className="text-3xl font-mono text-violet-600">
-                    <MathJax inline>{"\\(m = O(H^3\\kappa^2 \\log(|S||A|)/\\epsilon^2)\\)"}</MathJax>
-                  </p>
-                </div>
-              </div>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-violet-50 p-6 rounded-lg border border-violet-200 text-center">
-                <div className="text-3xl mb-3">📈</div>
-                <h3 className="font-bold text-violet-800 mb-2">No Regularization</h3>
-                <p className="text-gray-700 text-sm">Plain ERM works without modifications</p>
-              </div>
-              
-              <div className="bg-purple-50 p-6 rounded-lg border border-purple-200 text-center">
-                <div className="text-3xl mb-3">🎯</div>
-                <h3 className="font-bold text-purple-800 mb-2">Simpler Policies</h3>
-                <p className="text-gray-700 text-sm">Low trajectory variance enables simple solutions</p>
-              </div>
-              
-              <div className="bg-indigo-50 p-6 rounded-lg border border-indigo-200 text-center">
-                <div className="text-3xl mb-3">⚡</div>
-                <h3 className="font-bold text-indigo-800 mb-2">Fast Convergence</h3>
-                <p className="text-gray-700 text-sm">Optimal <MathJax inline>{"\\(O(1/\\sqrt{m})\\)"}</MathJax> rate achieved</p>
-              </div>
-            </div>
-          </div>
-          
-          <div className="bg-gradient-to-r from-violet-600 to-purple-600 text-white p-8 rounded-2xl text-center shadow-xl">
-            <h3 className="text-2xl font-bold mb-4">✨ Main Insight</h3>
-            <p className="text-xl">
-              Bounded likelihood ratios ⇒ reduced variance ⇒ tractable generalization
-            </p>
-          </div>
-        </div>
-      </div>
-    )
-  },
-  {
     id: 'proof_similarity',
     title: 'Why ERM Works under Similarity',
     content: (
@@ -1280,7 +1250,7 @@ const slides = [
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h1 className="text-4xl font-bold text-sky-800 mb-4">Why ERM Works under Similarity</h1>
-            <p className="text-xl text-sky-600">Proof Sketch – Uniform Similarity</p>
+            <p className="text-xl text-sky-600">Proof Sketch – Bounded Likelihood Ratio</p>
           </div>
           
           <div className="bg-white/80 backdrop-blur-sm p-10 rounded-2xl shadow-xl border border-white/30 mb-8">
@@ -1364,6 +1334,62 @@ const slides = [
             <h3 className="text-2xl font-bold mb-4">🔑 Key Insight</h3>
             <p className="text-xl">
               Bounded variance ⇒ Small Rademacher complexity ⇒ Fast convergence
+            </p>
+          </div>
+        </div>
+      </div>
+    )
+  },
+  {
+    id: 'similarity_bound',
+    title: 'Formal Guarantee: Bounded Likelihood Ratio',
+    content: (
+      <div className="min-h-screen bg-gradient-to-br from-violet-50 to-purple-100 p-16">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl font-bold text-violet-800 mb-4">Formal Guarantee: Bounded Likelihood Ratio</h1>
+            <p className="text-xl text-violet-600">Generalization bound for plain ERM</p>
+          </div>
+          
+          <div className="bg-white/80 backdrop-blur-sm p-12 rounded-2xl shadow-xl border border-white/30 mb-8">
+            <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">📐 Key Result</h2>
+            
+            <div className="bg-gradient-to-r from-violet-100 to-purple-100 p-8 rounded-xl border-2 border-violet-300 mb-8">
+              <div className="text-center">
+                <p className="text-2xl font-bold text-violet-800 mb-4">Sample Complexity:</p>
+                <div className="bg-white/80 backdrop-blur-sm p-6 rounded-lg border border-violet-200">
+                  <p className="text-3xl font-mono text-violet-600">
+                    <MathJax inline>{"\\(m = O(H^3\\kappa^2 \\log(|S||A|)/\\epsilon^2)\\)"}</MathJax>
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="bg-violet-50 p-6 rounded-lg border border-violet-200 text-center">
+                <div className="text-3xl mb-3">📈</div>
+                <h3 className="font-bold text-violet-800 mb-2">No Regularization</h3>
+                <p className="text-gray-700 text-sm">Plain ERM works without modifications</p>
+              </div>
+              
+              <div className="bg-purple-50 p-6 rounded-lg border border-purple-200 text-center">
+                <div className="text-3xl mb-3">🎯</div>
+                <h3 className="font-bold text-purple-800 mb-2">Simpler Policies</h3>
+                <p className="text-gray-700 text-sm">Low trajectory variance enables simple solutions</p>
+              </div>
+              
+              <div className="bg-indigo-50 p-6 rounded-lg border border-indigo-200 text-center">
+                <div className="text-3xl mb-3">⚡</div>
+                <h3 className="font-bold text-indigo-800 mb-2">Fast Convergence</h3>
+                <p className="text-gray-700 text-sm">Optimal <MathJax inline>{"\\(O(1/\\sqrt{m})\\)"}</MathJax> rate achieved</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-gradient-to-r from-violet-600 to-purple-600 text-white p-8 rounded-2xl text-center shadow-xl">
+            <h3 className="text-2xl font-bold mb-4">✨ Main Insight</h3>
+            <p className="text-xl">
+              Bounded likelihood ratios ⇒ reduced variance ⇒ tractable generalization
             </p>
           </div>
         </div>
@@ -1483,62 +1509,6 @@ const slides = [
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    )
-  },
-  {
-    id: 'decodability_bound',
-    title: 'Formal Guarantee: Decodability',
-    content: (
-      <div className="min-h-screen bg-gradient-to-br from-rose-50 to-pink-100 p-16">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-rose-800 mb-4">Formal Guarantee: Decodability</h1>
-            <p className="text-xl text-rose-600">Truncated policy class enables fast convergence</p>
-          </div>
-          
-          <div className="bg-white/80 backdrop-blur-sm p-12 rounded-2xl shadow-xl border border-white/30 mb-8">
-            <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">📐 Key Result</h2>
-            
-            <div className="bg-gradient-to-r from-rose-100 to-pink-100 p-8 rounded-xl border-2 border-rose-300 mb-8">
-              <div className="text-center">
-                <p className="text-2xl font-bold text-rose-800 mb-4">Sample Complexity:</p>
-                <div className="bg-white/80 backdrop-blur-sm p-6 rounded-lg border border-rose-200">
-                  <p className="text-2xl font-mono text-rose-600">
-                    <MathJax inline>{"\\(m = O(H^2(|S||A||C|)^{2\\bar{h}} \\log|A|/\\epsilon^2)\\)"}</MathJax>
-                  </p>
-                </div>
-              </div>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-rose-50 p-6 rounded-lg border border-rose-200 text-center">
-                <div className="text-3xl mb-3">📏</div>
-                <h3 className="font-bold text-rose-800 mb-2">Prefix Length</h3>
-                <p className="text-gray-700 text-sm">Complexity grows with prefix length <MathJax inline>{"\\(\\bar{h}\\)"}</MathJax></p>
-              </div>
-              
-              <div className="bg-pink-50 p-6 rounded-lg border border-pink-200 text-center">
-                <div className="text-3xl mb-3">🎯</div>
-                <h3 className="font-bold text-pink-800 mb-2">Class Size</h3>
-                <p className="text-gray-700 text-sm">Identifiability reduces effective class size</p>
-              </div>
-              
-              <div className="bg-purple-50 p-6 rounded-lg border border-purple-200 text-center">
-                <div className="text-3xl mb-3">⚡</div>
-                <h3 className="font-bold text-purple-800 mb-2">Fast Convergence</h3>
-                <p className="text-gray-700 text-sm">Still achieves <MathJax inline>{"\\(O(1/\\sqrt{m})\\)"}</MathJax> rate</p>
-              </div>
-            </div>
-          </div>
-          
-          <div className="bg-gradient-to-r from-rose-600 to-pink-600 text-white p-8 rounded-2xl text-center shadow-xl">
-            <h3 className="text-2xl font-bold mb-4">🔑 Main Insight</h3>
-            <p className="text-xl">
-              Truncated policies ⇒ smaller hypothesis class ⇒ better covering number
-            </p>
           </div>
         </div>
       </div>
@@ -1665,6 +1635,62 @@ const slides = [
     )
   },
   {
+    id: 'decodability_bound',
+    title: 'Formal Guarantee: Decodability',
+    content: (
+      <div className="min-h-screen bg-gradient-to-br from-rose-50 to-pink-100 p-16">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl font-bold text-rose-800 mb-4">Formal Guarantee: Decodability</h1>
+            <p className="text-xl text-rose-600">Truncated policy class enables fast convergence</p>
+          </div>
+          
+          <div className="bg-white/80 backdrop-blur-sm p-12 rounded-2xl shadow-xl border border-white/30 mb-8">
+            <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">📐 Key Result</h2>
+            
+            <div className="bg-gradient-to-r from-rose-100 to-pink-100 p-8 rounded-xl border-2 border-rose-300 mb-8">
+              <div className="text-center">
+                <p className="text-2xl font-bold text-rose-800 mb-4">Sample Complexity:</p>
+                <div className="bg-white/80 backdrop-blur-sm p-6 rounded-lg border border-rose-200">
+                  <p className="text-2xl font-mono text-rose-600">
+                    <MathJax inline>{"\\(m = O(H^2(|S||A||C|)^{2\\bar{h}} \\log|A|/\\epsilon^2)\\)"}</MathJax>
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="bg-rose-50 p-6 rounded-lg border border-rose-200 text-center">
+                <div className="text-3xl mb-3">📏</div>
+                <h3 className="font-bold text-rose-800 mb-2">Prefix Length</h3>
+                <p className="text-gray-700 text-sm">Complexity grows with prefix length <MathJax inline>{"\\(\\bar{h}\\)"}</MathJax></p>
+              </div>
+              
+              <div className="bg-pink-50 p-6 rounded-lg border border-pink-200 text-center">
+                <div className="text-3xl mb-3">🎯</div>
+                <h3 className="font-bold text-pink-800 mb-2">Class Size</h3>
+                <p className="text-gray-700 text-sm">Identifiability reduces effective class size</p>
+              </div>
+              
+              <div className="bg-purple-50 p-6 rounded-lg border border-purple-200 text-center">
+                <div className="text-3xl mb-3">⚡</div>
+                <h3 className="font-bold text-purple-800 mb-2">Fast Convergence</h3>
+                <p className="text-gray-700 text-sm">Still achieves <MathJax inline>{"\\(O(1/\\sqrt{m})\\)"}</MathJax> rate</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-gradient-to-r from-rose-600 to-pink-600 text-white p-8 rounded-2xl text-center shadow-xl">
+            <h3 className="text-2xl font-bold mb-4">🔑 Main Insight</h3>
+            <p className="text-xl">
+              Truncated policies ⇒ smaller hypothesis class ⇒ better covering number
+            </p>
+          </div>
+        </div>
+      </div>
+    )
+  },
+  {
     id: 'unification',
     title: 'Summary: Two Paths to Tractable Generalization',
     content: (
@@ -1683,7 +1709,7 @@ const slides = [
                 <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Layers className="w-8 h-8 text-emerald-600" />
                 </div>
-                <h3 className="text-2xl font-bold text-emerald-800 mb-3">🔄 Uniform Similarity</h3>
+                <h3 className="text-2xl font-bold text-emerald-800 mb-3">🔄 Bounded Likelihood Ratio</h3>
                 <p className="text-lg text-gray-700 mb-4">Forces all environments to behave alike.</p>
                 <div className="bg-white p-4 rounded-lg">
                   <p className="font-semibold text-emerald-900">Key Mechanism:</p>
@@ -1718,44 +1744,20 @@ const slides = [
   },
   {
     id: 'limitations',
-    title: 'Limitations & Assumptions',
+    title: 'Limitations or Future Work',
     content: (
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-yellow-100 p-16">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-gray-800 mb-4">Limitations & Assumptions</h1>
+            <h1 className="text-4xl font-bold text-gray-800 mb-4">Limitations or Future Work</h1>
             <p className="text-xl text-gray-600">Honest assessment of current approach</p>
           </div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-8">
-            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30">
-              <div className="flex items-center mb-6">
-                <AlertTriangle className="w-8 h-8 text-red-600 mr-3" />
-                <h2 className="text-2xl font-bold text-gray-800">⚠️ Current Limitations</h2>
-              </div>
-              
-              <div className="space-y-4">
-                <div className="bg-red-50 p-4 rounded-lg border border-red-200">
-                  <p className="font-semibold text-red-800 mb-2">🔍 Idealized Setting</p>
-                  <p className="text-gray-700 text-sm">Assumes full access to training MDPs</p>
-                </div>
-                
-                <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
-                  <p className="font-semibold text-orange-800 mb-2">📏 Exact Structure</p>
-                  <p className="text-gray-700 text-sm">Real-world: approximate structure, not exact</p>
-                </div>
-                
-                <div className="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
-                  <p className="font-semibold text-yellow-800 mb-2">⏰ Finite Horizon</p>
-                  <p className="text-gray-700 text-sm">Finite horizon + tabular setting only</p>
-                </div>
-              </div>
-            </div>
-            
+          <div className="lg:grid-cols-2 gap-12 mb-8">
             <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30">
               <div className="flex items-center mb-6">
                 <Lightbulb className="w-8 h-8 text-blue-600 mr-3" />
-                <h2 className="text-2xl font-bold text-gray-800">💡 Reality Check</h2>
+                <h2 className="text-2xl font-bold text-gray-800">Reality Check</h2>
               </div>
               
               <div className="space-y-4">
@@ -1781,87 +1783,6 @@ const slides = [
             <h3 className="text-2xl font-bold mb-4">Concluding Perspective</h3>
             <p className="text-xl">
               Strong theoretical foundation, but bridging to practice remains an open challenge
-            </p>
-          </div>
-        </div>
-      </div>
-    )
-  },
-  {
-    id: 'future',
-    title: 'Future Directions',
-    content: (
-      <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-100 p-16">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-green-800 mb-4">Future Directions</h1>
-            <p className="text-xl text-green-600">Exciting research opportunities ahead</p>
-          </div>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-xl border border-white/30">
-              <div className="flex items-center mb-4">
-                <Globe className="w-6 h-6 text-green-600 mr-3" />
-                <h3 className="text-lg font-bold text-green-800">Approximate Structure</h3>
-              </div>
-              <p className="text-gray-700 text-sm">Explore approximate similarity/decodability in real environments</p>
-            </div>
-            
-            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-xl border border-white/30">
-              <div className="flex items-center mb-4">
-                <Activity className="w-6 h-6 text-blue-600 mr-3" />
-                <h3 className="text-lg font-bold text-blue-800">Automatic Detection</h3>
-              </div>
-              <p className="text-gray-700 text-sm">Detect structure automatically without prior knowledge</p>
-            </div>
-            
-            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-xl border border-white/30">
-              <div className="flex items-center mb-4">
-                <BookOpen className="w-6 h-6 text-purple-600 mr-3" />
-                <h3 className="text-lg font-bold text-purple-800">Function Approximation</h3>
-              </div>
-              <p className="text-gray-700 text-sm">Extend to function approximation & infinite horizon</p>
-            </div>
-            
-            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-xl border border-white/30">
-              <div className="flex items-center mb-4">
-                <Zap className="w-6 h-6 text-orange-600 mr-3" />
-                <h3 className="text-lg font-bold text-orange-800">Empirical Validation</h3>
-              </div>
-              <p className="text-gray-700 text-sm">Empirical tests on benchmarks (Meta-World, Procgen)</p>
-            </div>
-          </div>
-          
-          <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30 mb-8">
-            <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">🔬 Research Questions</h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-gradient-to-br from-purple-100 to-purple-200 p-6 rounded-lg">
-                <div className="flex items-center mb-4">
-                  <MessageCircle className="w-6 h-6 text-purple-600 mr-2" />
-                  <h3 className="font-bold text-purple-800">Question 1</h3>
-                </div>
-                <p className="text-gray-700">
-                  How can we automatically detect which structural regime applies in a given environment?
-                </p>
-              </div>
-              
-              <div className="bg-gradient-to-br from-green-100 to-green-200 p-6 rounded-lg">
-                <div className="flex items-center mb-4">
-                  <MessageCircle className="w-6 h-6 text-green-600 mr-2" />
-                  <h3 className="font-bold text-green-800">Question 2</h3>
-                </div>
-                <p className="text-gray-700">
-                  {/* Can we combine both assumptions for even better generalization guarantees? */}
-                </p>
-              </div>
-            </div>
-          </div>
-          
-          <div className="bg-gradient-to-r from-green-600 to-blue-600 text-white p-8 rounded-2xl text-center shadow-xl">
-            <h3 className="text-2xl font-bold mb-4">🚀 The Journey Continues</h3>
-            <p className="text-xl">
-              From theory to practice: Many exciting challenges await!
             </p>
           </div>
         </div>

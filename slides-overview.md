@@ -245,6 +245,13 @@ This document provides a comprehensive overview of all slides in the thesis pres
   s_1 \xrightarrow{a_1, c_1} s_2 \xrightarrow{a_2, c_2} \dots \xrightarrow{a_H, c_H} s_{H+1}
   $$
 
+* **Value function:**
+  Given this setup, the cost of a policy $\pi$ in environment $M$ is defined as
+  $$
+  V_{\pi;M} = \mathbb{E}_{\pi;M}\!\left[\sum_{h=1}^{H} c_{M}(s_{h}, a_{h})\right],
+  $$
+  where the expectation is taken over the trajectory distribution induced by the environment dynamics $T_M$ and the randomness in the policy's action choices, and $c_M$ denotes the cost function at $M$.
+
 ---
 
 ## Slide: The Generalization Challenge in RL
@@ -349,30 +356,35 @@ This document provides a comprehensive overview of all slides in the thesis pres
 
 | Regime             | Intuition                            | Sample Complexity |
 | ------------------ | ------------------------------------ | ----------------- |
-| Uniform Similarity | All environments look similar        | 𝒪̃(1/√m)         |
+| Bounded Likelihood Ratio | All environments look similar        | 𝒪̃(1/√m)         |
 | Decodability       | Short trajectory reveals environment | 𝒪̃(1/√m)         |
 
 ---
 
-## Slide: Uniform Similarity Assumption
+## Slide: Bounded Likelihood Ratio Assumption
 
 **ID:** `similarity`
-**Title:** "Uniform Similarity Assumption"
+**Title:** "Bounded Likelihood Ratio Assumption"
 **Subtitle:** "Environments behave similarly under any policy"
 
 **Content Overview:**
 
 * Likelihood ratio between trajectories bounded by κ
+
+* **Previous Work:** Tamar et al. (2022) introduced this assumption
+* **Their Result:** Regularized ERM achieves 𝒪̃(1/m^{1/4}) sample complexity
+* **Our Improvement:** Unregularized ERM achieves 𝒪̃(1/√m) generalization
+
 * Intuition: no policy sees wild differences across MDPs
-* Result: ERM achieves 𝒪̃(1/√m) generalization
+* Analysis reveals assumption enforces shared cost structure
 * Visual: overlapping density plots for trajectory distributions
 
 ---
 
-## Slide: Formal Guarantee: Uniform Similarity
+## Slide: Formal Guarantee: Bounded Likelihood Ratio
 
 **ID:** `similarity_bound`
-**Title:** "Formal Guarantee: Uniform Similarity"
+**Title:** "Formal Guarantee: Bounded Likelihood Ratio"
 **Subtitle:** "Generalization bound for plain ERM"
 
 **Content Overview:**
@@ -391,7 +403,7 @@ This document provides a comprehensive overview of all slides in the thesis pres
 
 **ID:** `proof_similarity`
 **Title:** "Why ERM Works under Similarity"
-**Subtitle:** "Proof Sketch – Uniform Similarity"
+**Subtitle:** "Proof Sketch – Bounded Likelihood Ratio"
 
 **Content Overview:**
 
@@ -456,7 +468,7 @@ This document provides a comprehensive overview of all slides in the thesis pres
 
 **Content Overview:**
 
-* Uniform Similarity: suppresses variance
+* Bounded Likelihood Ratio: suppresses variance
 * Decodability: eliminates epistemic uncertainty
 * Both reduce effective policy class size
 
