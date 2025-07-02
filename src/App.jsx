@@ -115,50 +115,81 @@ const slides = [
     )
   },
   {
-    id: 'motivation',
-    title: 'Real-World Motivation',
+    id: 'supervised_learning_intro',
+    title: 'How Supervised Learning Works',
     content: (
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-100 p-16">
+      <div className="min-h-screen bg-gradient-to-br from-cyan-50 to-blue-100 p-16">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-gray-800 mb-4">Real-World Motivation</h1>
-            <p className="text-xl text-gray-600">Training on Few, Acting in Many</p>
+            <h1 className="text-4xl font-bold text-cyan-800 mb-4">How Supervised Learning Works</h1>
+            <p className="text-xl text-cyan-600">Learning from labeled examples</p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-8">
-            <div className="bg-white/70 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-8">
+            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30">
               <div className="text-center mb-6">
-                <div className="text-6xl mb-4">🏠</div>
-                <h2 className="text-2xl font-bold text-gray-800">Robotic Assistant</h2>
+                <div className="text-6xl mb-4">📚</div>
+                <h2 className="text-2xl font-bold text-gray-800">Problem Setup</h2>
               </div>
-              <div className="space-y-4 text-lg text-gray-700">
-                <p><strong>Training:</strong> One apartment 🏠</p>
-                <p><strong>Deployment:</strong> New layout 📦</p>
-                <p><strong>Challenge:</strong> Navigation robustness ❓</p>
+              
+              <div className="space-y-6">
+                <div className="bg-cyan-50 p-6 rounded-lg border border-cyan-200">
+                  <p className="text-lg text-center text-gray-700 mb-4">
+                    <strong>Learn a function from inputs to known outputs</strong>
+                  </p>
+                  <div className="text-center">
+                    <MathJax>
+                      {`\\(
+                      \\text{Image} \\rightarrow \\text{"cat"} \\quad\\text{Image} \\rightarrow \\text{"dog"}
+                      \\)`}
+                    </MathJax>
+                  </div>
+                </div>
+                
+                <div className="bg-blue-50 p-6 rounded-lg border border-blue-200">
+                  <p className="text-lg text-center text-gray-700 mb-4">
+                    <strong>Training data:</strong> (x, y) pairs where y is given
+                  </p>
+                </div>
+                
+                <div className="bg-green-50 p-6 rounded-lg border border-green-200">
+                  <p className="text-lg text-center text-gray-700">
+                    <strong>Objective:</strong> Learn f(x) ≈ y that performs well on <strong>new, unseen x</strong>
+                  </p>
+                </div>
               </div>
             </div>
             
-            <div className="bg-white/70 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/20">
-              <div className="text-center mb-6">
-                <div className="text-6xl mb-4">🚗</div>
-                <h2 className="text-2xl font-bold text-gray-800">Autonomous Vehicle</h2>
-              </div>
-              <div className="space-y-4 text-lg text-gray-700">
-                <p><strong>Training:</strong> San Francisco 🏙️</p>
-                <p><strong>Deployment:</strong> Tokyo ✈️</p>
-                <p><strong>Challenge:</strong> Generalize to new traffic dynamics ❓</p>
+            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30">
+              <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">🎯 Common Applications</h2>
+              
+              <div className="space-y-6">
+                <div className="bg-purple-50 p-6 rounded-lg border border-purple-200">
+                  <div className="text-4xl mb-3 text-center">🖼️</div>
+                  <h3 className="font-bold text-purple-800 text-center">Image Classification</h3>
+                </div>
+                
+                <div className="bg-orange-50 p-6 rounded-lg border border-orange-200">
+                  <div className="text-4xl mb-3 text-center">📧</div>
+                  <h3 className="font-bold text-orange-800 text-center">Spam Detection</h3>
+                </div>
+                
+                <div className="bg-red-50 p-6 rounded-lg border border-red-200">
+                  <div className="text-4xl mb-3 text-center">🩺</div>
+                  <h3 className="font-bold text-red-800 text-center">Medical Diagnosis</h3>
+                </div>
               </div>
             </div>
           </div>
           
-          <div className="bg-gradient-to-r from-red-500 to-orange-500 text-white p-8 rounded-2xl text-center shadow-xl">
-            <h3 className="text-2xl font-bold mb-4">🌐 The Generalization Gap</h3>
+          <div className="bg-gradient-to-r from-cyan-600 to-blue-600 text-white p-8 rounded-2xl text-center shadow-xl">
+            <h3 className="text-2xl font-bold mb-4">💭 Visual Flow</h3>
             <div className="flex items-center justify-center space-x-8 text-lg">
-              <div className="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-lg">Training</div>
+              <div className="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-lg">Labeled Dataset</div>
               <span className="text-2xl">→</span>
-              <div className="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-lg font-bold">GAP</div>
+              <div className="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-lg">ML Model</div>
               <span className="text-2xl">→</span>
-              <div className="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-lg">Deployment</div>
+              <div className="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-lg font-bold">Predictions on New Image</div>
             </div>
           </div>
         </div>
@@ -166,89 +197,461 @@ const slides = [
     )
   },
   {
-    id: 'rl_primer',
-    title: 'What is Reinforcement Learning?',
+    id: 'generalization_intro',
+    title: 'What Does It Mean to Generalize?',
     content: (
-      <div className="min-h-screen bg-gradient-to-br from-green-50 to-teal-100 p-16">
+      <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-100 p-16">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-teal-800 mb-4">What is Reinforcement Learning?</h1>
-            <p className="text-xl text-teal-600">Learning through interaction with an environment</p>
+            <h1 className="text-4xl font-bold text-purple-800 mb-4">What Does It Mean to Generalize?</h1>
+            <p className="text-xl text-purple-600">From memorization to real-world success</p>
           </div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-8">
             <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30">
-              <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">🔄 The Learning Loop</h2>
-              
-              <div className="flex flex-col items-center justify-center space-y-2">
-                {/* Agent */}
-                <div className="bg-teal-100 p-4 rounded-lg text-center w-64">
-                  <Brain className="w-8 h-8 mx-auto mb-2 text-teal-600" />
-                  <p className="font-semibold">Agent</p>
-                  <p className="text-sm text-gray-600">Makes decisions</p>
-                </div>
-
-                {/* Arrows */}
-                <div className="flex w-64 justify-between items-center px-4">
-                  <div className="flex flex-col items-center">
-                    <p className="text-sm font-semibold text-gray-700 -mb-1">Action</p>
-                    <ArrowRight className="w-8 h-8 text-gray-500 transform rotate-90" />
-                  </div>
-                  <div className="flex flex-col items-center">
-                     <ArrowLeft className="w-8 h-8 text-gray-500 transform rotate-90" />
-                     <p className="text-sm font-semibold text-gray-700 -mt-1">State & Reward</p>
-                  </div>
-                </div>
-
-                {/* Environment */}
-                <div className="bg-green-100 p-4 rounded-lg text-center w-64">
-                  <Cog className="w-8 h-8 mx-auto mb-2 text-green-600" />
-                  <p className="font-semibold">Environment</p>
-                  <p className="text-sm text-gray-600">Responds</p>
-                </div>
+              <div className="text-center mb-6">
+                <div className="text-6xl mb-4">✅</div>
+                <h2 className="text-2xl font-bold text-gray-800">Good Generalization</h2>
               </div>
-
-              <div className="bg-teal-50 p-6 rounded-lg border border-teal-200 mt-6">
-                <h3 className="font-bold mb-3 text-teal-800">📚 Key Terms:</h3>
-                <ul className="space-y-2">
-                  <li><strong>Policy π:</strong> Agent's decision strategy</li>
-                  <li><strong>Cost:</strong> Feedback signal</li>
-                  <li><strong>Return:</strong> Total accumulated cost</li>
-                  <li>
-                    <strong>Value Function:</strong>
-                    <div className="text-center">
-                      <MathJax>
-                        {`\\(
-                        V_{\\pi;M}
-                        \\;=\\;
-                        \\mathbb E_{\\pi;M}\\!\\Bigl[\\sum_{h=1}^{H}c_{h}(s_{h},a_{h})\\Bigr]
-                        \\)`}
-                      </MathJax>
-                    </div>
-                  </li>
-                </ul>
+              
+              <div className="space-y-6">
+                <div className="bg-green-50 p-6 rounded-lg border border-green-200">
+                  <p className="text-lg text-center text-gray-700 mb-4">
+                    <strong>Captures patterns, not just specific examples</strong>
+                  </p>
+                  <div className="flex justify-center space-x-2">
+                    <div className="w-12 h-12 bg-green-200 rounded border-2 border-green-400 flex items-center justify-center text-xs">📈</div>
+                    <div className="w-12 h-12 bg-green-200 rounded border-2 border-green-400 flex items-center justify-center text-xs">🎯</div>
+                    <div className="w-12 h-12 bg-green-200 rounded border-2 border-green-400 flex items-center justify-center text-xs">✨</div>
+                  </div>
+                </div>
+                
+                <div className="bg-blue-50 p-6 rounded-lg border border-blue-200">
+                  <p className="text-lg text-center text-gray-700">
+                    <strong>Works on new data!</strong>
+                  </p>
+                </div>
               </div>
             </div>
             
             <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30">
-              <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">🎯 Single MDP Assumption</h2>
+              <div className="text-center mb-6">
+                <div className="text-6xl mb-4">❌</div>
+                <h2 className="text-2xl font-bold text-gray-800">Poor Generalization (Overfitting)</h2>
+              </div>
               
-              <div className="space-y-10 p-8">
-                <div className="bg-blue-50 border-2 border-blue-200 p-6 rounded-lg text-center">
-                  <div className="text-4xl mb-4">🎯</div>
-                  <h3 className="text-xl font-bold text-blue-800 mb-2">Classical RL</h3>
-                  <p className="text-gray-700">Agent learns in the same environment it will be tested in</p>
+              <div className="space-y-6">
+                <div className="bg-red-50 p-6 rounded-lg border border-red-200">
+                  <p className="text-lg text-center text-gray-700 mb-4">
+                    <strong>Memorizes training data, fails on new inputs</strong>
+                  </p>
+                  <div className="flex justify-center space-x-2">
+                    <div className="w-12 h-12 bg-red-200 rounded border-2 border-red-400 flex items-center justify-center text-xs">📝</div>
+                    <div className="w-12 h-12 bg-red-200 rounded border-2 border-red-400 flex items-center justify-center text-xs">💭</div>
+                    <div className="w-12 h-12 bg-red-200 rounded border-2 border-red-400 flex items-center justify-center text-xs">❓</div>
+                  </div>
                 </div>
                 
-                <div className="bg-red-50 border-2 border-red-200 p-6 rounded-lg text-center">
-                  <AlertTriangle className="w-12 h-12 mx-auto mb-4 text-red-600" />
-                  <h3 className="text-xl font-bold text-red-800 mb-2">❌ Reality is Different!</h3>
-                  <p className="text-gray-700">Environments change, we need adaptive agents</p>
+                <div className="bg-orange-50 p-6 rounded-lg border border-orange-200">
+                  <p className="text-lg text-center text-gray-700">
+                    <strong>Fails on new data!</strong>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30 mb-8">
+            <div className="text-center mb-6">
+              <div className="text-6xl mb-4">🎓</div>
+              <h2 className="text-2xl font-bold text-gray-800">Analogy</h2>
+            </div>
+            
+            <div className="bg-yellow-50 p-6 rounded-lg border border-yellow-200">
+              <p className="text-xl text-center text-gray-700 italic">
+                "Cramming for an exam vs. truly understanding the material"
+              </p>
+            </div>
+          </div>
+          
+          <div className="bg-gradient-to-r from-purple-600 to-pink-600 text-white p-8 rounded-2xl text-center shadow-xl">
+            <h3 className="text-2xl font-bold mb-4">🔑 Key Question</h3>
+            <div className="text-xl">
+              After training, will the model <strong>work on new data?</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  },
+  {
+    id: 'agent_learning_intro',
+    title: 'How Do Machines Learn to Act?',
+    content: (
+      <div className="min-h-screen bg-gradient-to-br from-emerald-50 to-teal-100 p-16">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl font-bold text-teal-800 mb-4">How Do Machines Learn to Act?</h1>
+            <p className="text-xl text-teal-600">Learning through trial and error</p>
+          </div>
+          
+          <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30 mb-8">
+            <div className="text-center mb-6">
+              <div className="text-6xl mb-4">🤖</div>
+              <h2 className="text-2xl font-bold text-gray-800">Reinforcement Learning (RL)</h2>
+            </div>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div className="bg-teal-50 p-6 rounded-lg border border-teal-200">
+                <h3 className="font-bold text-teal-800 mb-3">🔑 Key Characteristics:</h3>
+                <ul className="space-y-2 text-gray-700">
+                  <li>• No labels — only experience</li>
+                  <li>• Feedback comes in the form of <strong>reward or cost</strong></li>
+                </ul>
+              </div>
+              
+              <div className="bg-blue-50 p-6 rounded-lg border border-blue-200">
+                <h3 className="font-bold text-blue-800 mb-3">🎯 Key Idea:</h3>
+                <p className="text-gray-700">
+                  Learn a <strong>policy</strong>: how to act in any given situation
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30 mb-8">
+            <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">🔄 Agent-Environment Feedback Loop</h2>
+            
+            <div className="flex flex-col items-center justify-center space-y-6">
+              <div className="bg-teal-100 p-6 rounded-lg text-center w-64">
+                <Brain className="w-12 h-12 mx-auto mb-3 text-teal-600" />
+                <p className="font-semibold text-lg">Agent</p>
+                <p className="text-sm text-gray-600">Makes decisions</p>
+              </div>
+
+              <div className="flex items-center space-x-4">
+                <div className="text-center">
+                  <p className="text-sm font-semibold text-gray-700 mb-1">Action</p>
+                  <ArrowRight className="w-8 h-8 text-gray-500 transform rotate-90" />
+                </div>
+                <div className="text-center">
+                  <ArrowLeft className="w-8 h-8 text-gray-500 transform rotate-90" />
+                  <p className="text-sm font-semibold text-gray-700 mt-1">Reward & Next State</p>
                 </div>
               </div>
 
+              <div className="bg-green-100 p-6 rounded-lg text-center w-64">
+                <Globe className="w-12 h-12 mx-auto mb-3 text-green-600" />
+                <p className="font-semibold text-lg">Environment</p>
+                <p className="text-sm text-gray-600">Responds to actions</p>
+              </div>
             </div>
           </div>
+          
+          <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30 mb-8">
+            <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">🌟 Examples</h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="bg-blue-50 p-6 rounded-lg text-center border border-blue-200">
+                <div className="text-4xl mb-3">🚶</div>
+                <h3 className="font-bold text-blue-800">Robot Learning to Walk</h3>
+                <p className="text-sm text-gray-600 mt-2">Trial and error movement</p>
+              </div>
+              <div className="bg-purple-50 p-6 rounded-lg text-center border border-purple-200">
+                <div className="text-4xl mb-3">♟️</div>
+                <h3 className="font-bold text-purple-800">Agent Playing Chess</h3>
+                <p className="text-sm text-gray-600 mt-2">Learning winning strategies</p>
+              </div>
+              <div className="bg-orange-50 p-6 rounded-lg text-center border border-orange-200">
+                <div className="text-4xl mb-3">🦾</div>
+                <h3 className="font-bold text-orange-800">Factory Arm Optimization</h3>
+                <p className="text-sm text-gray-600 mt-2">Optimizing motions</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  },
+  {
+    id: 'rl_lifecycle',
+    title: 'A Day in the Life of an RL Agent',
+    content: (
+      <div className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-100 p-16">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl font-bold text-amber-800 mb-4">A Day in the Life of an RL Agent</h1>
+            <p className="text-xl text-amber-600">From exploration to policy improvement</p>
+          </div>
+          
+          <div className="bg-white/80 backdrop-blur-sm p-10 rounded-2xl shadow-xl border border-white/30 mb-8">
+            <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">⏰ Timeline View</h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="text-center">
+                <div className="bg-blue-100 p-6 rounded-lg mb-4 border-2 border-blue-300">
+                  <Eye className="w-12 h-12 mx-auto mb-3 text-blue-600" />
+                  <h3 className="font-bold text-blue-800 text-lg">1</h3>
+                  <p className="text-blue-700">Agent observes state</p>
+                </div>
+                <p className="text-sm text-gray-600">What's the current situation?</p>
+              </div>
+              
+              <div className="text-center">
+                <div className="bg-green-100 p-6 rounded-lg mb-4 border-2 border-green-300">
+                  <Zap className="w-12 h-12 mx-auto mb-3 text-green-600" />
+                  <h3 className="font-bold text-green-800 text-lg">2</h3>
+                  <p className="text-green-700">Chooses action</p>
+                </div>
+                <p className="text-sm text-gray-600">Decision making</p>
+              </div>
+              
+              <div className="text-center">
+                <div className="bg-orange-100 p-6 rounded-lg mb-4 border-2 border-orange-300">
+                  <BarChart3 className="w-12 h-12 mx-auto mb-3 text-orange-600" />
+                  <h3 className="font-bold text-orange-800 text-lg">3</h3>
+                  <p className="text-orange-700">Receives feedback (reward/cost)</p>
+                </div>
+                <p className="text-sm text-gray-600">Environment response</p>
+              </div>
+              
+              <div className="text-center">
+                <div className="bg-purple-100 p-6 rounded-lg mb-4 border-2 border-purple-300">
+                  <Brain className="w-12 h-12 mx-auto mb-3 text-purple-600" />
+                  <h3 className="font-bold text-purple-800 text-lg">4</h3>
+                  <p className="text-purple-700">Updates its policy</p>
+                </div>
+                <p className="text-sm text-gray-600">Learning happens here</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30 mb-8">
+            <div className="text-center mb-6">
+              <h2 className="text-3xl font-bold text-gray-800 mb-4">🎯 Goal</h2>
+            </div>
+            
+            <div className="bg-amber-50 p-6 rounded-lg border border-amber-200">
+              <p className="text-xl text-center text-gray-800 font-semibold">
+                Learn to choose actions that lead to <strong>low cost</strong> (or high reward), aka <strong>Optimal Policy</strong>
+              </p>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    )
+  },
+  {
+    id: 'generalization_rl_intro',
+    title: 'Why Generalization Matters in RL',
+    content: (
+      <div className="min-h-screen bg-gradient-to-br from-rose-50 to-pink-100 p-16">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl font-bold text-rose-800 mb-4">Why Generalization Matters in RL</h1>
+            <p className="text-xl text-rose-600">Training in one world, acting in another</p>
+          </div>
+          
+          <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30 mb-8">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl font-bold text-gray-800 mb-4">🔄 The Reality</h2>
+              <p className="text-xl text-gray-700">
+                Train in a <strong>few simulated environments</strong>, deploy in the <strong>real world</strong>
+              </p>
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-8">
+              <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30">
+                <div className="text-center mb-6">
+                  <div className="text-6xl mb-4">🏗️</div>
+                  <h2 className="text-2xl font-bold text-gray-800">In Practice</h2>
+                  <p className="text-gray-600 mt-2">Where we train our agents</p>
+                </div>
+                
+                <div className="space-y-4">
+                  <div className="bg-blue-50 p-4 rounded-lg border border-blue-200 flex items-center">
+                    <div className="text-2xl mr-3">🤖</div>
+                    <div>
+                      <p className="font-semibold text-blue-800">A robot is trained in a lab</p>
+                      <p className="text-sm text-gray-600">Controlled environment</p>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-green-50 p-4 rounded-lg border border-green-200 flex items-center">
+                    <div className="text-2xl mr-3">🚗</div>
+                    <div>
+                      <p className="font-semibold text-green-800">A car is trained in California</p>
+                      <p className="text-sm text-gray-600">Specific traffic patterns</p>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-purple-50 p-4 rounded-lg border border-purple-200 flex items-center">
+                    <div className="text-2xl mr-3">🎮</div>
+                    <div>
+                      <p className="font-semibold text-purple-800">A game agent is trained on one set of maps</p>
+                      <p className="text-sm text-gray-600">Limited scenarios</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30">
+                <div className="text-center mb-6">
+                  <div className="text-6xl mb-4">🌍</div>
+                  <h2 className="text-2xl font-bold text-gray-800">At Deployment</h2>
+                  <p className="text-gray-600 mt-2">Where they actually need to work</p>
+                </div>
+                
+                <div className="space-y-4">
+                  <div className="bg-red-50 p-4 rounded-lg border border-red-200 flex items-center">
+                    <div className="text-2xl mr-3">🏠</div>
+                    <div>
+                      <p className="font-semibold text-red-800">New rooms, new layouts</p>
+                      <p className="text-sm text-gray-600">Different furniture, obstacles</p>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-yellow-50 p-4 rounded-lg border border-yellow-200 flex items-center">
+                    <div className="text-2xl mr-3">🏙️</div>
+                    <div>
+                      <p className="font-semibold text-yellow-800">New cities, new traffic</p>
+                      <p className="text-sm text-gray-600">Different road rules, behaviors</p>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-pink-50 p-4 rounded-lg border border-pink-200 flex items-center">
+                    <div className="text-2xl mr-3">🗺️</div>
+                    <div>
+                      <p className="font-semibold text-pink-800">New levels, new challenges</p>
+                      <p className="text-sm text-gray-600">Unseen game mechanics</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>          
+          <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30 mb-8">
+            <div className="text-center mb-6">
+              <div className="text-6xl mb-4">⚠️</div>
+              <h2 className="text-2xl font-bold text-gray-800">Key Challenge</h2>
+            </div>
+            
+            <div className="bg-red-50 p-6 rounded-lg border border-red-200">
+              <p className="text-xl text-center text-gray-800">
+                The test environment <strong>is not</strong> the same as the training ones
+              </p>
+            </div>
+          </div>
+          
+          <div className="bg-gradient-to-r from-rose-600 to-pink-600 text-white p-8 rounded-2xl text-center shadow-xl">
+            <h3 className="text-3xl font-bold mb-4">🤔 Question</h3>
+            <p className="text-2xl italic">
+              "Will the agent succeed anyway?"
+            </p>
+          </div>
+        </div>
+      </div>
+    )
+  },
+  {
+    id: 'mdp_definition',
+    title: 'What Is a Markov Decision Process (MDP)?',
+    content: (
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-gray-100 p-16">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl font-bold text-slate-800 mb-4">What Is a Markov Decision Process (MDP)?</h1>
+            <p className="text-xl text-slate-600">A simple model of sequential decision-making</p>
+          </div>
+          
+          <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30 mb-8">
+            <div className="text-center mb-8">
+              <p className="text-xl text-slate-800">🤖 An MDP models an environment where an agent makes a sequence of decisions over <strong>H steps</strong></p>
+            </div>
+          </div>
+
+          <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30 mb-8">
+            <h2 className="text-2xl font-bold text-slate-800 mb-6 text-center">📋 Defined by 6 components:</h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="bg-blue-50 p-6 rounded-lg border border-blue-200 text-center">
+                <div className="text-3xl mb-3">🌍</div>
+                <h3 className="font-bold text-blue-800 mb-2">
+                  <MathJax inline>{"\\(\\mathcal{S}\\)"}</MathJax>: States
+                </h3>
+                <p className="text-gray-700 text-sm">What the agent sees</p>
+              </div>
+              
+              <div className="bg-green-50 p-6 rounded-lg border border-green-200 text-center">
+                <div className="text-3xl mb-3">⚡</div>
+                <h3 className="font-bold text-green-800 mb-2">
+                  <MathJax inline>{"\\(\\mathcal{A}\\)"}</MathJax>: Actions
+                </h3>
+                <p className="text-gray-700 text-sm">What the agent can do</p>
+              </div>
+              
+              <div className="bg-purple-50 p-6 rounded-lg border border-purple-200 text-center">
+                <div className="text-3xl mb-3">⏱️</div>
+                <h3 className="font-bold text-purple-800 mb-2">
+                  <MathJax inline>{"\\(H\\)"}</MathJax>: Horizon
+                </h3>
+                <p className="text-gray-700 text-sm">Number of time steps</p>
+              </div>
+              
+              <div className="bg-yellow-50 p-6 rounded-lg border border-yellow-200 text-center">
+                <div className="text-3xl mb-3">🎯</div>
+                <h3 className="font-bold text-yellow-800 mb-2">
+                  <MathJax inline>{"\\(\\mu_1\\)"}</MathJax>: Initial Distribution
+                </h3>
+                <p className="text-gray-700 text-sm">Starting state</p>
+              </div>
+              
+              <div className="bg-orange-50 p-6 rounded-lg border border-orange-200 text-center">
+                <div className="text-3xl mb-3">🔄</div>
+                <h3 className="font-bold text-orange-800 mb-2">
+                  <MathJax inline>{"\\(T_h(s' \\mid s, a)\\)"}</MathJax>: Transitions
+                </h3>
+                <p className="text-gray-700 text-sm">How the world evolves</p>
+              </div>
+              
+              <div className="bg-red-50 p-6 rounded-lg border border-red-200 text-center">
+                <div className="text-3xl mb-3">💰</div>
+                <h3 className="font-bold text-red-800 mb-2">
+                  <MathJax inline>{"\\(c_h(s, a)\\)"}</MathJax>: Cost Function
+                </h3>
+                <p className="text-gray-700 text-sm">How bad an action is</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/30 mb-8">
+            <h2 className="text-2xl font-bold text-slate-800 mb-6 text-center">🔄 Agent's Interaction:</h2>
+            
+            <div className="space-y-6">
+              <div className="bg-slate-50 p-6 rounded-lg border border-slate-200">
+                <h3 className="font-bold text-slate-800 mb-3">1. Start in state <MathJax inline>{"\\(s_1 \\sim \\mu_1\\)"}</MathJax></h3>
+              </div>
+              
+              <div className="bg-slate-50 p-6 rounded-lg border border-slate-200">
+                <h3 className="font-bold text-slate-800 mb-3">2. For each step <MathJax inline>{"\\(h = 1, \\dots, H\\)"}</MathJax>:</h3>
+                <ul className="list-disc list-inside space-y-2 text-gray-700 ml-4">
+                  <li>See state <MathJax inline>{"\\(s_h\\)"}</MathJax></li>
+                  <li>Choose action <MathJax inline>{"\\(a_h \\in \\mathcal{A}\\)"}</MathJax></li>
+                  <li>Pay cost <MathJax inline>{"\\(c_h(s_h, a_h)\\)"}</MathJax></li>
+                  <li>Move to new state <MathJax inline>{"\\(s_{h+1} \\sim T_h(\\cdot \\mid s_h, a_h)\\)"}</MathJax></li>
+                </ul>
+              </div>
+            </div>
+            <div className="bg-white/20 backdrop-blur-sm p-6 rounded-lg">
+              <MathJax>
+                {"\\[ s_1 \\xrightarrow{a_1, c_1} s_2 \\xrightarrow{a_2, c_2} \\dots \\xrightarrow{a_H, c_H} s_{H+1} \\]"}
+              </MathJax>
+            </div>
+
+          </div>
+
+
         </div>
       </div>
     )
@@ -260,7 +663,7 @@ const slides = [
       <div className="min-h-screen bg-gradient-to-br from-purple-50 to-indigo-100 p-16">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-indigo-800 mb-4">The Generalization Challenge in RL</h1>
+            <h1 className="text-4xl font-bold text-indigo-800 mb-4">Modeling The Generalization Challenge in RL</h1>
             <p className="text-xl text-indigo-600">The Learning Problem Setup</p>
           </div>
           

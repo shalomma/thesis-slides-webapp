@@ -46,31 +46,137 @@ This document provides a comprehensive overview of all slides in the thesis pres
 
 ---
 
-## Slide: Real-World Motivation
+## Slide: How Supervised Learning Works
 
-**ID:** `motivation`
-**Title:** "Real-World Motivation"
-**Subtitle:** "Training on Few, Acting in Many"
+**ID:** `supervised_learning_intro`
+**Title:** "How Supervised Learning Works"
+**Subtitle:** "Learning from labeled examples"
 
 **Content Overview:**
 
-* Two practical examples:
+* **Problem:** Learn a function from inputs to known outputs
+  Example:
 
-  1. **Robotic Assistant**
+  $$
+  \text{Image} \rightarrow \text{"cat"} \quad\text{Image} \rightarrow \text{"dog"}
+  $$
 
-     * Training: One apartment
-     * Deployment: New layout
-     * Challenge: Navigation robustness
+* **Training data:** (x, y) pairs where y is given
 
-  2. **Autonomous Vehicle**
+* **Objective:**
+  Learn $f(x) \approx y$ that performs well on **new, unseen x**
 
-     * Training: San Francisco
-     * Deployment: Tokyo
-     * Challenge: Generalize to new traffic dynamics
+* **Common applications:**
 
-* Illustration of the generalization gap
+  * Image classification
+  * Spam detection
+  * Medical diagnosis
 
-* Visual: Light gradient with white cards and icons (🏠, 🚗, 🌐)
+* **Visual:**
+  Labeled image dataset → ML model → Predictions on new image
+
+---
+
+## Slide: What Does It Mean to Generalize?
+
+**ID:** `generalization_intro`
+**Title:** "What Does It Mean to Generalize?"
+**Subtitle:** "From memorization to real-world success"
+
+**Content Overview:**
+
+* After training, will the model **work on new data**?
+
+* **Good generalization:**
+
+  * Captures patterns, not just specific examples
+
+* **Poor generalization (overfitting):**
+
+  * Memorizes training data, fails on new inputs
+
+* **Analogy:**
+  *Cramming for an exam vs. truly understanding the material*
+
+* **Visual:**
+
+  * Side-by-side: Train set → model → Success on new data vs. Failure due to overfitting
+
+---
+
+## Slide: How Do Machines Learn to Act?
+
+**ID:** `agent_learning_intro`
+**Title:** "How Do Machines Learn to Act?"
+**Subtitle:** "Learning through trial and error"
+
+**Content Overview:**
+
+* **Reinforcement Learning (RL):**
+
+  * No labels — only experience
+  * Feedback comes in the form of **reward or cost**
+
+* **Key idea:**
+  Learn a **policy**: how to act in any given situation
+
+* **Examples:**
+
+  * A robot that learns to walk
+  * An agent playing chess
+  * A factory arm optimizing its motions
+
+* **Visual:**
+  Agent–Environment feedback loop (State → Action → Reward → Next State)
+
+---
+
+## Slide: A Day in the Life of an RL Agent
+
+**ID:** `rl_lifecycle`
+**Title:** "A Day in the Life of an RL Agent"
+**Subtitle:** "From exploration to policy improvement"
+
+**Content Overview:**
+
+* Timeline view:
+
+  1. Agent observes state
+  2. Chooses action
+  3. Receives feedback (reward/cost)
+  4. Updates its policy
+
+* **Goal:** Learn to choose actions that lead to **low cost** (or high reward)
+
+* **Visual:**
+  Horizontal diagram with cartoon agent acting, receiving signals, updating behavior
+
+---
+
+## Slide: Why Generalization Matters in RL
+
+**ID:** `generalization_rl_intro`
+**Title:** "Why Generalization Matters in RL"
+**Subtitle:** "Training in one world, acting in another"
+
+**Content Overview:**
+
+* Train in a **few simulated environments**, deploy in the **real world**
+
+* **Examples:**
+
+  * Trained robot → new home layout
+  * Car trained in SF → deployed in Tokyo
+  * Game agent trained on level A → plays level B
+
+* **Key challenge:**
+  The test environment **is not** the same as the training ones
+
+* **Question:**
+  *"Will the agent succeed anyway?"*
+
+* **Visual:**
+  Training MDPs → Generalization Gap → New MDP
 
 ---
 
@@ -82,14 +188,62 @@ This document provides a comprehensive overview of all slides in the thesis pres
 
 **Content Overview:**
 
-* RL loop: Agent ↔ Environment
-* Key terms:
+* **Agent ↔ Environment Loop:**
 
-  * Policy π
-  * Reward / cost
-  * Return
-* Single MDP assumption in classical RL
-* Visual: RL diagram with state-action arrows
+  * State
+  * Action
+  * Reward (or Cost)
+  * Next State
+
+* **Key terms:**
+
+  * **Policy π**: maps states to actions
+  * **Return**: total reward or cost over time
+  * **Objective**: Find a policy that **minimizes expected cost** over time
+
+* **Classic RL assumption:**
+  Single known environment (MDP) used for training and deployment
+
+* **Visual:**
+  RL loop with state, action, reward/cost arrows + policy box
+
+---
+
+## Slide: What Is an MDP?
+
+**ID:** `mdp_definition`
+**Title:** "What Is a Markov Decision Process (MDP)?"
+**Subtitle:** "A simple model of sequential decision-making"
+
+**Content Overview:**
+
+* An **MDP** models an environment where an agent makes a sequence of decisions over **H steps**
+
+* Defined by 6 components:
+
+  1. $\mathcal{S}$: Set of **states** (what the agent sees)
+  2. $\mathcal{A}$: Set of **actions** (what the agent can do)
+  3. $H$: **Horizon** — the number of time steps (finite)
+  4. $\mu_1$: Initial **state distribution**
+  5. $T_h(s' \mid s, a)$: Transition rule — how the world evolves
+  6. $c_h(s, a)$: Cost function — how bad an action is
+
+* **Agent's interaction:**
+
+  1. Start in state $s_1 \sim \mu_1$
+  2. For each step $h = 1, \dots, H$:
+
+     * See state $s_h$
+     * Choose action $a_h \in \mathcal{A}$
+     * Pay cost $c_h(s_h, a_h)$
+     * Move to new state $s_{h+1} \sim T_h(\cdot \mid s_h, a_h)$
+
+* Visual:
+  Flow diagram or timeline:
+
+  $$
+  s_1 \xrightarrow{a_1, c_1} s_2 \xrightarrow{a_2, c_2} \dots \xrightarrow{a_H, c_H} s_{H+1}
+  $$
 
 ---
 
